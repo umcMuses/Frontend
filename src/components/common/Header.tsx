@@ -10,9 +10,12 @@ const Header = () => {
       <div className="flex items-center gap-6">
         <div className="flex items-center gap-2">
           <img src={museslogo} alt="Muses Logo" className="size-8" />
-          <span className="text-xl font-bold leading-7 tracking-[-0.4px] text-gray-800">
+          <Link
+            to="/"
+            className="text-xl font-bold leading-7 tracking-[-0.4px] text-gray-800"
+          >
             muses
-          </span>
+          </Link>
         </div>
         <div className="flex h-6 items-center gap-1">
           <Link
