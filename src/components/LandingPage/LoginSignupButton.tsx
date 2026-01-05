@@ -9,7 +9,7 @@ const LoginSigninButton = ({ onClick }: LoginSigninButtonProps) => {
       className="
         flex flex-col items-center justify-center py-2.5 px-5 rounded-full bg-gray-900 shadow-lg cursor-pointer hover:px-[21px] hover:py-[10.5px]"
     >
-      <span className="text-center text-sm font-bold leading-5 text-white">
+      <span className="text-center text-sm font-bold text-white">
         로그인/회원가입
       </span>
     </button>

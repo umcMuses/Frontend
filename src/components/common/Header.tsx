@@ -10,14 +10,14 @@ const Header = () => {
       <div className="flex items-center gap-6">
         <div className="flex items-center gap-2">
           <img src={museslogo} alt="Muses Logo" className="size-8" />
-          <Link to="/" className="font-logoFont">
+          <Link to="/" className="font-logoFont text-xl">
             muses
           </Link>
         </div>
         <div className="flex h-6 items-center gap-1">
           <Link
             to="/projects"
-            className="text-center text-sm font-medium leading-5 text-gray-600 px-3 hover:text-black"
+            className="text-center text-sm font-medium text-gray-600 px-3 hover:text-black"
           >
             프로젝트
           </Link>
@@ -26,7 +26,7 @@ const Header = () => {
 
           <Link
             to="/events"
-            className="text-center text-sm font-medium leading-5 text-gray-600 px-3 hover:text-black"
+            className="text-center text-sm font-medium text-gray-600 px-3 hover:text-black"
           >
             이벤트
           </Link>

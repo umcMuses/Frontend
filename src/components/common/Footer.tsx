@@ -8,14 +8,14 @@ const Footer = () => {
           {footerLinks.map((text) => (
             <p
               key={text}
-              className="text-center text-sm font-medium leading-5 text-gray-500"
+              className="text-center text-sm font-medium text-gray-500"
             >
               {text}
             </p>
           ))}
         </div>
 
-        <p className="text-center text-sm font-normal leading-5 text-gray-400">
+        <p className="text-center text-sm font-mainFont text-gray-400">
           © 2025 Muses Platform. All rights reserved.
         </p>
       </div>
