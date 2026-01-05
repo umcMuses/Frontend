@@ -60,7 +60,13 @@ export default function EventsBanner() {
   }, []);
 
   return (
-    <div className="relative w-full h-fit min-h-[320px] rounded-[40px] overflow-hidden mb-8 font-mainFont">
+    <div
+      className="relative w-full h-fit min-h-[320px] rounded-[40px] overflow-hidden mb-8 font-mainFont"
+      style={{
+        boxShadow:
+          '0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10)',
+      }}
+    >
       {/* 슬라이드 컨테이너 */}
       <div
         className="flex transition-transform duration-500 ease-in-out h-full"
@@ -103,7 +109,13 @@ export default function EventsBanner() {
                 {event.description}
               </p>
               {/* 버튼 */}
-              <button className="w-fit bg-white text-[#4F46E5] rounded-full font-semibold px-8 py-3 hover:bg-white/90 transition-colors">
+              <button
+                className="w-fit bg-white text-[#4F46E5] rounded-full font-semibold px-8 py-3 hover:bg-[#EEF2FF] transition-colors cursor-pointer"
+                style={{
+                  boxShadow:
+                    '0 10px 15px -3px rgba(0, 0, 0, 0.10), 0 4px 6px -4px rgba(0, 0, 0, 0.10)',
+                }}
+              >
                 기획전 보기
               </button>
             </div>
@@ -117,7 +129,7 @@ export default function EventsBanner() {
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`rounded-full transition-all ${
+            className={`rounded-full transition-all cursor-pointer ${
               index === currentIndex
                 ? 'w-5 h-2 bg-white'
                 : 'w-2 h-2 bg-white/50 hover:bg-white/70'
