@@ -4,7 +4,7 @@ import ProjectList from '../components/ProjectListPage/ProjectList';
 
 export default function ProjectListPage() {
   return (
-    <div className="min-h-screen px-6 py-24 min-w-screen bg-mainWhite flex flex-col items-center">
+    <div className="min-h-screen py-24 w-full bg-mainWhite flex flex-col items-center overflow-x-hidden">
       <EventsBanner />
       <SearchBar />
       <ProjectList />

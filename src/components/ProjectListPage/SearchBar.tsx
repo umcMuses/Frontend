@@ -80,12 +80,12 @@ export default function SearchBar() {
         </div>
 
         {/* 검색바 */}
-        <div className="flex-1 relative w-[530px]">
+        <div className="flex-1 relative max-w-[530px] w-full">
           <Search className="absolute left-6 top-1/2 transform -translate-y-1/2 w-5 h-5 text-black40 cursor-pointer" />
           <input
             type="text"
             placeholder="프로젝트, 아티스트, 태그 검색"
-            className="bg-white py-4 pl-13 pr-6 w-full border border-white60 rounded-full focus:border-black40 focus:outline-none"
+            className="min-w-[530px] bg-white py-4 pl-13 pr-6 w-full border border-white60 rounded-full focus:border-black40 focus:outline-none"
             style={{
               boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
             }}
