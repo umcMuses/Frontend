@@ -1,7 +1,13 @@
+import EventsBanner from '../components/ProjectListPage/EventsBanner';
+import SearchBar from '../components/ProjectListPage/SearchBar';
+import ProjectList from '../components/ProjectListPage/ProjectList';
+
 export default function ProjectListPage() {
   return (
-    <div className="min-h-screen p-8">
-      <h1 className="text-4xl font-bold mb-6">Project List</h1>
+    <div className="min-h-screen px-6 py-24 min-w-screen bg-mainWhite flex flex-col items-center">
+      <EventsBanner />
+      <SearchBar />
+      <ProjectList />
     </div>
   );
 }

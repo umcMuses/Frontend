@@ -61,7 +61,7 @@ export default function EventsBanner() {
 
   return (
     <div
-      className="relative w-full h-fit min-h-[320px] rounded-[40px] overflow-hidden mb-8 font-mainFont"
+      className="relative w-full h-fit min-h-[320px] max-w-[1247px] rounded-[40px] overflow-hidden mb-16 font-mainFont"
       style={{
         boxShadow:
           '0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10)',
