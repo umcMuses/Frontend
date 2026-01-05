@@ -96,7 +96,7 @@ export default function EventsBanner() {
               {/* EVENT 태그 */}
               <div className="flex items-center gap-2 mb-4 text-white bg-white/20 px-4 py-1.5 rounded-full w-fit border border-white/30">
                 <School className="w-3 h-3 text-white" />
-                <span className="text-[12px] font-bold">{event.tag}</span>
+                <span className="text-[12px] font-boldFont">{event.tag}</span>
               </div>
 
               {/* 메인 타이틀 */}
@@ -110,7 +110,7 @@ export default function EventsBanner() {
               </p>
               {/* 버튼 */}
               <button
-                className="w-fit bg-white text-[#4F46E5] rounded-full font-semibold px-8 py-3 hover:bg-[#EEF2FF] transition-colors cursor-pointer"
+                className="w-fit bg-white text-[#4F46E5] rounded-full font-boldFont px-8 py-3 hover:bg-[#EEF2FF] transition-colors cursor-pointer"
                 style={{
                   boxShadow:
                     '0 10px 15px -3px rgba(0, 0, 0, 0.10), 0 4px 6px -4px rgba(0, 0, 0, 0.10)',

@@ -43,7 +43,7 @@ export default function SearchBar() {
             }}
           >
             <MapPin className="w-4 h-4 text-black80" />
-            <span className="text-base font-bold text-black80">
+            <span className="text-base font-boldFont text-black80">
               {selectedLocation}
             </span>
             <ChevronDown
@@ -66,7 +66,7 @@ export default function SearchBar() {
                 <button
                   key={location}
                   onClick={() => handleLocationSelect(location)}
-                  className={`w-full px-4 py-3 text-left text-base font-bold transition-colors hover:bg-gray-50 ${
+                  className={`w-full px-4 py-3 text-left text-base font-boldFont transition-colors hover:bg-gray-50 ${
                     selectedLocation === location
                       ? 'text-[#4F46E5] bg-[#EEF2FF]'
                       : 'text-black80'
@@ -96,12 +96,14 @@ export default function SearchBar() {
       {/* 인기 태그 */}
       <div className="flex items-center gap-1">
         <Sparkles className="w-4 h-4 text-black40" />
-        <span className="text-sm font-bold text-black40 mr-2">인기 태그:</span>
+        <span className="text-sm font-boldFont text-black40 mr-2">
+          인기 태그:
+        </span>
         <div className="flex gap-2 flex-wrap">
           {popularTags.map((tag) => (
             <button
               key={tag}
-              className="text-black60 text-sm font-medium hover:text-[#4F46E5] transition-colors cursor-pointer"
+              className="text-black60 text-sm font-mediumFont hover:text-[#4F46E5] transition-colors cursor-pointer"
             >
               {tag}
             </button>
