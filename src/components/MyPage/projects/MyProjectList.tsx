@@ -1,4 +1,4 @@
-import MyProjectItem from "./MyProjectItem";
+import MyProjectItem from './MyProjectItem';
 
 interface Project {
   id: number;
@@ -24,10 +24,7 @@ const MyProjectList = ({ projects }: Props) => {
 
       <div className="flex flex-col gap-3">
         {projects.map((project) => (
-          <MyProjectItem
-            key={project.id}
-            project={project}
-          />
+          <MyProjectItem key={project.id} project={project} />
         ))}
       </div>
     </section>

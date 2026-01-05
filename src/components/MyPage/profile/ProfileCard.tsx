@@ -25,11 +25,7 @@ const ProfileCard = ({
   stats,
   onLogout,
 }: Props) => {
-  const {
-    supportTicketCount,
-    supportCount,
-    projectCount,
-  } = stats || {};
+  const { supportTicketCount, supportCount, projectCount } = stats || {};
 
   return (
     <section className="flex w-full max-w-[848px] gap-6 rounded-[40px] bg-white p-8 shadow">
@@ -75,11 +71,7 @@ const ProfileCard = ({
           {isCreator && (
             <>
               <Divider />
-              <StatItem
-                label="내 프로젝트"
-                value={projectCount}
-                highlight
-              />
+              <StatItem label="내 프로젝트" value={projectCount} highlight />
             </>
           )}
         </div>
@@ -97,9 +89,7 @@ interface StatItemProps {
 const StatItem = ({ label, value, highlight }: StatItemProps) => (
   <div className="flex flex-col items-center">
     <div
-      className={`text-lg font-semibold ${
-        highlight ? 'text-orange-500' : ''
-      }`}
+      className={`text-lg font-semibold ${highlight ? 'text-orange-500' : ''}`}
     >
       {value}
     </div>
