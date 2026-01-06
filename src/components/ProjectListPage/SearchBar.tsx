@@ -1,20 +1,11 @@
 import { useState } from 'react';
-import { MapPin, Search, Sparkles, ChevronDown } from 'lucide-react';
+import { MapPin, Search, Sparkles, ChevronDown, Check } from 'lucide-react';
 
 export default function SearchBar() {
   const [isLocationDropdownOpen, setIsLocationDropdownOpen] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState('전체');
 
-  const locations = [
-    '전체',
-    '서울',
-    '경기',
-    '전라',
-    '경상',
-    '충청',
-    '강원',
-    '제주',
-  ];
+  const locations = ['전체', '서울', '경기', '인천', '부산', '제주'];
 
   const popularTags = [
     '#졸업전시',
@@ -56,7 +47,7 @@ export default function SearchBar() {
           {/* 드롭다운 메뉴 */}
           {isLocationDropdownOpen && (
             <div
-              className="absolute top-full mt-2 bg-white border border-white60 rounded-xl shadow-lg z-50 min-w-[140px] overflow-hidden"
+              className="absolute top-full mt-2 bg-white border border-white60 rounded-2xl shadow-lg z-50 min-w-[190px] overflow-hidden py-2"
               style={{
                 boxShadow:
                   '0 10px 15px -3px rgba(0, 0, 0, 0.10), 0 4px 6px -4px rgba(0, 0, 0, 0.10)',
@@ -66,13 +57,16 @@ export default function SearchBar() {
                 <button
                   key={location}
                   onClick={() => handleLocationSelect(location)}
-                  className={`w-full px-4 py-3 text-left text-base font-boldFont transition-colors hover:bg-gray-50 ${
+                  className={`w-full px-4 py-3 text-left text-sm font-mediumFont transition-colors hover:bg-[#EEF2FF] flex items-center justify-between ${
                     selectedLocation === location
                       ? 'text-[#4F46E5] bg-[#EEF2FF]'
                       : 'text-black80'
                   }`}
                 >
-                  {location}
+                  <span>{location}</span>
+                  {selectedLocation === location && (
+                    <Check className="w-4 h-4 text-[#4F46E5]" />
+                  )}
                 </button>
               ))}
             </div>
