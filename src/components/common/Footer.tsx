@@ -6,12 +6,12 @@ const Footer = () => {
       <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-10 px-6">
         <div className="flex justify-center items-start gap-10">
           {footerLinks.map((text) => (
-            <div
+            <span
               key={text}
               className="text-center text-sm font-mediumFont text-black60 cursor-pointer hover:text-black"
             >
               {text}
-            </div>
+            </span>
           ))}
         </div>
 
