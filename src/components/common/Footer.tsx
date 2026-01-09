@@ -6,18 +6,18 @@ const Footer = () => {
       <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-10 px-6">
         <div className="flex justify-center items-start gap-10">
           {footerLinks.map((text) => (
-            <p
+            <div
               key={text}
-              className="text-center text-sm font-medium text-gray-500"
+              className="text-center text-sm font-mediumFont text-black60 cursor-pointer hover:text-black"
             >
               {text}
-            </p>
+            </div>
           ))}
         </div>
 
-        <p className="text-center text-sm font-mainFont text-gray-400">
+        <div className="text-center text-sm font-mainFont text-black40">
           © 2025 Muses Platform. All rights reserved.
-        </p>
+        </div>
       </div>
     </footer>
   );
