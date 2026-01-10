@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { useMyPageTab } from '../components/MyPage/hooks/useMyPageTab';
 import MyPageTab from '../components/MyPage/MyPageTab';
 import ProfileCard from '../components/MyPage/profile/ProfileCard';
@@ -29,11 +27,11 @@ export default function MyPage() {
 
   return (
     <div className="relative min-h-[713px] bg-[#F8F9FC]">
-      <div className="relative z-10">
+      <div className="relative ">
         <div className="max-w-[1425px] mx-auto px-[264.5px] pb-[80px]">
           <div className="max-w-[896px] mx-auto flex flex-col gap-[32px] pt-[96px] px-[24px]">
             <ProfileCard
-              name="김뮤즈"
+              name="푸른 오렌지"
               email="kim.muse@example.com"
               levelLabel="Lv.3 열정적인 서포터"
               isCreator={isCreator}

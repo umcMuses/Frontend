@@ -51,7 +51,7 @@ const ProfileCard = ({
         </div>
 
         {/* 이름 */}
-        <div className="text-lg font-bold">{name} 님</div>
+        <div className="jutify-center text-2xl font-boldFont text-mainBlack leading-8">{name}</div>
 
         {/* 이메일 / 로그아웃 */}
         {onLogout && (
