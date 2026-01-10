@@ -79,14 +79,12 @@ const MOCK_PROJECTS: Project[] = [
   },
 ];
 
-export default function ProjectList() {
+export default function TrendingList() {
   return (
-    <div className="w-full max-w-[1247px]">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {MOCK_PROJECTS.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
       </div>
-    </div>
   );
 }
