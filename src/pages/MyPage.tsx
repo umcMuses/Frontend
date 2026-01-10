@@ -17,6 +17,13 @@ const MOCK_PROJECTS = [
   },
 ];
 
+/**
+ * Renders the My Page screen showing the user's profile, tab controls, and conditional activity or creator content.
+ *
+ * When the Creator tab is active, displays either the creator projects list or an empty creator state depending on the user's creator status.
+ *
+ * @returns The JSX element for the My Page layout, including the profile header, tab controls, activity section, and creator-related section.
+ */
 export default function MyPage() {
   const { activeTab, setActiveTab, isActivityTab, isCreatorTab } =
     useMyPageTab();

@@ -7,6 +7,14 @@ import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import EventListPage from './pages/EventListPage';
 
+/**
+ * Top-level application component that configures client-side routing and renders the common layout.
+ *
+ * Renders a BrowserRouter containing a persistent Header and Footer and a Routes tree that maps:
+ * "/" → LandingPage, "/projects" → ProjectListPage, "/events" → EventListPage, "/login" → LoginSignupPage, and "/mypage" → MyPage.
+ *
+ * @returns The React element tree for the application's router and layout
+ */
 function App() {
   return (
     <BrowserRouter>
