@@ -6,7 +6,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className="absolute flex w-full px-6 py-4 border-b border-white/40 bg-white/70 backdrop-blur-[6px] items-center justify-between">
+    <nav className="fixed top-0 left-0 z-50 flex w-full px-6 py-4 border-b border-white/40 bg-white/70 backdrop-blur-[6px] items-center justify-between">
       <div className="flex items-center gap-6">
         <div className="flex items-center gap-2">
           <img src={museslogo} alt="Muses Logo" className="size-8" />

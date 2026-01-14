@@ -15,9 +15,7 @@ const MyPageTab = ({ activeTab, onChange, isCreator }: Props) => {
 
   const moveUnderline = () => {
     const target =
-      activeTab === 'activity'
-        ? activityRef.current
-        : creatorRef.current;
+      activeTab === 'activity' ? activityRef.current : creatorRef.current;
 
     if (!target || !underlineRef.current) return;
 
@@ -30,41 +28,44 @@ const MyPageTab = ({ activeTab, onChange, isCreator }: Props) => {
   }, [activeTab]);
 
   return (
-    <section className="relative flex h-[41px] w-full max-w-[848px] gap-6 border-b border-gray-200 pb-4">
+    <div className="relative self-stretch border-b border-white60 inline-flex justify-start items-start gap-6">
       <button
         ref={activityRef}
         onClick={() => onChange('activity')}
-        className={`font-semibold ${
-          activeTab === 'activity'
-            ? 'text-blue-700'
-            : 'text-gray-400'
-        }`}
+        className="pb-4 relative inline-flex flex-col justify-center items-center"
       >
-        내 활동
+        <div
+          className={`text-center justify-center text-base font-boldFont leading-6 ${
+            activeTab === 'activity' ? 'text-[#4F46E5]' : 'text-black40 hover:text-mainBlack cursor-pointer transition'
+          }`}
+        >
+          내 활동
+        </div>
       </button>
 
       <button
         ref={creatorRef}
         onClick={() => onChange('creator')}
-        className={`inline-flex items-center gap-1 font-semibold ${
-          activeTab === 'creator'
-            ? 'text-[#EA580C]'
-            : 'text-gray-400'
-        }`}
+        data-:hover="false"
+        data-variant="1"
+        className="pb-4 flex justify-start items-center gap-1"
       >
-        크리에이터 센터
-        {!isCreator && <Lock size={16} />}
+        <div
+          className={`inline-flex items-center gap-1 text-center justify-center text-base font-boldFont leading-6 whitespace-nowrap ${
+            activeTab === 'creator' ? 'text-[#EA580C]' : 'text-black40 hover:text-mainBlack cursor-pointer transition'
+          }`}
+        >
+          크리에이터 센터 {!isCreator && <Lock size={12} />}
+        </div>
       </button>
 
       <div
         ref={underlineRef}
-        className={`absolute bottom-0 h-0.5 transition-all duration-300 ${
-          activeTab === 'creator'
-            ? 'bg-[#EA580C]'
-            : 'bg-blue-700'
+        className={`absolute bottom-0 h-0.5 rounded-full transition-all duration-300 ${
+          activeTab === 'activity' ? 'bg-[#4F46E5]' : 'bg-[#EA580C]'
         }`}
       />
-    </section>
+    </div>
   );
 };
 

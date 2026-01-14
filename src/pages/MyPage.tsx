@@ -1,9 +1,9 @@
 import { useMyPageTab } from '../components/MyPage/hooks/useMyPageTab';
 import MyPageTab from '../components/MyPage/MyPageTab';
-import ProfileCard from '../components/MyPage/profile/ProfileCard';
 import MyActivitySection from '../components/MyPage/section/MyActivitySection';
 import CreatorSection from '../components/MyPage/section/CreatorSection';
 import CreatorEmptySection from '../components/MyPage/section/CreatorEmptySection';
+import ProfileCard from '../components/MyPage/profile/ProfileCard';
 
 const MOCK_PROJECTS = [
   {
@@ -19,45 +19,28 @@ export default function MyPage() {
   const { activeTab, setActiveTab, isActivityTab, isCreatorTab } =
     useMyPageTab();
 
-  const isCreator = false;
-
-  const handleLogout = () => {
-    console.log('logout');
-  };
+  const isCreator = true;
 
   return (
-    <div className="relative min-h-[713px] bg-[#F8F9FC]">
-      <div className="relative ">
-        <div className="max-w-[1425px] mx-auto px-[264.5px] pb-[80px]">
-          <div className="max-w-[896px] mx-auto flex flex-col gap-[32px] pt-[96px] px-[24px]">
-            <ProfileCard
-              name="푸른 오렌지"
-              email="kim.muse@example.com"
-              levelLabel="Lv.3 열정적인 서포터"
-              isCreator={isCreator}
-              stats={{
-                projectCount: 1,
-                supportTicketCount: 2,
-                supportCount: 2,
-              }}
-              onLogout={handleLogout}
-            />
+    <div className="min-h-screen bg-[#F8F9FC] pt-[110px]">
+      <div className="max-w-[1425px] mx-auto px-[264.5px] pb-[80px]">
+        <div className="max-w-[896px] mx-auto flex flex-col gap-[32px] px-[24px]">
+          <ProfileCard />
 
-            <MyPageTab
-              activeTab={activeTab}
-              onChange={setActiveTab}
-              isCreator={isCreator}
-            />
+          <MyPageTab
+            activeTab={activeTab}
+            onChange={setActiveTab}
+            isCreator={isCreator}
+          />
 
-            {isActivityTab && <MyActivitySection />}
+          {isActivityTab && <MyActivitySection />}
 
-            {isCreatorTab &&
-              (isCreator ? (
-                <CreatorSection projects={MOCK_PROJECTS} />
-              ) : (
-                <CreatorEmptySection />
-              ))}
-          </div>
+          {isCreatorTab &&
+            (isCreator ? (
+              <CreatorSection projects={MOCK_PROJECTS} />
+            ) : (
+              <CreatorEmptySection />
+            ))}
         </div>
       </div>
     </div>
