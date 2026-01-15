@@ -1,26 +1,49 @@
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 import { MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import ProjectCardFooter from './ProjectCardFooter';
-
-export interface Project {
-  id: number;
-  location: string;
-  status: '진행중' | '오픈예정' | '종료';
-  tags: string[];
-  title: string;
-  progress?: number;
-  deadline?: string;
-  backgroundColor: string;
-  hasNotification?: boolean;
-  openDate?: string;
-}
+import type { Project } from '../../types/projects';
 
 interface ProjectCardProps {
   project: Project;
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
+  const containerRef = useRef<HTMLSpanElement>(null);
+  const measureRef = useRef<HTMLSpanElement>(null);
+  const [isOverflow, setIsOverflow] = useState(false);
+
+  const updateOverflow = useCallback(() => {
+    const container = containerRef.current;
+    const measure = measureRef.current;
+
+    if (!container || !measure) return;
+
+    const availableWidth = container.clientWidth;
+    const textWidth = measure.scrollWidth;
+    setIsOverflow(textWidth > availableWidth);
+  }, []);
+
+  useLayoutEffect(() => {
+    updateOverflow();
+  }, [updateOverflow, project.title]);
+
+  useEffect(() => {
+    window.addEventListener('resize', updateOverflow);
+    return () => window.removeEventListener('resize', updateOverflow);
+  }, [updateOverflow]);
+
   return (
-    <div className="flex flex-col group cursor-pointer font-mainFont h-fit">
+    <Link
+      to={`/project/${project.id}`}
+      className="flex flex-col group cursor-pointer font-mainFont h-fit"
+    >
       {/* 위치 및 상태, 썸네일 */}
       <div
         className={`${project.backgroundColor} rounded-3xl p-4 shadow-sm cursor-pointer h-[400px] w-[300px] mb-4 group-hover:shadow-lg transition-all relative overflow-hidden`}
@@ -89,12 +112,26 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
         {/* 제목 */}
         <h3 className="text-[20px] font-boldFont text-mainBlack mb-4 group-hover:text-solidBlue transition-all duration-500">
-          {project.title}
+          <span className="title-marquee" ref={containerRef}>
+            <span className="title-marquee__measure" ref={measureRef}>
+              {project.title}
+            </span>
+            {isOverflow ? (
+              <span className="title-marquee__track">
+                <span className="title-marquee__text">{project.title}</span>
+                <span className="title-marquee__text" aria-hidden="true">
+                  {project.title}
+                </span>
+              </span>
+            ) : (
+              <span className="title-marquee__text">{project.title}</span>
+            )}
+          </span>
         </h3>
 
         {/* 달성률, 마감일 */}
         <ProjectCardFooter project={project} />
       </div>
-    </div>
+    </Link>
   );
 }

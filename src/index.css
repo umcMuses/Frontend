@@ -66,3 +66,42 @@
   --color-black60: #6b7280;
   --color-black40: #9ca3af;
 }
+
+.title-marquee {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  position: relative;
+}
+
+.title-marquee__measure {
+  position: absolute;
+  visibility: hidden;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.title-marquee__track {
+  display: inline-flex;
+  width: max-content;
+}
+
+.title-marquee__text {
+  display: inline-block;
+  padding-right: 24px;
+}
+
+.group:hover .title-marquee__track {
+  animation: title-marquee-scroll 6s linear infinite;
+}
+
+@keyframes title-marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
