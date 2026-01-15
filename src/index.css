@@ -97,6 +97,19 @@
   animation: title-marquee-scroll 6s linear infinite;
 }
 
+@keyframes progress-slide {
+  from {
+    width: 0%;
+  }
+  to {
+    width: var(--progress-width);
+  }
+}
+
+.animate-progress-slide {
+  animation: progress-slide 900ms ease-out forwards;
+}
+
 @keyframes title-marquee-scroll {
   0% {
     transform: translateX(0);

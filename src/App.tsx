@@ -5,6 +5,7 @@ import LoginSignupPage from './pages/LoginSignupPage';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import EventListPage from './pages/EventListPage';
+import ProjectDetailPage from './pages/ProjectDetailPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/projects" element={<ProjectListPage />} />
         <Route path="/events" element={<EventListPage />} />
         <Route path="/login" element={<LoginSignupPage />} />
+        <Route path="/project/:id" element={<ProjectDetailPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
