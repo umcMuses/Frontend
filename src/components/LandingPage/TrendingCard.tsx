@@ -27,11 +27,11 @@ function formatOpenDate(dateString: string): string {
 
 export default function TrendingCard({ project }: TrendingCardProps) {
   return (
-    <div className="h-[600.50px] min-w-96 inline-flex flex-col justify-start items-start">
+    <div className="h-[700px] min-w-96 inline-flex flex-col group">
       {/* 위치 및 상태, 썸네일 */}
-      <div className="h-[600.50px] p-5 bg-white rounded-[40px] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] outline outline-1 outline-offset-[-1px] outline-white80 inline-flex flex-col justify-start items-start gap-6">
+      <div className="h-[600.50px] p-5 bg-white rounded-[40px] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] outline outline-1 outline-offset-[-1px] outline-white80 inline-flex flex-col justify-start items-center group-hover:shadow-lg transition-all gap-6">
         <div
-          className={`${project.backgroundColor} w-[338px] h-[422.5px] relative rounded-[32px] overflow-hidden`}
+          className={`${project.backgroundColor} w-[338px] h-[422.5px] relative rounded-[32px] group-hover:shadow-lg transition-all overflow-hidden`}
         >
           <div className="left-[16px] top-[16px] absolute inline-flex justify-start items-start gap-2">
             <div className="self-stretch px-2.5 py-1 bg-white rounded-lg shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] backdrop-blur-[2px] flex justify-start items-center gap-1">

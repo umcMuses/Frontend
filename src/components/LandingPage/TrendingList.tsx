@@ -91,7 +91,7 @@ export default function TrendingList({ index }: TrendingListProps) {
   return (
     <div className="relative w-[1232px] overflow-hidden">
       <div
-        className="flex transition-transform duration-500 ease-out gap-[30.49px]"
+        className="flex px-1 transition-transform duration-500 ease-out gap-[30.49px]"
         style={{
           transform: `translateX(-${index * STEP}px)`,
         }}
