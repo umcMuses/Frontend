@@ -80,7 +80,7 @@ export default function LandingBanner() {
           </div>
 
           <FadeIn delay={600}>
-            <div className="w-[672px] max-w-[672px] inline-flex flex-col fustify-start items-center">
+            <div className="w-[672px] max-w-[672px] inline-flex flex-col justify-start items-center">
               <p className="text-black80 font-mediumFont text-xl text-center">
                 기다렸던 팬들과 만나는 가장 확실한 방법,
                 <br />

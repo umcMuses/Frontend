@@ -2,8 +2,8 @@ import FadeIn from "./FadeIn"
 
 export default function BrandIdentity() {
   return (
-    <section className="relative w-full border-t border-white/40 backdrop-blur-[2px] flex justify-center px-[264.5px] py-[160px]">
-      <div className="w-full max-w-[896px] px-6 flex flex-col justify-center items-center gap-40">
+    <section className="relative w-full border-t border-white/40 backdrop-blur-[2px] flex justify-center px-6 sm:px-12 lg:px-[264.5px] py-24 lg:py-[160px]">
+      <div className="w-full max-w-[896px] px-6 flex flex-col justify-center items-center gap-16 lg:gap-40">
         {/* Brand Identity & 텍스트 */}
         <div className="self-stretch inline-flex flex-col justify-center items-center gap-5">
           <div className="self-stretch flex flex-col justify-center items-center">
