@@ -1,6 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
 import museslogo from '../../assets/images/museslogo.png';
-import LoginSignupButton from '../LandingPage/LoginSignupButton';
 
 const Header = () => {
   const navigate = useNavigate();
