@@ -46,7 +46,7 @@ export const MOCK_PROJECTS: Project[] = [
     tags: ['#생일카페', '#아이돌'],
     title: "원우 생일 카페 'Spring'",
     progress: 80,
-    deadline: '2026.01.16T21:00:00',
+    deadline: '2026.01.17T23:00:00',
     supporters: 123,
     openDate: '2025.10.18T00:00:00',
     backgroundColor: 'bg-blue-100',

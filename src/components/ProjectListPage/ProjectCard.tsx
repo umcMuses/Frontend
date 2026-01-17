@@ -46,7 +46,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     >
       {/* 위치 및 상태, 썸네일 */}
       <div
-        className={`${project.backgroundColor} rounded-3xl p-4 shadow-sm cursor-pointer h-[400px] w-[300px] mb-4 group-hover:shadow-lg transition-all relative overflow-hidden`}
+        className={`${project.backgroundColor} rounded-3xl p-4 shadow-sm cursor-pointer h-[380px] w-[285px] mb-5 group-hover:shadow-lg transition-all relative overflow-hidden`}
       >
         <div className="flex items-center mb-4 relative">
           <div className="flex items-center gap-1 bg-white/90 rounded-lg px-2.5 py-1 shadow-sm mr-2">
@@ -99,7 +99,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       </div>
       <div className="group-hover:-translate-y-[-8px] transition-all">
         {/* 태그 */}
-        <div className="flex gap-2 mb-3 flex-wrap">
+        <div className="flex gap-2 mb-2 flex-wrap">
           {project.tags.map((tag) => (
             <span
               key={tag}
