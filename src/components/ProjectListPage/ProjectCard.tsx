@@ -1,10 +1,3 @@
-import {
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react';
 import { MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ProjectCardFooter from './ProjectCardFooter';
@@ -15,30 +8,6 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
-  const containerRef = useRef<HTMLSpanElement>(null);
-  const measureRef = useRef<HTMLSpanElement>(null);
-  const [isOverflow, setIsOverflow] = useState(false);
-
-  const updateOverflow = useCallback(() => {
-    const container = containerRef.current;
-    const measure = measureRef.current;
-
-    if (!container || !measure) return;
-
-    const availableWidth = container.clientWidth;
-    const textWidth = measure.scrollWidth;
-    setIsOverflow(textWidth > availableWidth);
-  }, []);
-
-  useLayoutEffect(() => {
-    updateOverflow();
-  }, [updateOverflow, project.title]);
-
-  useEffect(() => {
-    window.addEventListener('resize', updateOverflow);
-    return () => window.removeEventListener('resize', updateOverflow);
-  }, [updateOverflow]);
-
   return (
     <Link
       to={`/project/${project.id}`}
@@ -71,15 +40,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         {/* 종료 상태 오버레이 */}
         {project.status === '종료' && (
           <>
-            {/* 하단 그라데이션 오버레이 */}
-            <div
-              className="absolute bottom-0 left-0 right-0 h-full rounded-b-3xl"
-              style={{
-                opacity: 0.6,
-                background:
-                  'linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.4) 100%)',
-              }}
-            />
+            {/* 배경 오버레이 */}
+            <div className="absolute bottom-0 left-0 right-0 h-full rounded-b-3xl bg-black/40" />
 
             {/* CLOSED\ 텍스트 */}
             <div className="absolute inset-0 flex items-center justify-center z-20">
@@ -112,20 +74,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
         {/* 제목 */}
         <h3 className="text-[20px] font-boldFont text-mainBlack mb-4 group-hover:text-solidBlue transition-all duration-500">
-          <span className="title-marquee" ref={containerRef}>
-            <span className="title-marquee__measure" ref={measureRef}>
-              {project.title}
-            </span>
-            {isOverflow ? (
-              <span className="title-marquee__track">
-                <span className="title-marquee__text">{project.title}</span>
-                <span className="title-marquee__text" aria-hidden="true">
-                  {project.title}
-                </span>
-              </span>
-            ) : (
-              <span className="title-marquee__text">{project.title}</span>
-            )}
+          <span
+            className={`title-clamp ${
+              project.status === '진행중' ? 'title-clamp--fixed' : ''
+            }`}
+          >
+            {project.title}
           </span>
         </h3>
 

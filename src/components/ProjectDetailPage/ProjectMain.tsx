@@ -75,8 +75,8 @@ export default function ProjectMain({
           {project.subtitle}
         </p>
       )}
-      {/* 프로젝트 달성율 */}
-      <div className="w-full max-w-[720px] bg-white rounded-[32px] shadow-2xl p-8">
+      {/* 프로젝트 달성율 박스 */}
+      <div className="w-full max-w-[720px] bg-white rounded-[32px] shadow-2xl p-8 progress-box">
         <div className="flex items-end justify-between mb-3">
           <div className="flex items-baseline gap-2">
             <span className="text-[36px] font-blackFont text-mainBlack leading-none">
@@ -102,7 +102,7 @@ export default function ProjectMain({
             className="h-full rounded-full animate-progress-slide"
             style={{
               width: 'var(--progress-width)',
-              background: 'linear-gradient(to right, #A855F7, #6366F1)',
+              background: 'linear-gradient(to right, #6366F1, #A855F7)',
               ['--progress-width' as string]: `${Math.min(
                 project.progress,
                 100

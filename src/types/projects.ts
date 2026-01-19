@@ -81,7 +81,7 @@ export const MOCK_PROJECTS: Project[] = [
     location: '경상',
     status: '오픈예정',
     tags: ['#댄스커버', '#K-POP'],
-    title: "댄스팀 '리듬' 커버 공연",
+    title: 'WONYOUNG & YUJIN CAFE KITSCH GIRLS CLUB KITSCH GIRLS CLUB',
     backgroundColor: 'bg-yellow-100',
     hasNotification: true,
     progress: 0,

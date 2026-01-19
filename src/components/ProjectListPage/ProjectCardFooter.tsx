@@ -46,7 +46,13 @@ export default function ProjectCardFooter({ project }: ProjectCardFooterProps) {
             </div>
           )}
           {project.hasNotification && (
-            <button className="flex items-center gap-2 bg-[#EEF2FF] hover:bg-[#E0E7FF] text-[#4F46E5] px-3 py-1.5 rounded-full text-xs font-boldFont transition-colors">
+            <button
+              className="cursor-pointer flex items-center gap-2 bg-[#EEF2FF] hover:bg-[#E0E7FF] text-solidBlue px-3 py-1.5 rounded-full text-xs font-boldFont transition-colors"
+              onClick={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+              }}
+            >
               <Bell className="w-3 h-3" />
               알림신청
             </button>
