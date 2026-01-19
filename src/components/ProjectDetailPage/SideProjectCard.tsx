@@ -1,5 +1,6 @@
 import type { Project } from '../../types/projects';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import fallbackPoster from '../../assets/images/mraconcert.png';
 
 interface SideProjectCardProps {
   project: Project;
@@ -13,6 +14,7 @@ export default function SideProjectCard({
   onClick,
 }: SideProjectCardProps) {
   const isPrev = position === 'prev';
+  const posterSrc = project.posterImage ?? fallbackPoster;
   const wrapperStyle = {
     left: '50%',
     transform: isPrev ? 'translateX(-336px)' : 'translateX(46px)',
@@ -44,7 +46,8 @@ export default function SideProjectCard({
           )}
         </button>
         <div
-          className={`relative w-[290px] h-[460px] ${project.backgroundColor} rounded-3xl shadow-md overflow-hidden transition-transform duration-300 ease-out ${cardHoverClass}`}
+          className={`relative w-[290px] h-[460px] rounded-3xl shadow-md overflow-hidden transition-transform duration-300 ease-out bg-cover bg-center ${cardHoverClass}`}
+          style={{ backgroundImage: `url(${posterSrc})` }}
         >
           <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
         </div>

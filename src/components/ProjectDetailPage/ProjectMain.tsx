@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import type { Project } from '../../types/projects';
 import SideProjectCard from './SideProjectCard';
+import fallbackPoster from '../../assets/images/mraconcert.png';
 import {
   formatDeadlineDisplay,
   formatOpenDateTime,
@@ -19,6 +20,7 @@ export default function ProjectMain({
   nextProject,
 }: ProjectMainProps) {
   const navigate = useNavigate();
+  const posterSrc = project.posterImage ?? fallbackPoster;
   const openDateLabel = project.openDate
     ? formatOpenDateTime(project.openDate)
     : '';
@@ -44,7 +46,8 @@ export default function ProjectMain({
           />
         )}
         <div
-          className={`relative z-10 w-[416px] h-[564px] ${project.backgroundColor} rounded-3xl shadow-2xl flex items-center justify-center`}
+          className="relative z-10 w-[416px] h-[564px] rounded-3xl shadow-2xl flex items-center justify-center bg-cover bg-center"
+          style={{ backgroundImage: `url(${posterSrc})` }}
         />
         {nextProject && (
           <SideProjectCard

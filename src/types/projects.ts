@@ -6,7 +6,7 @@ export interface Project {
   title: string;
   progress: number | 0;
   deadline: string;
-  backgroundColor: string;
+  posterImage: string | null;
   hasNotification?: boolean;
   openDate: string;
   subtitle?: string;
@@ -24,7 +24,7 @@ export const MOCK_PROJECTS: Project[] = [
     deadline: '2026.03.25T00:00:00',
     supporters: 335,
     openDate: '2025.10.20T00:00:00',
-    backgroundColor: 'bg-lime-100',
+    posterImage: null,
   },
   {
     id: 2,
@@ -37,7 +37,7 @@ export const MOCK_PROJECTS: Project[] = [
     deadline: '2026.03.31T00:00:00',
     supporters: 142,
     openDate: '2025.10.22T00:00:00',
-    backgroundColor: 'bg-purple-100',
+    posterImage: null,
   },
   {
     id: 3,
@@ -49,7 +49,7 @@ export const MOCK_PROJECTS: Project[] = [
     deadline: '2026.01.17T23:00:00',
     supporters: 123,
     openDate: '2025.10.18T00:00:00',
-    backgroundColor: 'bg-blue-100',
+    posterImage: null,
   },
   {
     id: 4,
@@ -57,7 +57,7 @@ export const MOCK_PROJECTS: Project[] = [
     status: '오픈예정',
     tags: ['#재즈', '#페스티벌'],
     title: '2025 뉴이어 재즈 페스티벌',
-    backgroundColor: 'bg-cyan-100',
+    posterImage: null,
     hasNotification: true,
     progress: 0,
     deadline: '2025.06.01T00:00:00',
@@ -74,7 +74,7 @@ export const MOCK_PROJECTS: Project[] = [
     deadline: '2026.05.22T00:00:00',
     supporters: 77,
     openDate: '2025.10.10T00:00:00',
-    backgroundColor: 'bg-pink-100',
+    posterImage: null,
   },
   {
     id: 6,
@@ -82,7 +82,7 @@ export const MOCK_PROJECTS: Project[] = [
     status: '오픈예정',
     tags: ['#댄스커버', '#K-POP'],
     title: 'WONYOUNG & YUJIN CAFE KITSCH GIRLS CLUB KITSCH GIRLS CLUB',
-    backgroundColor: 'bg-yellow-100',
+    posterImage: null,
     hasNotification: true,
     progress: 0,
     deadline: '2026.12.15T00:00:00',
@@ -95,7 +95,7 @@ export const MOCK_PROJECTS: Project[] = [
     status: '종료',
     tags: ['#사진전', '#포트레이트'],
     title: "사진작가 '빛' 개인전 'Moment'",
-    backgroundColor: 'bg-indigo-100',
+    posterImage: null,
     progress: 150,
     deadline: '2025.09.10T00:00:00',
     supporters: 512,
@@ -107,7 +107,7 @@ export const MOCK_PROJECTS: Project[] = [
     status: '종료',
     tags: ['#연극', '#창작극'],
     title: "연극단 '무대' 창작극 '시간의 방'",
-    backgroundColor: 'bg-emerald-100',
+    posterImage: null,
     progress: 120,
     deadline: '2025.08.25T00:00:00',
     supporters: 124,

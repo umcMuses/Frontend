@@ -2,12 +2,15 @@ import { MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ProjectCardFooter from './ProjectCardFooter';
 import type { Project } from '../../types/projects';
+import fallbackPoster from '../../assets/images/mraconcert.png';
 
 interface ProjectCardProps {
   project: Project;
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
+  const posterSrc = project.posterImage ?? fallbackPoster;
+
   return (
     <Link
       to={`/project/${project.id}`}
@@ -15,7 +18,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     >
       {/* 위치 및 상태, 썸네일 */}
       <div
-        className={`${project.backgroundColor} rounded-3xl p-4 shadow-sm cursor-pointer h-[380px] w-[285px] mb-5 group-hover:shadow-lg transition-all relative overflow-hidden`}
+        className="rounded-3xl p-4 shadow-sm cursor-pointer h-[380px] w-[285px] mb-5 group-hover:shadow-lg transition-all relative overflow-hidden bg-cover bg-center"
+        style={{ backgroundImage: `url(${posterSrc})` }}
       >
         <div className="flex items-center mb-4 relative">
           <div className="flex items-center gap-1 bg-white/90 rounded-lg px-2.5 py-1 shadow-sm mr-2">
