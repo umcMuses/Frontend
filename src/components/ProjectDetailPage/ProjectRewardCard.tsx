@@ -11,7 +11,7 @@ export const ProjectRewardCard = ({ reward }: ProjectRewardCardProps) => {
       <span className="mb-1 text-lg font-boldFont text-mainBlack group-hover:text-solidBlue transition-all duration-300">
         {reward.price.toLocaleString()}원
       </span>
-      <p className="mb-2text-base font-mediumFont text-mainBlack">
+      <p className="mb-2 text-base font-mediumFont text-mainBlack">
         {reward.title}
       </p>
       <p className="mb-4 text-sm text-black60 leading-relaxed">
