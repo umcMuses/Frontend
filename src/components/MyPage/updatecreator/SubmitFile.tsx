@@ -9,6 +9,7 @@ interface SubmitFileProps {
 const SubmitFile = ({ content, condition, className }: SubmitFileProps) => {
   return (
     <button
+      type="button"
       data-variant="2"
       className={`w-72 h-36 absolute rounded-xl border border-[#D1D5DB] border-dashed transition hover:bg-white80 ${className}`}
     >

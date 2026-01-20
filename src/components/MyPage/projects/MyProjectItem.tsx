@@ -1,49 +1,76 @@
-interface Project {
-  id: number;
-  title: string;
-  deadline: string;
-  progress: number;
-  amount: number;
-}
+import type { MyProjectItemProps, ProjectStatus } from './ProjectType';
 
-interface Props {
-  project: Project;
-}
+const STATUS_MAP: Record<
+  ProjectStatus,
+  {
+    label: string;
+    badgeClass: string;
+    textClass: string;
+  }
+> = {
+  ONGOING: {
+    label: '진행중',
+    badgeClass: 'bg-[#E0E7FF]',
+    textClass: 'text-[#4F46E5]',
+  },
+  DONE: {
+    label: '완료',
+    badgeClass: 'bg-[#CDE6B7]',
+    textClass: 'text-[#4E833E]',
+  },
+  FAILED: {
+    label: '완료',
+    badgeClass: 'bg-[#E6BDB7]',
+    textClass: 'text-[#983A22]',
+  },
+};
 
-const MyProjectItem = ({ project }: Props) => {
+const MyProjectItem = ({
+  status,
+  dday,
+  title,
+  progressPercent,
+  amount,
+}: MyProjectItemProps) => {
+  const statusInfo = STATUS_MAP[status];
+  const clampedPercent = Math.min(progressPercent, 100);
+
   return (
-    <div className="flex items-center gap-4 p-4 rounded-xl border border-gray-100">
-      {/* 썸네일 */}
-      <div className="w-[64px] h-[64px] rounded-[12px] bg-indigo-200 flex items-center justify-center text-white font-bold text-xl shrink-0">
-        새
+    <div className="inline-flex justify-start items-start gap-5">
+      <div className="w-[661px] p-4 rounded-2xl border border-white80 flex items-center gap-4">
+        <div className="w-16 h-16 bg-[#C7D2FE] rounded-xl flex justify-center items-center">
+          <div className="text-white text-lg font-boldFont">새</div>
+        </div>
+        <div className="flex-1 flex flex-col gap-1">
+          <div className="flex items-center gap-2">
+            <div className={`px-2 py-0.5 rounded ${statusInfo.badgeClass}`}>
+              <div
+                className={`text-[10px] font-boldFont ${statusInfo.textClass}`}
+              >
+                {statusInfo.label}
+              </div>
+            </div>
+            {dday && (
+              <div className="text-xs text-black40 font-mainFont">{dday}</div>
+            )}
+          </div>
+          <div className="text-sm font-boldFont text-mainBlack">{title}</div>
+          <div className="h-1.5 bg-white80 rounded-full overflow-hidden">
+            <div
+              className="h-1.5 bg-solidBlue"
+              style={{ width: `${clampedPercent}%` }}
+            />
+          </div>
+        </div>
+        <div className="flex flex-col items-end">
+          <div className="text-[#4F46E5] text-base font-boldFont">
+            {progressPercent}%
+          </div>
+          <div className="text-black40 text-xs font-mainFont">{amount}</div>
+        </div>
       </div>
-
-      {/* 중앙 내용 */}
-      <div className="flex-1">
-        <div className="text-xs text-gray-400 mb-1">
-          <span className="w-fit text-xs font-bold px-2 py-0.5 bg-[#EEF2FF] text-blue-700 rounded">진행중</span> {project.deadline}
-        </div>
-
-        <div className="text-sm font-semibold mb-2">
-          {project.title}
-        </div>
-
-        <div className="h-2 rounded-full bg-gray-200 overflow-hidden">
-          <div
-            className="h-full bg-indigo-500"
-            style={{ width: `${Math.min(project.progress, 100)}%` }}
-          />
-        </div>
-      </div>
-
-      {/* 오른쪽 수치 */}
-      <div className="text-right shrink-0">
-        <div className="text-sm font-semibold text-indigo-600">
-          {project.progress}%
-        </div>
-        <div className="text-xs text-gray-400">
-          {project.amount.toLocaleString()}원
-        </div>
+      <div className="w-24 h-24 p-6 bg-[#EEF2FF] rounded-2xl border border-[#EEF2FF] flex justify-center items-center">
+        <div className="text-lg font-boldFont text-[#000]">QR</div>
       </div>
     </div>
   );

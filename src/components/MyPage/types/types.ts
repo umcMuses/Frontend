@@ -1,8 +1,7 @@
-export interface DonationItem {
-  id: number;
+export interface DonationItemType {
   title: string;
-  amount: number;
+  amount: string;
   date: string;
-  initial: string;
-  status: string;
+  initial?: string;
+  status?: string;
 }

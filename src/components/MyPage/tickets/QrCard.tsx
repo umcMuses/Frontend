@@ -3,10 +3,11 @@ import { QrCode } from 'lucide-react';
 interface QrCardProps {
   title: string;
   seat: string;
+  ticketId: string;
   onClose: () => void;
 }
 
-const QrCard = ({ title, seat, onClose }: QrCardProps) => {
+const QrCard = ({ title, seat,ticketId, onClose }: QrCardProps) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-[6px]">
       <div className="w-96 bg-white rounded-2xl overflow-hidden">
@@ -40,7 +41,7 @@ const QrCard = ({ title, seat, onClose }: QrCardProps) => {
             </div>
             <div className="self-stretch flex flex-col justify-start items-center">
               <div className="text-center justify-center text-[#1F2937] text-base font-logoFont leading-7 tracking-widest">
-                1234-5678-9012
+                {ticketId}
               </div>
             </div>
           </div>

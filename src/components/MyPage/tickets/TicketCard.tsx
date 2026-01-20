@@ -5,6 +5,7 @@ import QrCard from './QrCard';
 type SelectedTicket = {
   title: string;
   seat: string;
+  ticketId: string;
 } | null;
 
 const TicketCard = () => {
@@ -43,6 +44,7 @@ const TicketCard = () => {
                 setSelectedTicket({
                   title: "밴드 '새벽' 단독 콘서트 : 밤을 걷는 시간",
                   seat: 'VIP ACCESS',
+                  ticketId: '1234-5678-9012',
                 })
               }
               className="px-4 py-2 bg-white rounded-full inline-flex flex-col justify-center items-center cursor-pointer transition-transform hover:scale-105"
@@ -85,6 +87,7 @@ const TicketCard = () => {
                 setSelectedTicket({
                   title: '2025 뉴이어 재즈 페스티벌',
                   seat: 'NORMAL ACCESS',
+                  ticketId: '1234-5678-9012',
                 })
               }
               className="px-4 py-2 bg-white rounded-full inline-flex flex-col justify-center items-center cursor-pointer transition-transform hover:scale-105"
@@ -100,8 +103,9 @@ const TicketCard = () => {
         <QrCard
           title={selectedTicket.title}
           seat={selectedTicket.seat}
+          ticketId={selectedTicket.ticketId}
           onClose={() => setSelectedTicket(null)}
-        />  
+        />
       )}
     </div>
   );

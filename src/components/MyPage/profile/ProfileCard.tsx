@@ -1,18 +1,17 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import profileimg from '../../../assets/images/profileimg.svg';
+
 
 export default function ProfileCard() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
-    <div className="self-stretch h-64 p-8 bg-[#fff] rounded-[40px] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] outline outline-1 outline-offset-[-1px] outline-[#F3F4F6] inline-flex justify-start items-start gap-6 overflow-hidden">
+    <div className="self-stretch h-64 p-8 bg-[#fff] rounded-[40px] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] border border-white80 inline-flex justify-start items-start gap-6 overflow-hidden">
       <div className="w-32 h-32 bg-gradient-to-br from-color-blue-89 to-color-grey-92 rounded-full shadow-[inset_0px_2px_4px_0px_rgba(0,0,0,0.05)] flex justify-center items-center">
         <div className="w-32 h-32 relative">
-          <div className="w-32 h-32 left-0 top-0 absolute bg-white rounded-full border border-stone-300" />
-          <div className="w-9 h-8 left-[60.34px] top-[28.52px] absolute origin-top-left rotate-[96deg] bg-neutral-900 rounded-[3px]" />
-          <div className="w-9 h-8 left-[62.14px] top-[33.08px] absolute origin-top-left rotate-[96deg] bg-zinc-300 rounded-[3px]" />
-          <div className="w-9 h-8 left-[100.80px] top-[25.08px] absolute origin-top-left rotate-[84deg] bg-neutral-900 rounded-[3px]" />
-          <div className="w-9 h-8 left-[99.10px] top-[29.65px] absolute origin-top-left rotate-[84deg] bg-zinc-300 rounded-[3px]" />
-          <div className="w-20 h-16 left-[22.14px] top-[41.01px] absolute bg-neutral-900 rounded-full" />
+          <div className="flex items-center justify-center w-32 h-32 bg-white rounded-full border border-stone-300">
+            <img src={profileimg} alt="logo" className="w-24 h-20" />
+          </div>
         </div>
       </div>
       <div className="w-[608px] inline-flex flex-col justify-start items-start gap-2">

@@ -34,7 +34,7 @@ export const PersonType = ({ onBack }: PersonTypeProps) => {
         </div>
         <div className="inline-flex flex-col justify-start items-start">
           <div className="justify-center text-[#4F46E5] text-sm font-boldFont leading-5">
-            법인사업자 서류 제출
+            개인사업자 서류 제출
           </div>
         </div>
       </div>

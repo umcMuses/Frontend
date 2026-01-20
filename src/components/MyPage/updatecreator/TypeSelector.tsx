@@ -1,5 +1,7 @@
 import { Briefcase, Building2, User } from 'lucide-react';
 
+type Creator = 'person' | 'solo' | 'corporate';
+
 interface TypeSelectorProps {
   onSelect: (type: Creator) => void;
 }
@@ -28,7 +30,7 @@ export const TypeSelector = ({ onSelect }: TypeSelectorProps) => {
           type="button"
           onClick={() => onSelect('person')}
           data-variant="1"
-          className="group w-48 h-42 flex-1 self-stretch relative rounded-3xl border border-white80 transiton hover:border-solidBlue hover:bg-pastelBlue cursor-pointer"
+          className="group w-48 h-42 flex-1 self-stretch relative rounded-3xl border border-white80 transition hover:border-solidBlue hover:bg-pastelBlue cursor-pointer"
         >
           <div className="w-14 h-14 left-[68px] top-[26px] absolute bg-white80 rounded-full inline-flex justify-center items-center">
             <User className="transition group-hover:text-solidBlue" />
