@@ -1,0 +1,56 @@
+interface StepperProps {
+  step: number;
+}
+
+const STEPS = ['개요', '펀딩', '리워드', '스토리', '정보'];
+
+export default function Stepper({ step }: StepperProps) {
+  return (
+    <div className="relative inline-flex justify-center items-center gap-36 self-stretch pr-[0.02px]">
+      {/* 가로 줄 (항상 뒤) */}
+      <div className="absolute left-[0.5px] top-[14.38px] w-[720px] h-0.5 bg-white60 z-0" />
+
+      <div
+        className="absolute top-3 left-0 h-0.5 bg-mainBlack z-0 transition-all"
+        style={{
+          width: `${((step - 1) / (STEPS.length - 1)) * 100}%`,
+        }}
+      />
+
+      {STEPS.map((label, index) => {
+        const stepNumber = index + 1;
+        const isActive = stepNumber <= step;
+
+        return (
+          <div
+            key={label}
+            className="z-10 inline-flex flex-col items-center gap-2"
+          >
+            <div
+              className={`w-8 h-8 bg-white rounded-full outline outline-2 outline-offset-[-2px]
+                flex justify-center items-center
+                ${isActive ? 'outline-mainBlack' : 'outline-white60'}
+              `}
+            >
+              <span
+                className={`text-sm font-boldFont ${
+                  isActive ? 'text-mainBlack' : 'text-black40'
+                }`}
+              >
+                {stepNumber}
+              </span>
+            </div>
+
+            <span
+              className={`text-[10px] font-boldFont ${
+                isActive ? 'text-mainBlack' : 'text-black40'
+              }`}
+            >
+              {label}
+            </span>
+          </div>
+        );
+      })}
+    </div>
+  );
+}

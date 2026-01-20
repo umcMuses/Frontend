@@ -7,6 +7,7 @@ import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import EventListPage from './pages/EventListPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
+import CreateProjectPage from './pages/CreateProjectPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/events" element={<EventListPage />} />
         <Route path="/login" element={<LoginSignupPage />} />
         <Route path="/project/:id" element={<ProjectDetailPage />} />
+        <Route path="/create" element={<CreateProjectPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
