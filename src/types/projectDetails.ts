@@ -6,7 +6,6 @@ export interface ProjectDetailData {
   creator: string;
   rewards: ProjectReward[];
   likes: number;
-  shares: number;
 }
 
 export interface ProjectReward {
@@ -29,7 +28,6 @@ export const MOCK_PROJECT_DETAILS: ProjectDetailData[] = [
     `,
     creator: 'Band Dawn',
     likes: 100,
-    shares: 100,
     rewards: [
       {
         id: 1,
@@ -67,7 +65,6 @@ export const MOCK_PROJECT_DETAILS: ProjectDetailData[] = [
     `,
     creator: 'Band Dawn',
     likes: 100,
-    shares: 100,
     rewards: [
       {
         id: 1,
@@ -104,7 +101,6 @@ export const MOCK_PROJECT_DETAILS: ProjectDetailData[] = [
     `,
     creator: 'Band Dawn',
     likes: 100,
-    shares: 100,
     rewards: [
       {
         id: 1,

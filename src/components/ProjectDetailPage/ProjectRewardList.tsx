@@ -11,7 +11,7 @@ export const ProjectRewardList = ({ projectId }: ProjectRewardListProps) => {
   );
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 mb-6">
       <p className="text-lg font-boldFont text-mainBlack px-2">리워드 선택</p>
       <div className="flex flex-col gap-4">
         {detail?.rewards?.map((reward) => (

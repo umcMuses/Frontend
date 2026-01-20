@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { MOCK_PROJECT_DETAILS } from '../../types/projectDetails';
 import { ProjectCreatorCard } from './ProjectCreatorCard';
 import { ProjectRewardList } from './ProjectRewardList';
@@ -11,9 +12,19 @@ export default function ProjectInfo({ projectId }: ProjectInfoProps) {
   const detail = MOCK_PROJECT_DETAILS.find(
     (item) => item.projectId === projectId
   );
+  const [isLiked, setIsLiked] = useState(false);
+  const [likePulseKey, setLikePulseKey] = useState(0);
+  const [particles, setParticles] = useState<number[]>([]);
+  const likeCount = (detail?.likes ?? 0) + (isLiked ? 1 : 0);
+
+  useEffect(() => {
+    if (particles.length === 0) return;
+    const timer = window.setTimeout(() => setParticles([]), 600);
+    return () => window.clearTimeout(timer);
+  }, [particles]);
 
   return (
-    <div className="w-full font-mainFont">
+    <div className="w-full font-mainFont mb-12">
       <div className="w-full border-b border-white60">
         <div className="w-full mx-auto max-w-[976px] px-6 h-[54px] text-sm font-boldFont text-solidBlue">
           <div className="flex items-center justify-center w-fit h-full border-b-2 border-solidBlue">
@@ -23,7 +34,7 @@ export default function ProjectInfo({ projectId }: ProjectInfoProps) {
       </div>
 
       <div className="mt-12 flex gap-12 lg:flex-row flex-col justify-center">
-        <div className="max-w-[720px]">
+        <div className="max-w-[720px] w-full">
           <p className="text-2xl font-boldFont text-mainBlack">프로젝트 소개</p>
           {detail ? (
             <div
@@ -36,22 +47,65 @@ export default function ProjectInfo({ projectId }: ProjectInfoProps) {
             </p>
           )}
         </div>
+        {/* 크리에이터 및 리워드 목록 */}
         <div className="w-[336px]">
           <ProjectCreatorCard projectId={projectId} />
           <ProjectRewardList projectId={projectId} />
+          {/* 좋아요 및 공유하기 */}
           <div className="flex gap-2 w-full">
-            <div className="w-1/2 border border-white60 rounded-xl hover:bg-mainWhite transition-all duration-300 py-3 flex items-center justify-center">
-              <Heart className="w-4 h-4 text-black80" />
-              <span className="text-sm font-boldFont text-black80 ml-2">
-                {detail?.likes}
+            <button
+              type="button"
+              aria-pressed={isLiked}
+              className="relative w-1/2 border border-white60 rounded-xl hover:bg-mainWhite transition-all duration-300 py-3 flex items-center justify-center cursor-pointer"
+              onClick={() => {
+                setIsLiked((prev) => {
+                  const nextLiked = !prev;
+                  if (nextLiked) {
+                    setLikePulseKey((key) => key + 1);
+                    const timestamp = Date.now();
+                    setParticles(
+                      Array.from({ length: 2 }, (_, index) => timestamp + index)
+                    );
+                  }
+                  return nextLiked;
+                });
+              }}
+            >
+              <span className="like-heart-wrapper">
+                {particles.map((particle, index) => (
+                  <span
+                    key={particle}
+                    className="like-particle like-particle--heart"
+                    style={{
+                      top: `${-6 - index * 10}px`,
+                      animationDelay: `${index * 40}ms`,
+                    }}
+                  />
+                ))}
+                <Heart
+                  key={likePulseKey}
+                  className={`w-4 h-4 transition-colors ${
+                    isLiked ? 'like-heart--active' : 'text-black80'
+                  }`}
+                />
               </span>
-            </div>
-            <div className="w-1/2 border border-white60 rounded-xl hover:bg-mainWhite transition-all duration-300 py-3 flex items-center justify-center">
+              <span
+                className={`text-sm font-boldFont ml-2 transition-colors ${
+                  isLiked ? 'text-[#EF4444]' : 'text-black80'
+                }`}
+              >
+                {likeCount}
+              </span>
+            </button>
+            <button
+              type="button"
+              className="w-1/2 border border-white60 rounded-xl hover:bg-mainWhite transition-all duration-300 py-3 flex items-center justify-center cursor-pointer"
+            >
               <Share2 className="w-4 h-4 text-black80" />
               <span className="text-sm font-boldFont text-black80 ml-2">
-                {detail?.shares}
+                공유하기
               </span>
-            </div>
+            </button>
           </div>
         </div>
       </div>
