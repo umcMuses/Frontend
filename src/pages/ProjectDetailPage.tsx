@@ -38,7 +38,7 @@ export default function ProjectDetailPage() {
         prevProject={prevProject}
         nextProject={nextProject}
       />
-      <ProjectInfo />
+      <ProjectInfo projectId={project.id} />
       <ProjectFooter />
     </div>
   );

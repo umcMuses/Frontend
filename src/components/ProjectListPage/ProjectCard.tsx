@@ -2,7 +2,7 @@ import { MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ProjectCardFooter from './ProjectCardFooter';
 import type { Project } from '../../types/projects';
-import fallbackPoster from '../../assets/images/mraconcert.png';
+import fallbackPoster from '../../assets/images/fallbackPoster.png';
 
 interface ProjectCardProps {
   project: Project;
@@ -21,6 +21,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         className="rounded-3xl p-4 shadow-sm cursor-pointer h-[380px] w-[285px] mb-5 group-hover:shadow-lg transition-all relative overflow-hidden bg-cover bg-center"
         style={{ backgroundImage: `url(${posterSrc})` }}
       >
+        <div
+          className="absolute bottom-0 left-0 right-0 h-full rounded-b-3xl"
+          style={{
+            background:
+              'linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 50%)',
+          }}
+        />
         <div className="flex items-center mb-4 relative">
           <div className="flex items-center gap-1 bg-white/90 rounded-lg px-2.5 py-1 shadow-sm mr-2">
             <MapPin className="w-4 h-4 text-solidBlue" />

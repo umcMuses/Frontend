@@ -1,6 +1,6 @@
 import type { Project } from '../../types/projects';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import fallbackPoster from '../../assets/images/mraconcert.png';
+import fallbackPoster from '../../assets/images/fallbackPoster.png';
 
 interface SideProjectCardProps {
   project: Project;

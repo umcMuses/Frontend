@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import type { Project } from '../../types/projects';
 import SideProjectCard from './SideProjectCard';
-import fallbackPoster from '../../assets/images/mraconcert.png';
+import fallbackPoster from '../../assets/images/fallbackPoster.png';
 import {
   formatDeadlineDisplay,
   formatOpenDateTime,
@@ -35,7 +35,7 @@ export default function ProjectMain({
     : '';
 
   return (
-    <div className="w-full max-w-[1247px] pt-20 px-4 flex flex-col items-center font-mainFont">
+    <div className="w-full max-w-[1247px] pt-20 px-4 flex flex-col items-center font-mainFont mb-12">
       {/* 프로젝트 카드 */}
       <div className="relative w-full flex items-center justify-center mb-[30px]">
         {prevProject && (
@@ -74,12 +74,12 @@ export default function ProjectMain({
         {project.title}
       </h1>
       {project.subtitle && (
-        <p className="text-lg text-black80 text-center mb-10 font-mediumFont">
+        <p className="text-lg text-black80 text-center font-mediumFont">
           {project.subtitle}
         </p>
       )}
       {/* 프로젝트 달성율 박스 */}
-      <div className="w-full max-w-[720px] bg-white rounded-[32px] shadow-2xl p-8 progress-box">
+      <div className="w-full max-w-[720px] bg-white rounded-[32px] shadow-2xl p-8 mt-10 progress-box">
         <div className="flex items-end justify-between mb-3">
           <div className="flex items-baseline gap-2">
             <span className="text-[36px] font-blackFont text-mainBlack leading-none">

@@ -97,6 +97,10 @@
   pointer-events: none;
 }
 
+.project-detail-content img {
+  width: 100%;
+}
+
 @keyframes progress-slide {
   from {
     width: 0%;
