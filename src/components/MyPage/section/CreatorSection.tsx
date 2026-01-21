@@ -8,7 +8,11 @@ interface Props {
 
 const CreatorSection = ({ projects }: Props) => {
   const totalSupportAmount =
-    projects.reduce((sum, project) => sum + Number(project.amount.replace(/,/g, '').replace('원', '')), 0) / 10000;
+    projects.reduce(
+      (sum, project) =>
+        sum + Number(project.amount.replace(/,/g, '').replace('원', '')),
+      0
+    ) / 10000;
 
   const activeProjects = projects.filter(
     (project) => project.status === 'ONGOING'
@@ -22,8 +26,7 @@ const CreatorSection = ({ projects }: Props) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="bg-white rounded-2xl p-6 shadow-sm">
           <div className="text-xs text-gray-400 mb-1 inline-flex items-center">
-            <Wallet className="h-3 w-3 mr-1" />
-            총 후원금
+            <Wallet className="h-3 w-3 mr-1" />총 후원금
           </div>
           <div className="text-xl font-bold">
             {totalSupportAmount}
@@ -40,9 +43,7 @@ const CreatorSection = ({ projects }: Props) => {
           </div>
           <div className="text-xl font-bold">
             {activeProjectCount}
-            <span className="ml-1 text-xs font-semibold text-gray-400">
-              개
-            </span>
+            <span className="ml-1 text-xs font-semibold text-gray-400">개</span>
           </div>
         </div>
       </div>

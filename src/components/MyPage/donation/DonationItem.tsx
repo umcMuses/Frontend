@@ -12,9 +12,7 @@ const DonationItem = ({ item, onSelect }: Props) => {
   return (
     <div className="self-stretch p-6 bg-white rounded-[32px] border border-white80 shadow inline-flex items-center gap-6">
       <div className="w-14 h-14 bg-[#EEF2FF] rounded-2xl flex justify-center items-center">
-        <div className="text-solidBlue text-2xl font-boldFont">
-          {initial}
-        </div>
+        <div className="text-solidBlue text-2xl font-boldFont">{initial}</div>
       </div>
 
       <div className="flex-1 flex flex-col gap-1">
@@ -25,13 +23,9 @@ const DonationItem = ({ item, onSelect }: Props) => {
           <div className="text-black40 text-xs">{date}</div>
         </div>
 
-        <div className="text-[#111827] text-base font-boldFont">
-          {title}
-        </div>
+        <div className="text-mainBlack text-base font-boldFont">{title}</div>
 
-        <div className="text-black60 text-sm font-boldFont">
-          {amount}
-        </div>
+        <div className="text-black60 text-sm font-boldFont">{amount}</div>
       </div>
 
       <button

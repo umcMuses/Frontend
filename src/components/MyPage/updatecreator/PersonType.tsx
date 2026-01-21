@@ -56,7 +56,7 @@ export const PersonType = ({ onBack }: PersonTypeProps) => {
         data-variant="3"
         className="self-stretch py-4 bg-[#4F46E5] rounded-xl inline-flex justify-center items-center overflow-hidden transition hover:bg-[#433cba] cursor-pointer"
       >
-        <div className="text-center justify-center text-[#FFF] text-lg font-boldFont leading-7">
+        <div className="text-center justify-center text-white text-lg font-boldFont leading-7">
           제출하기
         </div>
       </button>

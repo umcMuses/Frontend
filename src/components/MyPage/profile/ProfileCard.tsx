@@ -5,8 +5,8 @@ export default function ProfileCard() {
   const navigate = useNavigate();
 
   return (
-    <div className="self-stretch h-64 p-8 bg-[#fff] rounded-[40px] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] border border-white80 inline-flex justify-start items-start gap-6 overflow-hidden">
-      <div className="w-32 h-32 bg-gradient-to-br from-color-blue-89 to-color-grey-92 rounded-full shadow-[inset_0px_2px_4px_0px_rgba(0,0,0,0.05)] flex justify-center items-center">
+    <div className="self-stretch h-64 p-8 bg-white rounded-[40px] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] border border-white80 inline-flex justify-start items-start gap-6 overflow-hidden">
+      <div className="w-32 h-32 bg-linear-to-br from-color-blue-89 to-color-grey-92 rounded-full shadow-[inset_0px_2px_4px_0px_rgba(0,0,0,0.05)] flex justify-center items-center">
         <div className="w-32 h-32 relative">
           <div className="flex items-center justify-center w-32 h-32 bg-white rounded-full border border-stone-300">
             <img src={profileimg} alt="logo" className="w-24 h-20" />
@@ -26,9 +26,9 @@ export default function ProfileCard() {
           <button
             onClick={() => navigate('/mypage/editprofile')}
             data-variant="5"
-            className="px-5 py-2 bg-[#000] rounded-full inline-flex flex-col justify-center items-center cursor-pointer transition hover:bg-solidBlue"
+            className="px-5 py-2 bg-black rounded-full inline-flex flex-col justify-center items-center cursor-pointer transition hover:bg-solidBlue"
           >
-            <div className="text-center justify-center text-[#FFF] text-sm font-boldFont leading-5">
+            <div className="text-center justify-center text-white text-sm font-boldFont leading-5">
               프로필 편집
             </div>
           </button>

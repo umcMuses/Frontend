@@ -6,7 +6,7 @@ export default function EditProfilePage() {
     <div className="w-full min-h-[713px] px-64 pb-20 relative bg-white80 inline-flex flex-col justify-center items-center overflow-visible">
       <div className=" left-0 top-0 absolute" />
       <div className="w-full max-w-[896px] px-6 pt-24 flex flex-col justify-start items-start gap-8">
-        <div className="self-stretch p-8 bg-[#FFF] rounded-[40px] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] border border-white80 inline-flex justify-start items-start gap-6 overflow-hidden">
+        <div className="self-stretch p-8 bg-white rounded-[40px] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] border border-white80 inline-flex justify-start items-start gap-6 overflow-hidden">
           <div className="w-32 h-32 relative">
             <div className="flex items-center justify-center w-32 h-32 bg-white rounded-full border border-stone-300">
               <img src={profileimg} alt="logo" className="w-24 h-20" />
@@ -44,14 +44,14 @@ export default function EditProfilePage() {
                     </div>
                   </div>
                 </div>
-            <button
-            data-variant="5"
-            className="px-5 py-2 bg-[#000] rounded-full inline-flex flex-col justify-center items-center cursor-pointer transition hover:bg-solidBlue"
-          >
-            <div className="text-center justify-center text-[#FFF] text-sm font-boldFont leading-5">
-              프로필 편집
-            </div>
-          </button>
+                <button
+                  data-variant="5"
+                  className="px-5 py-2 bg-black rounded-full inline-flex flex-col justify-center items-center cursor-pointer transition hover:bg-solidBlue"
+                >
+                  <div className="text-center justify-center text-white text-sm font-boldFont leading-5">
+                    프로필 편집
+                  </div>
+                </button>
               </div>
               <div className="self-stretch inline-flex justify-start items-center gap-44">
                 <div className="justify-center text-[#374151] text-sm font-mediumFont leading-5">
@@ -115,7 +115,10 @@ export default function EditProfilePage() {
                           여자
                         </div>
                       </div>
-                      <button data-variant="6" className="w-4 h-4 relative transition hover:text-black60 cursor-pointer">
+                      <button
+                        data-variant="6"
+                        className="w-4 h-4 relative transition hover:text-black60 cursor-pointer"
+                      >
                         <ChevronDown size={16} />
                       </button>
                     </div>

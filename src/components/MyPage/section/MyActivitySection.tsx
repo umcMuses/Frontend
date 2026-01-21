@@ -24,7 +24,7 @@ const MyActivitySection = () => {
         <div className="self-stretch justify-center text-[#1F2937] text-xl font-boldFont leading-7">
           최근 후원 내역
         </div>
-          <RecentDonations />
+        <RecentDonations />
       </div>
     </section>
   );

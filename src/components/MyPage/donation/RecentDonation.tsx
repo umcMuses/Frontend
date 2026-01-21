@@ -27,19 +27,12 @@ const RecentDonations = () => {
     <>
       <div className="flex flex-col gap-4">
         {items.map((item, idx) => (
-          <DonationItem
-            key={idx}
-            item={item}
-            onSelect={setSelected}
-          />
+          <DonationItem key={idx} item={item} onSelect={setSelected} />
         ))}
       </div>
 
       {selected && (
-        <DetailDonationItem
-          item={selected}
-          onClose={() => setSelected(null)}
-        />
+        <DetailDonationItem item={selected} onClose={() => setSelected(null)} />
       )}
     </>
   );

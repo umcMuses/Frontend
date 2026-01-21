@@ -12,7 +12,7 @@ const DetailDonationItem = ({ item, onClose }: Props) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-[6px]">
       {/* 카드 */}
-      <div className="relative w-[672px] max-w-[672px] h-[607px] p-8 bg-[#fff] rounded-[32px] shadow-2xl flex flex-col items-center gap-3 overflow-hidden">
+      <div className="relative w-[672px] max-w-[672px] h-[607px] p-8 bg-white rounded-[32px] shadow-2xl flex flex-col items-center gap-3 overflow-hidden">
         {/* 헤더 */}
         <div className="self-stretch pb-4 border-b border-white80 flex justify-between items-center">
           <div className="text-mainBlack text-xl font-boldFont leading-7">
@@ -51,7 +51,8 @@ const DetailDonationItem = ({ item, onClose }: Props) => {
                 </div>
                 <div className="self-stretch flex flex-col justify-start items-start">
                   <div className="justify-center text-mainBlack text-base font-boldFont leading-7">
-{date}                  </div>
+                    {date}{' '}
+                  </div>
                 </div>
               </div>
               <div className="w-56 inline-flex flex-col justify-start items-start">
@@ -119,7 +120,8 @@ const DetailDonationItem = ({ item, onClose }: Props) => {
             </div>
             <div className="inline-flex flex-col justify-start items-start">
               <div className="justify-center text-[#645DE8] text-base font-boldFont leading-7">
-{amount}              </div>
+                {amount}{' '}
+              </div>
             </div>
           </div>
           <div className="justify-center text-[#F00] text-base font-mainFont leading-7">

@@ -4,7 +4,7 @@ import CreatorType from '../updatecreator/CreatorType';
 const CreatorEmptySection = () => {
   const [open, setOpen] = useState(false);
   return (
-    <div className="self-stretch p-16 bg-[#FFF] rounded-[40px] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] border border-white80 inline-flex flex-col justify-start items-center">
+    <div className="self-stretch p-16 bg-white rounded-[40px] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] border border-white80 inline-flex flex-col justify-start items-center">
       <div className="w-24 h-28 pb-6 flex flex-col justify-start items-start">
         <div className="w-24 h-24 bg-white80 rounded-full inline-flex justify-center items-center">
           <div className="text-center justify-center text-mainBlack text-4xl font-mainFont leading-10">
@@ -32,7 +32,7 @@ const CreatorEmptySection = () => {
         onClick={() => setOpen(true)}
         className="px-8 py-4 bg-[#F97316] rounded-xl shadow-[0px_4px_6px_-4px_rgba(254,215,170,1.00)] shadow-[0px_10px_15px_-3px_rgba(254,215,170,1.00)] flex flex-col justify-center items-center overflow-hidden transition cursor-pointer hover:bg-[#EA580C]"
       >
-        <div className="text-center justify-center text-[#FFF] text-lg font-boldFont leading-7">
+        <div className="text-center justify-center text-white text-lg font-boldFont leading-7">
           크리에이터 전환 신청하기
         </div>
       </button>

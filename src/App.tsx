@@ -20,6 +20,7 @@ function App() {
         <Route path="/events" element={<EventListPage />} />
         <Route path="/login" element={<LoginSignupPage />} />
         <Route path="/project/:id" element={<ProjectDetailPage />} />
+        <Route path="/mypage" element={<MyPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
