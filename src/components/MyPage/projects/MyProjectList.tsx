@@ -1,33 +1,39 @@
+import { Plus } from 'lucide-react';
 import MyProjectItem from './MyProjectItem';
+import type { Project } from './ProjectType';
 
-interface Project {
-  id: number;
-  title: string;
-  deadline: string;
-  progress: number;
-  amount: number;
-}
-
-interface Props {
+interface MyProjectListProps {
   projects: Project[];
 }
 
-const MyProjectList = ({ projects }: Props) => {
+const MyProjectList = ({ projects }: MyProjectListProps) => {
   return (
-    <section className="bg-white rounded-2xl p-6 shadow-sm">
-      <div className="flex justify-between items-center mb-4">
-        <h3 className="font-semibold">내 프로젝트</h3>
-        <button className="w-fit text-xs px-2 py-0.5 bg-[#EEF2FF] text-blue-700 rounded">
-          + 새 프로젝트
+    <div className="self-stretch p-8 bg-white rounded-[40px] border border-white80 flex flex-col gap-6">
+      {/* 헤더 */}
+      <div className="w-[782px] flex justify-between items-center">
+        <div className="text-lg font-boldFont text-mainBlack">내 프로젝트</div>
+
+        <button className="px-3 py-1.5 bg-[#EEF2FF] rounded-lg flex items-center gap-1 transition cursor-pointer">
+          <span className="flex items-center justify-center gap-1 text-xs font-boldFont text-[#4F46E5]">
+            <Plus size={12} />새 프로젝트
+          </span>
         </button>
       </div>
 
-      <div className="flex flex-col gap-3">
+      {/* 리스트 */}
+      <div className="flex flex-col gap-4">
         {projects.map((project) => (
-          <MyProjectItem key={project.id} project={project} />
+          <MyProjectItem
+            key={project.id}
+            status={project.status}
+            dday={project.dday}
+            title={project.title}
+            progressPercent={project.progressPercent}
+            amount={project.amount}
+          />
         ))}
       </div>
-    </section>
+    </div>
   );
 };
 

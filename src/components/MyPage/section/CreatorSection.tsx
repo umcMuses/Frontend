@@ -1,21 +1,20 @@
 import { ChartLine, Wallet } from 'lucide-react';
 import MyProjectList from '../projects/MyProjectList';
-
-interface Project {
-  id: number;
-  title: string;
-  progress: number;
-  amount: number;
-  deadline: string;
-}
+import type { Project } from '../projects/ProjectType';
 
 interface Props {
   projects: Project[];
 }
 
 const CreatorSection = ({ projects }: Props) => {
-  const totalSupportAmount = 284;
-  const activeProjectCount = projects.length;
+  const totalSupportAmount =
+    projects.reduce((sum, project) => sum + Number(project.amount.replace(/,/g, '').replace('원', '')), 0) / 10000;
+
+  const activeProjects = projects.filter(
+    (project) => project.status === 'ONGOING'
+  );
+
+  const activeProjectCount = activeProjects.length;
 
   return (
     <section className="w-full max-w-[848px] flex flex-col gap-6">
@@ -28,7 +27,9 @@ const CreatorSection = ({ projects }: Props) => {
           </div>
           <div className="text-xl font-bold">
             {totalSupportAmount}
-            <span className="ml-1 text-xs font-semibold text-gray-400">만원</span>
+            <span className="ml-1 text-xs font-semibold text-gray-400">
+              만원
+            </span>
           </div>
         </div>
 
@@ -39,12 +40,14 @@ const CreatorSection = ({ projects }: Props) => {
           </div>
           <div className="text-xl font-bold">
             {activeProjectCount}
-            <span className="ml-1 text-xs font-semibold text-gray-400">개</span>
+            <span className="ml-1 text-xs font-semibold text-gray-400">
+              개
+            </span>
           </div>
         </div>
       </div>
 
-      <MyProjectList projects={projects} />
+      <MyProjectList projects={activeProjects} />
     </section>
   );
 };

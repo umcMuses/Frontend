@@ -1,35 +1,43 @@
+import { useState } from 'react';
+import CreatorType from '../updatecreator/CreatorType';
+
 const CreatorEmptySection = () => {
+  const [open, setOpen] = useState(false);
   return (
-    <section className="max-w-[848px]">
-      <div className="bg-white rounded-[32px] p-[64px] flex flex-col items-center text-center gap-6 shadow-sm">
-        <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center">
-          🚀
+    <div className="self-stretch p-16 bg-[#FFF] rounded-[40px] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] border border-white80 inline-flex flex-col justify-start items-center">
+      <div className="w-24 h-28 pb-6 flex flex-col justify-start items-start">
+        <div className="w-24 h-24 bg-white80 rounded-full inline-flex justify-center items-center">
+          <div className="text-center justify-center text-mainBlack text-4xl font-mainFont leading-10">
+            🚀
+          </div>
         </div>
-
-        <h2 className="text-lg font-semibold">아직 크리에이터가 아니신가요?</h2>
-
-        <p className="text-sm text-gray-500">
-          나만의 프로젝트를 개설하고, 팬들과 소통해보세요.
-          <br />
-          간단한 인증 절차 후 바로 시작할 수 있습니다.
-        </p>
-
-        <button
-          className="
-    mt-4
-    px-6
-    py-3
-    rounded-xl
-    bg-orange-500
-    text-white
-    font-semibold
-    shadow-[0_12px_24px_rgba(234,88,12,0.45)]
-  "
-        >
-          크리에이터 전환 신청하기
-        </button>
       </div>
-    </section>
+      <div className="pb-3 flex flex-col justify-start items-start">
+        <div className="flex flex-col justify-start items-center">
+          <div className="text-center justify-center text-mainBlack text-2xl font-boldFont leading-8">
+            아직 크리에이터가 아니신가요?
+          </div>
+        </div>
+      </div>
+      <div className="w-72 h-20 max-w-96 relative">
+        <div className="max-w-96 left-0 top-[-0.63px] absolute inline-flex flex-col justify-start items-center">
+          <div className="text-center justify-center text-black60 text-sm font-mainFont leading-6">
+            나만의 프로젝트를 개설하고, 팬들과 소통해보세요.
+            <br />
+            간단한 인증 절차 후 바로 시작할 수 있습니다.
+          </div>
+        </div>
+      </div>
+      <button
+        onClick={() => setOpen(true)}
+        className="px-8 py-4 bg-[#F97316] rounded-xl shadow-[0px_4px_6px_-4px_rgba(254,215,170,1.00)] shadow-[0px_10px_15px_-3px_rgba(254,215,170,1.00)] flex flex-col justify-center items-center overflow-hidden transition cursor-pointer hover:bg-[#EA580C]"
+      >
+        <div className="text-center justify-center text-[#FFF] text-lg font-boldFont leading-7">
+          크리에이터 전환 신청하기
+        </div>
+      </button>
+      {open && <CreatorType onClose={() => setOpen(false)} />}
+    </div>
   );
 };
 

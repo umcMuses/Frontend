@@ -1,21 +1,47 @@
-import DonationItem from "./DonationItem";
-import { type DonationItem as DonationItemType } from "../types/types";
+import { useState } from 'react';
+import DonationItem from './DonationItem';
+import DetailDonationItem from './DetailDonationItem';
+import { type DonationItemType } from '../types/types';
 
-interface Props {
-  items: DonationItemType[];
-}
+const items: DonationItemType[] = [
+  {
+    initial: '밴',
+    status: '결제완료',
+    date: '2025.10.01',
+    title: "밴드 '새벽' 단독 콘서트",
+    amount: '55,000원',
+  },
+  {
+    initial: '재',
+    status: '결제완료',
+    date: '2024.12.15',
+    title: '재즈 페스티벌 얼리버드',
+    amount: '88,000원',
+  },
+];
 
-const RecentDonations = ({ items }: Props) => {
+const RecentDonations = () => {
+  const [selected, setSelected] = useState<DonationItemType | null>(null);
+
   return (
-    <div className="h-[312px] flex flex-col gap-6">
-      <h2 className="font-semibold">최근 후원 내역</h2>
-
-      <div className="space-y-3">
-        {items.map((item) => (
-          <DonationItem key={item.id} item={item} />
+    <>
+      <div className="flex flex-col gap-4">
+        {items.map((item, idx) => (
+          <DonationItem
+            key={idx}
+            item={item}
+            onSelect={setSelected}
+          />
         ))}
       </div>
-    </div>
+
+      {selected && (
+        <DetailDonationItem
+          item={selected}
+          onClose={() => setSelected(null)}
+        />
+      )}
+    </>
   );
 };
 
