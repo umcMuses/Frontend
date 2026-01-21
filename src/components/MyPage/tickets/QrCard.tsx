@@ -48,7 +48,7 @@ const QrCard = ({ title, seat, ticketId, onClose }: QrCardProps) => {
         <div className="w-96 p-6 bg-white border-t border-dashed border-[#D1D5DB] inline-flex flex-col justify-start items-start">
           <button
             onClick={onClose}
-            className="self-stretch py-3.5 bg-mainBlack rounded-xl shadow-[0px_4px_6px_-4px_rgba(0,0,0,0.10)] shadow-lg inline-flex justify-center items-center overflow-hidden hover:bg-black cursor-pointer"
+            className="self-stretch py-3.5 bg-mainBlack rounded-xl shadow-lg inline-flex justify-center items-center overflow-hidden hover:bg-black cursor-pointer"
           >
             <div className="text-center justify-center text-white text-sm font-boldFont leading-5">
               닫기

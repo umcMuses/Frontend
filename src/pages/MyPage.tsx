@@ -21,7 +21,7 @@ export default function MyPage() {
   const { activeTab, setActiveTab, isActivityTab, isCreatorTab } =
     useMyPageTab();
 
-  const isCreator = true;
+  const isCreator = false;
 
   return (
     <div className="min-h-screen bg-[#F8F9FC] pt-[110px]">

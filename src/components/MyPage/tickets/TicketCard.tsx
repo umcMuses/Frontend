@@ -13,7 +13,7 @@ const TicketCard = () => {
 
   return (
     <div className="self-stretch pb-6 inline-flex justify-start items-start gap-6 overflow-hidden">
-      <div className="self-stretch min-w-72 p-6 relative bg-[linear-gradient(135deg,var(--color-blue-34,#312E81)_0%,var(--color-violet-32,#581C87)_50%,var(--color-black-solid,#000)_100%)] rounded-[32px] shadow-[0px_8px_10px_-6px_rgba(0,0,0,0.10)] shadow-xl inline-flex flex-col justify-start items-start overflow-hidden">
+      <div className="self-stretch min-w-72 p-6 relative bg-[linear-gradient(135deg,var(--color-blue-34,#312E81)_0%,var(--color-violet-32,#581C87)_50%,var(--color-black-solid,#000)_100%)] rounded-[32px] shadow-xl inline-flex flex-col justify-start items-start overflow-hidden">
         <div className="absolute top-6 right-6 opacity-20">
           <QrCode className="text-white" size={96} />
         </div>
@@ -56,7 +56,7 @@ const TicketCard = () => {
           </div>
         </div>
       </div>
-      <div className="self-stretch min-w-72 p-6 relative bg-[linear-gradient(135deg,var(--color-azure-33,#1E3A8A)_0%,var(--color-cyan-31,#0E7490)_50%)] rounded-[32px] shadow-[0px_8px_10px_-6px_rgba(0,0,0,0.10)] shadow-xl inline-flex flex-col justify-start items-start overflow-hidden">
+      <div className="self-stretch min-w-72 p-6 relative bg-[linear-gradient(135deg,var(--color-azure-33,#1E3A8A)_0%,var(--color-cyan-31,#0E7490)_50%)] rounded-[32px] shadow-xl inline-flex flex-col justify-start items-start overflow-hidden">
         <div className="absolute top-6 right-6 opacity-20">
           <QrCode className="text-white" size={96} />
         </div>
