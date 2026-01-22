@@ -1,10 +1,12 @@
+import { Check } from 'lucide-react';
+
 interface StepperProps {
-  step: number;
+  currentStep: number;
 }
 
 const STEPS = ['개요', '펀딩', '리워드', '스토리', '정보'];
 
-export default function Stepper({ step }: StepperProps) {
+export default function Stepper({ currentStep }: StepperProps) {
   return (
     <div className="relative inline-flex justify-center items-center gap-36 self-stretch pr-[0.02px]">
       {/* 가로 줄 (항상 뒤) */}
@@ -13,13 +15,15 @@ export default function Stepper({ step }: StepperProps) {
       <div
         className="absolute top-3 left-0 h-0.5 bg-mainBlack z-0 transition-all"
         style={{
-          width: `${((step - 1) / (STEPS.length - 1)) * 100}%`,
+          width: `${((currentStep - 1) / (STEPS.length - 1)) * 100}%`,
         }}
       />
 
       {STEPS.map((label, index) => {
         const stepNumber = index + 1;
-        const isActive = stepNumber <= step;
+        const isCompleted = stepNumber < currentStep;
+        const isCurrent = stepNumber === currentStep;
+        const isActive = isCompleted || isCurrent;
 
         return (
           <div
@@ -37,7 +41,11 @@ export default function Stepper({ step }: StepperProps) {
                   isActive ? 'text-mainBlack' : 'text-black40'
                 }`}
               >
-                {stepNumber}
+                {isCompleted ? (
+                  <Check className="w-4 h-4 text-mainBlack" />
+                ) : (
+                  stepNumber
+                )}
               </span>
             </div>
 

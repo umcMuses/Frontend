@@ -1,7 +1,6 @@
-import type { ProjectData } from "../../../pages/CreateProjectPage";
-
+import type { ProjectData } from '../../../pages/CreateProjectPage';
 
 export interface StepProps {
   data: ProjectData;
-  onChange: (key: keyof ProjectData, value: any) => void;
+  onChange: (key: keyof ProjectData, value: unknown) => void;
 }
