@@ -151,7 +151,9 @@ export default function TrendingCard({ project }: TrendingCardProps) {
             <div className="self-stretch flex items-center justify-between">
               <div className="flex items-center gap-1">
                 <Award className="w-4 h-4 text-black60" />
-                <span className="text-sm text-black60 leading-5">펀딩 마감</span>
+                <span className="text-sm text-black60 leading-5">
+                  펀딩 마감
+                </span>
               </div>
               {project.progress && (
                 <span className="text-sm font-boldFont text-[#374151] leading-5">
