@@ -12,13 +12,20 @@ export interface ProjectData {
   title: string;
   thumbnail: File | null;
   tags: string[];
-  ageLimit: 'ALL' | 'ADULT';
+  age_limit: 'ALL' | 'ADULT';
   summary: string;
-  funding: {};
-  rewards: any[];
-  story: string;
-  info: {};
+  funding: FundingData;
+  rewards: unknown[];
+  story: unknown[];
+  info: unknown[];
 }
+
+export type FundingData = {
+  target_amount: number | '';
+  deadline: string; // YYYY-MM-DD
+  opening: string; // HH:mm
+  shippingFee: number | '';
+};
 
 export default function CreateProjectPage() {
   const [step, setStep] = useState(1);
@@ -27,15 +34,20 @@ export default function CreateProjectPage() {
     title: '',
     thumbnail: null,
     tags: [],
-    ageLimit: 'ALL',
+    age_limit: 'ALL',
     summary: '',
-    funding: {},
+    funding: {
+      target_amount: '',
+      deadline: '',
+      opening: '',
+      shippingFee: '',
+    },
     rewards: [],
-    story: '',
-    info: {},
+    story: [],
+    info: [],
   });
 
-  const updateProjectData = (key: keyof ProjectData, value: any) => {
+  const updateProjectData = (key: keyof ProjectData, value: unknown) => {
     setProjectData((prev) => ({ ...prev, [key]: value }));
   };
 
@@ -43,7 +55,7 @@ export default function CreateProjectPage() {
     <>
       <CreateNavbar />
       <div className="flex flex-col min-h-screen px-6 pt-28 pb-20 max-w-[768px] mx-auto gap-12">
-        <Stepper step={step} />
+        <Stepper currentStep={step} />
 
         {step === 1 && (
           <OverviewStep data={projectData} onChange={updateProjectData} />
