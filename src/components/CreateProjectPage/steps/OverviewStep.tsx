@@ -1,30 +1,18 @@
 import type { StepProps } from './StepProps';
+import { Field, InputFrame } from '../components/FormField';
 import { Upload } from 'lucide-react';
 
 export default function OverviewStep({ data, onChange }: StepProps) {
-  const age = data.ageLimit;
+  const age = data.age_limit;
 
   return (
     <div className="self-stretch pb-4 flex flex-col gap-8">
-      {/* 제목 */}
       <h2 className="text-mainBlack text-2xl font-boldFont leading-8">
         Step 1. 프로젝트 기본 정보
       </h2>
 
-      {/* 프로젝트 제목 */}
-      <div className="flex flex-col gap-2">
-        <label className="text-black80 text-sm font-boldFont">
-          프로젝트 제목 *
-        </label>
-
-        <div
-          className="
-            px-4 py-5 bg-white rounded-xl
-            border border-white60
-            focus-within:ring-1
-            focus-within:ring-mainBlack
-          "
-        >
+      <Field label="프로젝트 제목 *">
+        <InputFrame>
           <input
             type="text"
             value={data.title}
@@ -33,15 +21,10 @@ export default function OverviewStep({ data, onChange }: StepProps) {
             placeholder="예) 밴드 '새벽'의 첫 단독 콘서트"
             className="w-full text-mainBlack placeholder:text-black40 font-mainFont focus:outline-none"
           />
-        </div>
-      </div>
+        </InputFrame>
+      </Field>
 
-      {/* 대표 이미지 */}
-      <div className="flex flex-col gap-2">
-        <label className="text-black80 text-sm font-boldFont">
-          대표 이미지 (포스터)
-        </label>
-
+      <Field label="대표 이미지 (포스터)">
         <label
           className="
             h-48 rounded-2xl
@@ -57,41 +40,29 @@ export default function OverviewStep({ data, onChange }: StepProps) {
           </span>
           <input type="file" className="hidden" />
         </label>
-      </div>
+      </Field>
 
-      {/* 태그 */}
-      <div className="flex flex-col gap-2">
-        <div className="flex items-center gap-4">
-          <label className="text-black80 text-sm font-boldFont">
-            태그 정보
-          </label>
-          <span className="text-black40 text-[10px] font-mainFont leading-4">
-            *최대 4개까지 입력 가능
-          </span>
-        </div>
-
-        <div
-          className="
-            px-4 py-5 bg-white rounded-xl
-            border border-gray-200
-            focus-within:ring-1
-            focus-within:ring-mainBlack
-          "
-        >
+      <Field
+        label={
+          <div className="flex items-center gap-4">
+            <span>태그 정보</span>
+            <span className="text-black40 text-[10px] font-mainFont leading-4">
+              *최대 4개까지 입력 가능
+            </span>
+          </div>
+        }
+      >
+        <InputFrame>
           <input
             type="text"
             placeholder="#태그 입력 (Enter)"
             className="w-full text-mainBlack placeholder:text-black40 font-mainFont focus:outline-none"
           />
-        </div>
-      </div>
+        </InputFrame>
+      </Field>
 
       {/* 후원 가능 연령 */}
-      <div className="flex flex-col gap-2">
-        <label className="text-black80 text-sm font-boldFont">
-          후원 가능 연령
-        </label>
-
+      <Field label="후원 가능 연령">
         <div className="flex gap-4">
           {/* 전체 이용가 */}
           <label
@@ -100,7 +71,7 @@ export default function OverviewStep({ data, onChange }: StepProps) {
               flex items-center gap-3 border
               ${age === 'ALL' ? 'border-mainBlack' : 'border-white60'}
             `}
-            onClick={() => onChange('ageLimit', 'ALL')}
+            onClick={() => onChange('age_limit', 'ALL')}
           >
             <input
               type="radio"
@@ -134,7 +105,7 @@ export default function OverviewStep({ data, onChange }: StepProps) {
               flex items-center gap-3 border
               ${age === 'ADULT' ? 'border-mainBlack' : 'border-white60'}
             `}
-            onClick={() => onChange('ageLimit', 'ADULT')}
+            onClick={() => onChange('age_limit', 'ADULT')}
           >
             <input
               type="radio"
@@ -161,34 +132,23 @@ export default function OverviewStep({ data, onChange }: StepProps) {
             </span>
           </label>
         </div>
-      </div>
+      </Field>
 
       {/* 프로젝트 간략 소개 */}
-      <div className="flex flex-col gap-2">
-        <label className="text-black80 text-sm font-boldFont">
-          프로젝트 간략 소개
-        </label>
-
-        <div
-          className="
-            px-4 pt-4 pb-16 bg-white rounded-xl
-            border border-white60
-            focus-within:ring-1
-            focus-within:ring-mainBlack
-          "
-        >
+      <Field label="프로젝트 간략 소개">
+        <InputFrame>
           <textarea
             value={data.summary}
             onChange={(e) => onChange('summary', e.target.value)}
             placeholder="프로젝트를 한 문장으로 소개해 주세요."
             className="
-              w-full resize-none
+              w-full resize-none min-h-[120px]
               text-mainBlack placeholder:text-black40
               font-mainFont focus:outline-none
             "
           />
-        </div>
-      </div>
+        </InputFrame>
+      </Field>
     </div>
   );
 }
