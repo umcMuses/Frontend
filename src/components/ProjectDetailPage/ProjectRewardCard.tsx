@@ -3,11 +3,26 @@ import { CircleCheckBig } from 'lucide-react';
 
 interface ProjectRewardCardProps {
   reward: ProjectReward;
+  onClick?: (reward: ProjectReward) => void;
 }
 
-export const ProjectRewardCard = ({ reward }: ProjectRewardCardProps) => {
+export const ProjectRewardCard = ({
+  reward,
+  onClick,
+}: ProjectRewardCardProps) => {
   return (
-    <div className="group w-full rounded-[32px] border border-white60 p-6 bg-white cursor-pointer hover:border-solidBlue hover:shadow-md hover:shadow-solidBlue/10 transition-all duration-300">
+    <div
+      className="group w-full rounded-[32px] border border-white60 p-6 bg-white cursor-pointer hover:border-solidBlue hover:shadow-md hover:shadow-solidBlue/10 transition-all duration-300"
+      role="button"
+      tabIndex={0}
+      onClick={() => onClick?.(reward)}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          onClick?.(reward);
+        }
+      }}
+    >
       <span className="mb-1 text-lg font-boldFont text-mainBlack group-hover:text-solidBlue transition-all duration-300">
         {reward.price.toLocaleString()}원
       </span>
