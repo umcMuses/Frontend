@@ -71,7 +71,7 @@ export const ProjectRewardList = ({ projectId }: ProjectRewardListProps) => {
             <h3 className="text-2xl font-boldFont text-mainBlack mb-8">
               후원 결제하기
             </h3>
-            <div className="rounded-2xl border border-white40 p-10 mb-10 w-full">
+            <div className="rounded-2xl border border-white40 bg-white80 p-10 mb-10 w-full">
               <p className="text-base text-solidBlue mb-5 font-boldFont">
                 선택한 리워드
               </p>
@@ -83,36 +83,29 @@ export const ProjectRewardList = ({ projectId }: ProjectRewardListProps) => {
               </p>
               <div className="w-full border-b border-white40 mb-7.5" />
               <div className="flex items-center justify-between">
-                <p className="text-2xl text-black80 font-boldFont">
-                  총 결제 금액
-                </p>
+                <p className="text-2xl text-black80 font-boldFont">결제 금액</p>
                 <p className="text-2xl font-blackFont text-solidBlue">
                   {selectedReward.price.toLocaleString()}원
                 </p>
               </div>
             </div>
-
-            <div className="mb-6">
-              <p className="text-sm font-boldFont text-mainBlack mb-2">
-                결제수단 선택
-              </p>
-              <div className="flex flex-col gap-2">
-                {['카드', '계좌이체', '간편결제'].map((method) => (
-                  <label
-                    key={method}
-                    className="flex items-center justify-between rounded-xl border border-white60 px-4 py-3 cursor-pointer hover:border-solidBlue"
-                  >
-                    <span className="text-sm text-mainBlack">{method}</span>
-                    <input
-                      type="radio"
-                      name="payment-method"
-                      value={method}
-                      checked={paymentMethod === method}
-                      onChange={() => setPaymentMethod(method)}
-                    />
-                  </label>
-                ))}
-              </div>
+            {/* 결제수단 선택 일단은 토스페이먼츠 하나만 등록 */}
+            <div className="flex flex-col gap-2">
+              {['토스페이먼츠'].map((method) => (
+                <label
+                  key={method}
+                  className="flex items-center justify-between rounded-xl border border-white60 px-4 py-3 cursor-pointer hover:border-solidBlue"
+                >
+                  <span className="text-sm text-mainBlack"></span>
+                  <input
+                    type="radio"
+                    name="payment-method"
+                    value={method}
+                    checked={paymentMethod === method}
+                    onChange={() => setPaymentMethod(method)}
+                  />
+                </label>
+              ))}
             </div>
 
             <button
