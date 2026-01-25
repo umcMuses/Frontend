@@ -4,7 +4,7 @@ import {
   type ProjectReward,
 } from '../../types/projectDetails';
 import { ProjectRewardCard } from './ProjectRewardCard';
-import { X } from 'lucide-react';
+import tosspayLogo from '../../assets/images/TossPay_Logo_Primary.png';
 
 interface ProjectRewardListProps {
   projectId: number;
@@ -94,16 +94,19 @@ export const ProjectRewardList = ({ projectId }: ProjectRewardListProps) => {
               {['토스페이먼츠'].map((method) => (
                 <label
                   key={method}
-                  className="flex items-center justify-between rounded-xl border border-white60 px-4 py-3 cursor-pointer hover:border-solidBlue"
+                  className="flex items-center rounded-xl border border-white60 cursor-pointer hover:border-solidBlue"
                 >
-                  <span className="text-sm text-mainBlack"></span>
                   <input
+                    className="w-6 h-6"
                     type="radio"
                     name="payment-method"
                     value={method}
                     checked={paymentMethod === method}
                     onChange={() => setPaymentMethod(method)}
                   />
+                  <span className="text-sm text-mainBlack">
+                    <img src={tosspayLogo} alt="토스페이먼츠" width={200} />
+                  </span>
                 </label>
               ))}
             </div>
