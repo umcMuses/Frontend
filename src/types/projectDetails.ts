@@ -4,6 +4,8 @@ export interface ProjectDetailData {
   projectId: number;
   contentHtml: string;
   creator: string;
+  projectManager: string;
+  projectManagerPhoneNumber: string;
   rewards: ProjectReward[];
   likes: number;
 }
@@ -27,6 +29,8 @@ export const MOCK_PROJECT_DETAILS: ProjectDetailData[] = [
       <p>여러분의 펀딩은 전시 공간 조성, 작품 설치, 전시 운영에 사용됩니다. 함께 전시의 마지막 퍼즐이 되어주세요.</p>
     `,
     creator: 'Band Dawn',
+    projectManager: '김민지',
+    projectManagerPhoneNumber: '010-1234-5678',
     likes: 100,
     rewards: [
       {
@@ -64,6 +68,8 @@ export const MOCK_PROJECT_DETAILS: ProjectDetailData[] = [
       <p>홍대 웨스트브릿지에서 진행되며, 현장 리허설과 아티스트 스페셜 세션이 준비되어 있습니다.</p>
     `,
     creator: 'Band Dawn',
+    projectManager: '박지훈',
+    projectManagerPhoneNumber: '010-2345-6789',
     likes: 100,
     rewards: [
       {
@@ -100,6 +106,8 @@ export const MOCK_PROJECT_DETAILS: ProjectDetailData[] = [
       <p>방문객을 위한 포토존, 한정 굿즈, 그리고 함께 나누는 메시지 월이 준비되어 있어요.</p>
     `,
     creator: 'Band Dawn',
+    projectManager: '이서연',
+    projectManagerPhoneNumber: '010-3456-7890',
     likes: 100,
     rewards: [
       {

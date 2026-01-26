@@ -16,6 +16,7 @@ export const ProjectRewardList = ({ projectId }: ProjectRewardListProps) => {
     Record<number, number>
   >({});
   const [isPaymentOpen, setIsPaymentOpen] = useState(false);
+  const [showSelectNotice, setShowSelectNotice] = useState(false);
   const detail = MOCK_PROJECT_DETAILS.find(
     (item) => item.projectId === projectId
   );
@@ -62,6 +63,12 @@ export const ProjectRewardList = ({ projectId }: ProjectRewardListProps) => {
     };
   }, [isPaymentOpen]);
 
+  useEffect(() => {
+    if (selectedRewards.length > 0) {
+      setShowSelectNotice(false);
+    }
+  }, [selectedRewards.length]);
+
   return (
     <div className="flex flex-col gap-4 mb-6">
       <p className="text-lg font-boldFont text-mainBlack px-2">리워드 선택</p>
@@ -85,11 +92,25 @@ export const ProjectRewardList = ({ projectId }: ProjectRewardListProps) => {
           );
         })}
       </div>
+      {showSelectNotice && (
+        <p className="text-sm font-mediumFont text-[#EF4444] px-2">
+          리워드를 선택해주세요!
+        </p>
+      )}
       <button
         type="button"
-        className="w-full h-14 mb-2 rounded-xl bg-mainBlack text-mainWhite font-boldFont text-base cursor-pointer disabled:bg-black40"
-        disabled={selectedRewards.length === 0}
-        onClick={() => setIsPaymentOpen(true)}
+        className={`w-full h-14 mb-2 rounded-xl font-boldFont text-base cursor-pointer ${
+          selectedRewards.length === 0
+            ? 'bg-black40 text-mainWhite'
+            : 'bg-mainBlack text-mainWhite'
+        }`}
+        onClick={() => {
+          if (selectedRewards.length === 0) {
+            setShowSelectNotice(true);
+            return;
+          }
+          setIsPaymentOpen(true);
+        }}
       >
         {selectedRewards.length === 0
           ? '응원하기'
