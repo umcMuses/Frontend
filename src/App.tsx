@@ -9,6 +9,7 @@ import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import EventListPage from './pages/EventListPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
+import MyPage from './pages/MyPage';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/onboarding" element={<OnBoardingPage />} />
         <Route path="/events" element={<EventListPage />} />
         <Route path="/project/:id" element={<ProjectDetailPage />} />
+        <Route path="/mypage" element={<MyPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
