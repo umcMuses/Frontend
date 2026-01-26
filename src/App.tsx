@@ -12,15 +12,7 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <Header />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/projects" element={<ProjectListPage />} />
-        <Route path="/events" element={<EventListPage />} />
-        <Route path="/login" element={<LoginSignupPage />} />
-        <Route path="/project/:id" element={<ProjectDetailPage />} />
-      </Routes>
-      <Footer />
+      <AppLayout />
     </BrowserRouter>
   );
 }
@@ -35,4 +27,27 @@ function ScrollToTop() {
   }, [pathname]);
 
   return null;
+}
+
+function AppLayout() {
+  const { pathname } = useLocation();
+  //const hideHeaderPrefixes = ['/create-project', '/login']; // 헤더를 숨길 경로 설정 예시
+  const hideHeaderPrefixes = [''];
+  const shouldHideHeader = hideHeaderPrefixes.some((prefix) =>
+    pathname.startsWith(prefix)
+  );
+
+  return (
+    <>
+      {!shouldHideHeader && <Header />}
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/projects" element={<ProjectListPage />} />
+        <Route path="/events" element={<EventListPage />} />
+        <Route path="/login" element={<LoginSignupPage />} />
+        <Route path="/project/:id" element={<ProjectDetailPage />} />
+      </Routes>
+      <Footer />
+    </>
+  );
 }
