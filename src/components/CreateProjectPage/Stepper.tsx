@@ -10,10 +10,10 @@ export default function Stepper({ currentStep }: StepperProps) {
   return (
     <div className="relative inline-flex justify-center items-center gap-36 self-stretch pr-[0.02px]">
       {/* 가로 줄 (항상 뒤) */}
-      <div className="absolute left-[0.5px] top-[14.38px] w-[720px] h-0.5 bg-white60 z-0" />
+      <div className="absolute left-[0.5px] top-[25px] w-[720px] h-0.5 bg-white60 z-0" />
 
       <div
-        className="absolute top-3 left-0 h-0.5 bg-mainBlack z-0 transition-all"
+        className="absolute top-[25px] left-0 h-0.5 bg-mainBlack z-0 transition-all"
         style={{
           width: `${((currentStep - 1) / (STEPS.length - 1)) * 100}%`,
         }}

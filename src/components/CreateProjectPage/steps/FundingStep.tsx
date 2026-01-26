@@ -4,6 +4,7 @@ import { Field, InputFrame } from '../components/FormField';
 
 export default function FundingStep({ data, onChange }: StepProps) {
   const funding = data.funding;
+
   const updateFunding = (patch: Partial<FundingData>) => {
     onChange('funding', { ...funding, ...patch });
   };
@@ -44,19 +45,19 @@ export default function FundingStep({ data, onChange }: StepProps) {
               onChange={(e) => onChange('title', e.target.value)}
               aria-required="true"
               placeholder="성공해야 리워드 (All or Nothing)"
-              className="w-full text-mainBlack placeholder:text-black40 font-mainFont focus:outline-none"
+              className="w-full text-mainBlack placeholder:text-mainBlack font-mainFont focus:outline-none"
             />
           </InputFrame>
         </Field>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Field label="펀딩 마감일">
+        <Field label="펀딩 시작일">
           <InputFrame>
             <input
               type="date"
-              value={funding.deadline}
-              onChange={(e) => updateFunding({ deadline: e.target.value })}
+              value={funding.startDate}
+              onChange={(e) => updateFunding({ startDate: e.target.value })}
               className="w-full text-mainBlack font-mainFont focus:outline-none"
             />
           </InputFrame>
@@ -74,24 +75,12 @@ export default function FundingStep({ data, onChange }: StepProps) {
         </Field>
       </div>
 
-      <Field label="기본 배송비 설정">
-        <InputFrame
-          rightAdornment={
-            <span className="font-boldFont text-black60">원</span>
-          }
-        >
+      <Field label="펀딩 마감일">
+        <InputFrame>
           <input
-            type="number"
-            inputMode="numeric"
-            min={0}
-            value={funding.shippingFee}
-            onChange={(e) =>
-              updateFunding({
-                shippingFee:
-                  e.target.value === '' ? '' : Number(e.target.value),
-              })
-            }
-            placeholder="0 (무료)"
+            type="date"
+            value={funding.deadline}
+            onChange={(e) => updateFunding({ deadline: e.target.value })}
             className="w-full text-mainBlack placeholder:text-black40 font-mainFont focus:outline-none"
           />
         </InputFrame>

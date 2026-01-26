@@ -6,7 +6,7 @@ interface FieldProps {
 export function Field({ label, children }: FieldProps) {
   return (
     <div className="flex flex-col gap-2">
-      <label className="text-black80 text-sm font-boldFont">{label}</label>
+      <label className="text-[#374151] text-sm font-boldFont">{label}</label>
       {children}
     </div>
   );
