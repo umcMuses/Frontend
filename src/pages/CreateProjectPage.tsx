@@ -17,7 +17,7 @@ export interface ProjectData {
   funding: FundingData;
   rewards: unknown[];
   story: StoryData;
-  info: unknown[];
+  info: InfoData;
 }
 
 export type FundingData = {
@@ -30,6 +30,17 @@ export type FundingData = {
 export type StoryData = {
   story_html: string;
   refund_policy: string;
+};
+
+export type InfoData = {
+  host_name: string;
+  host_birth: string;
+  host_phone: string;
+  host_email: string;
+  host_address: string;
+  manager_name: string | '';
+  manager_phone: string | '';
+  manager_email: string | '';
 };
 
 export default function CreateProjectPage() {
@@ -52,7 +63,16 @@ export default function CreateProjectPage() {
       story_html: '',
       refund_policy: '',
     },
-    info: [],
+    info: {
+      host_name: '',
+      host_birth: '',
+      host_phone: '',
+      host_email: '',
+      host_address: '',
+      manager_name: '',
+      manager_phone: '',
+      manager_email: '',
+    },
   });
 
   const updateProjectData = (key: keyof ProjectData, value: unknown) => {

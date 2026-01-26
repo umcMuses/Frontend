@@ -42,7 +42,6 @@ export default function FundingStep({ data, onChange }: StepProps) {
           <InputFrame>
             <input
               type="text"
-              onChange={(e) => onChange('title', e.target.value)}
               aria-required="true"
               placeholder="성공해야 리워드 (All or Nothing)"
               className="w-full text-mainBlack placeholder:text-mainBlack font-mainFont focus:outline-none"
