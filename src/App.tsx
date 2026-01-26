@@ -33,8 +33,8 @@ function ScrollToTop() {
 
 function AppLayout() {
   const { pathname } = useLocation();
-  //const hideHeaderPrefixes = ['/create-project', '/login']; // 헤더를 숨길 경로 설정 예시
-  const hideHeaderPrefixes = [''];
+  //const hideHeaderPrefixes = ['/create-project', '/admin']; // 헤더를 숨길 경로 설정 예시
+  const hideHeaderPrefixes = ['/admin'];
   const shouldHideHeader = hideHeaderPrefixes.some((prefix) =>
     pathname.startsWith(prefix)
   );
