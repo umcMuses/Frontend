@@ -16,7 +16,6 @@ export default function ProjectInfo({ projectId }: ProjectInfoProps) {
   const [likePulseKey, setLikePulseKey] = useState(0);
   const [particles, setParticles] = useState<number[]>([]);
   const likeCount = (detail?.likes ?? 0) + (isLiked ? 1 : 0);
-
   useEffect(() => {
     if (particles.length === 0) return;
     const timer = window.setTimeout(() => setParticles([]), 600);
