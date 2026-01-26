@@ -16,15 +16,20 @@ export interface ProjectData {
   summary: string;
   funding: FundingData;
   rewards: unknown[];
-  story: unknown[];
+  story: StoryData;
   info: unknown[];
 }
 
 export type FundingData = {
   target_amount: number | '';
+  startDate: string;
   deadline: string; // YYYY-MM-DD
   opening: string; // HH:mm
-  shippingFee: number | '';
+};
+
+export type StoryData = {
+  story_html: string;
+  refund_policy: string;
 };
 
 export default function CreateProjectPage() {
@@ -38,12 +43,15 @@ export default function CreateProjectPage() {
     summary: '',
     funding: {
       target_amount: '',
+      startDate: '',
       deadline: '',
       opening: '',
-      shippingFee: '',
     },
     rewards: [],
-    story: [],
+    story: {
+      story_html: '',
+      refund_policy: '',
+    },
     info: [],
   });
 
