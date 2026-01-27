@@ -1,7 +1,8 @@
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import type { Project } from '../../types/projects';
-import SideProjectCard from './SideProjectCard';
 import fallbackPoster from '../../assets/images/fallbackPoster.png';
+import { MOCK_PROJECT_DETAILS } from '../../types/projectDetails';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import {
   formatDeadlineDisplay,
   formatOpenDateTime,
@@ -10,17 +11,23 @@ import {
 
 interface ProjectMainProps {
   project: Project;
-  prevProject?: Project;
-  nextProject?: Project;
 }
 
-export default function ProjectMain({
-  project,
-  prevProject,
-  nextProject,
-}: ProjectMainProps) {
-  const navigate = useNavigate();
-  const posterSrc = project.posterImage ?? fallbackPoster;
+export default function ProjectMain({ project }: ProjectMainProps) {
+  const posterFallback = project.posterImage ?? fallbackPoster;
+  const detail = MOCK_PROJECT_DETAILS.find(
+    (item) => item.projectId === project.id
+  );
+  const posters =
+    detail?.posters && detail.posters.length > 0
+      ? detail.posters
+      : [posterFallback];
+  const [posterIndex, setPosterIndex] = useState(0);
+
+  useEffect(() => {
+    setPosterIndex(0);
+  }, [project.id]);
+
   const openDateLabel = project.openDate
     ? formatOpenDateTime(project.openDate)
     : '';
@@ -34,27 +41,69 @@ export default function ProjectMain({
       : formatDeadlineDisplay(project.deadline)
     : '';
 
+  const hasPrev = posterIndex > 0;
+  const hasNext = posterIndex < posters.length - 1;
+  const prevIndex = hasPrev ? posterIndex - 1 : 0;
+  const nextIndex = hasNext ? posterIndex + 1 : posters.length - 1;
+  const currentPoster = posters[posterIndex];
+
   return (
     <div className="w-full max-w-[1247px] pt-20 px-4 flex flex-col items-center font-mainFont mb-12">
       {/* 프로젝트 카드 */}
       <div className="relative w-full flex items-center justify-center mb-[30px]">
-        {prevProject && (
-          <SideProjectCard
-            project={prevProject}
-            position="prev"
-            onClick={() => navigate(`/project/${prevProject.id}`)}
-          />
+        {posters.length > 1 && (
+          <button
+            type="button"
+            aria-label="이전 포스터"
+            className={`absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-[340px] z-20 w-14 h-14 rounded-full bg-white80/50 text-black80 flex items-center justify-center shadow ${hasPrev ? 'cursor-pointer' : 'opacity-40 cursor-default'}`}
+            disabled={!hasPrev}
+            onClick={() => {
+              if (!hasPrev) return;
+              setPosterIndex((prev) => Math.max(0, prev - 1));
+            }}
+          >
+            <ChevronLeft className="w-8 h-8 text-white" />
+          </button>
         )}
-        <div
-          className="relative z-10 w-[416px] h-[564px] rounded-3xl shadow-2xl flex items-center justify-center bg-cover bg-center"
-          style={{ backgroundImage: `url(${posterSrc})` }}
-        />
-        {nextProject && (
-          <SideProjectCard
-            project={nextProject}
-            position="next"
-            onClick={() => navigate(`/project/${nextProject.id}`)}
+        {posters.length > 1 && (
+          <>
+            {hasPrev && (
+              <div
+                className="absolute z-0 left-1/2 -translate-x-[340px] w-[290px] h-[460px] rounded-3xl shadow-md overflow-hidden bg-cover bg-center opacity-70"
+                style={{ backgroundImage: `url(${posters[prevIndex]})` }}
+              >
+                <div className="absolute inset-0 backdrop-blur-sm" />
+              </div>
+            )}
+            {hasNext && (
+              <div
+                className="absolute z-0 left-1/2 translate-x-[50px] w-[290px] h-[460px] rounded-3xl shadow-md overflow-hidden bg-cover bg-center opacity-70"
+                style={{ backgroundImage: `url(${posters[nextIndex]})` }}
+              >
+                <div className="absolute inset-0 backdrop-blur-sm" />
+              </div>
+            )}
+          </>
+        )}
+        <div className="relative z-10 w-[416px] h-[564px]">
+          <div
+            className="absolute inset-0 rounded-3xl shadow-2xl bg-cover bg-center"
+            style={{ backgroundImage: `url(${currentPoster})` }}
           />
+        </div>
+        {posters.length > 1 && (
+          <button
+            type="button"
+            aria-label="다음 포스터"
+            className={`absolute left-1/2 top-1/2 -translate-y-1/2 translate-x-[50px] z-20 w-14 h-14 rounded-full bg-white80/50 text-black80 flex items-center justify-center shadow ${hasNext ? 'cursor-pointer' : 'opacity-40 cursor-default'}`}
+            disabled={!hasNext}
+            onClick={() => {
+              if (!hasNext) return;
+              setPosterIndex((prev) => Math.min(posters.length - 1, prev + 1));
+            }}
+          >
+            <ChevronRight className="w-8 h-8 text-white" />
+          </button>
         )}
       </div>
       {/* 프로젝트 태그 */}

@@ -1,3 +1,5 @@
+import mockPoster1 from '../assets/images/mockposters/1.png';
+
 export interface Project {
   id: number;
   location: string;
@@ -24,7 +26,7 @@ export const MOCK_PROJECTS: Project[] = [
     deadline: '2026.03.25T00:00:00',
     supporters: 335,
     openDate: '2025.10.20T00:00:00',
-    posterImage: null,
+    posterImage: mockPoster1,
   },
   {
     id: 2,
@@ -37,7 +39,7 @@ export const MOCK_PROJECTS: Project[] = [
     deadline: '2026.03.31T00:00:00',
     supporters: 142,
     openDate: '2025.10.22T00:00:00',
-    posterImage: null,
+    posterImage: mockPoster1,
   },
   {
     id: 3,
@@ -49,7 +51,7 @@ export const MOCK_PROJECTS: Project[] = [
     deadline: '2026.04.17T23:00:00',
     supporters: 123,
     openDate: '2025.10.18T00:00:00',
-    posterImage: null,
+    posterImage: mockPoster1,
   },
   {
     id: 4,

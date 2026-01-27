@@ -11,16 +11,6 @@ export default function ProjectDetailPage() {
   const project =
     orderedProjects.find((item) => item.id === projectId) ??
     orderedProjects.find((item) => String(item.id) === (id ?? ''));
-  const projectIndex = project
-    ? orderedProjects.findIndex((item) => item.id === project.id)
-    : -1;
-  const prevProject =
-    projectIndex > 0 ? orderedProjects[projectIndex - 1] : undefined;
-  const nextProject =
-    projectIndex >= 0 && projectIndex < orderedProjects.length - 1
-      ? orderedProjects[projectIndex + 1]
-      : undefined;
-
   if (!project) {
     return (
       <div className="min-h-screen pt-24 pb-[230px] w-full bg-mainWhite flex flex-col items-center">
@@ -33,11 +23,7 @@ export default function ProjectDetailPage() {
 
   return (
     <div className="min-h-screen pt-24 pb-[230px] w-full bg-mainWhite flex flex-col items-center overflow-x-hidden">
-      <ProjectMain
-        project={project}
-        prevProject={prevProject}
-        nextProject={nextProject}
-      />
+      <ProjectMain project={project} />
       <ProjectInfo projectId={project.id} />
       <ProjectFooter />
     </div>

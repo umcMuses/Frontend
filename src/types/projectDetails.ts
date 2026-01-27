@@ -1,4 +1,7 @@
 import cheeringImage from '../assets/images/cheering.png';
+import mockPoster1 from '../assets/images/mockposters/1.png';
+import mockPoster2 from '../assets/images/mockposters/2.png';
+import mockPoster3 from '../assets/images/mockposters/3.png';
 
 export interface ProjectDetailData {
   projectId: number;
@@ -6,6 +9,7 @@ export interface ProjectDetailData {
   creator: string;
   projectManager: string;
   projectManagerPhoneNumber: string;
+  posters: string[];
   rewards: ProjectReward[];
   likes: number;
 }
@@ -31,6 +35,7 @@ export const MOCK_PROJECT_DETAILS: ProjectDetailData[] = [
     creator: 'Band Dawn',
     projectManager: '김민지',
     projectManagerPhoneNumber: '010-1234-5678',
+    posters: [mockPoster1, mockPoster2, mockPoster3],
     likes: 100,
     rewards: [
       {
@@ -70,6 +75,7 @@ export const MOCK_PROJECT_DETAILS: ProjectDetailData[] = [
     creator: 'Band Dawn',
     projectManager: '박지훈',
     projectManagerPhoneNumber: '010-2345-6789',
+    posters: [mockPoster2, mockPoster3],
     likes: 100,
     rewards: [
       {
@@ -108,6 +114,7 @@ export const MOCK_PROJECT_DETAILS: ProjectDetailData[] = [
     creator: 'Band Dawn',
     projectManager: '이서연',
     projectManagerPhoneNumber: '010-3456-7890',
+    posters: [mockPoster3],
     likes: 100,
     rewards: [
       {
