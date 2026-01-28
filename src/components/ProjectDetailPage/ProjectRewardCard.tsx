@@ -17,6 +17,10 @@ export const ProjectRewardCard = ({
   isSelected = false,
 }: ProjectRewardCardProps) => {
   const canAdjustQuantity = quantity !== undefined && onQuantityChange;
+  const remainingQuantity =
+    reward.total_quantity !== null
+      ? Math.max(0, reward.total_quantity - reward.sold_quantity)
+      : null;
   return (
     <div
       className={`group relative w-full rounded-[32px] border p-6 bg-white cursor-pointer hover:border-solidBlue hover:shadow-md hover:shadow-solidBlue/10 transition-all duration-300 ${isSelected ? 'border-solidBlue shadow-md shadow-solidBlue/10' : 'border-white60 '}`}
@@ -52,10 +56,16 @@ export const ProjectRewardCard = ({
             onClick={(event) => {
               event.stopPropagation();
               onQuantityChange(
-                Math.min(reward.numberOfAvailable, (quantity ?? 1) + 1)
+                Math.min(
+                  reward.total_quantity ?? (quantity ?? 1) + 1,
+                  (quantity ?? 1) + 1
+                )
               );
             }}
-            disabled={(quantity ?? 1) >= reward.numberOfAvailable}
+            disabled={
+              reward.total_quantity !== null &&
+              (quantity ?? 1) >= reward.total_quantity
+            }
           >
             +
           </button>
@@ -69,7 +79,7 @@ export const ProjectRewardCard = ({
         {reward.price.toLocaleString()}원
       </span>
       <p className="mb-2 text-base font-mediumFont text-mainBlack">
-        {reward.title}
+        {reward.reward_name}
       </p>
       <p className="mb-4 text-sm text-black60 leading-relaxed">
         {reward.description}
@@ -78,11 +88,13 @@ export const ProjectRewardCard = ({
         <div className="flex gap-2 items-center">
           <CircleCheckBig className="w-3 h-3 text-solidBlue" />
           <p className="text-xs font-boldFont text-black40">
-            {reward.numberOfFunded}명 선택함
+            {reward.sold_quantity}명 선택함
           </p>
         </div>
         <p className="text-xs font-boldFont text-[#F87171]">
-          {reward.numberOfAvailable}개 남음
+          {remainingQuantity !== null
+            ? `${remainingQuantity}개 남음`
+            : '수량 제한 없음'}
         </p>
       </div>
     </div>

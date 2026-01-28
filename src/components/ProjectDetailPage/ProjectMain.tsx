@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import type { Project } from '../../types/projects';
+import type { ProjectDetailData, ProjectTag } from '../../types/projectDetails';
 import fallbackPoster from '../../assets/images/fallbackPoster.png';
-import { MOCK_PROJECT_DETAILS } from '../../types/projectDetails';
+import { MOCK_PROJECT_DETAILS } from '../../mocks/projectDetail';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import {
   formatDeadlineDisplay,
@@ -14,9 +15,12 @@ interface ProjectMainProps {
 }
 
 export default function ProjectMain({ project }: ProjectMainProps) {
-  const posterFallback = project.posterImage ?? fallbackPoster;
+  const posterFallback =
+    MOCK_PROJECT_DETAILS.find(
+      (item: ProjectDetailData) => item.projectId === project.project_id
+    )?.posters[0] ?? fallbackPoster;
   const detail = MOCK_PROJECT_DETAILS.find(
-    (item) => item.projectId === project.id
+    (item) => item.projectId === project.project_id
   );
   const posters =
     detail?.posters && detail.posters.length > 0
@@ -26,14 +30,12 @@ export default function ProjectMain({ project }: ProjectMainProps) {
 
   useEffect(() => {
     setPosterIndex(0);
-  }, [project.id]);
+  }, [project.project_id]);
 
-  const openDateLabel = project.openDate
-    ? formatOpenDateTime(project.openDate)
+  const openDateLabel = project.opening
+    ? formatOpenDateTime(project.opening)
     : '';
-  const isOpenFuture = project.openDate
-    ? isFutureOpen(project.openDate)
-    : false;
+  const isOpenFuture = project.opening ? isFutureOpen(project.opening) : false;
 
   const deadlineLabel = project.deadline
     ? isOpenFuture
@@ -108,12 +110,14 @@ export default function ProjectMain({ project }: ProjectMainProps) {
       </div>
       {/* 프로젝트 태그 */}
       <div className="flex flex-wrap justify-center gap-2 mb-5 z-10">
-        {project.tags.map((tag) => (
+        {MOCK_PROJECT_DETAILS.find(
+          (item: ProjectDetailData) => item.projectId === project.project_id
+        )?.tags.map((tag: ProjectTag) => (
           <span
-            key={tag}
+            key={tag.tag_id}
             className="text-xs text-black80 bg-white/40 px-4 py-1 rounded-full border border-white/30 font-boldFont shadow-xs"
           >
-            {tag}
+            {tag.tag_name}
           </span>
         ))}
       </div>
@@ -122,9 +126,15 @@ export default function ProjectMain({ project }: ProjectMainProps) {
       <h1 className="text-[48px] font-blackFont text-mainBlack text-center mb-4">
         {project.title}
       </h1>
-      {project.subtitle && (
+      {MOCK_PROJECT_DETAILS.find(
+        (item: ProjectDetailData) => item.projectId === project.project_id
+      )?.contents.story_html && (
         <p className="text-lg text-black80 text-center font-mediumFont">
-          {project.subtitle}
+          {
+            MOCK_PROJECT_DETAILS.find(
+              (item: ProjectDetailData) => item.projectId === project.project_id
+            )?.contents.story_html
+          }
         </p>
       )}
       {/* 프로젝트 달성율 박스 */}
@@ -132,7 +142,7 @@ export default function ProjectMain({ project }: ProjectMainProps) {
         <div className="flex items-end justify-between mb-3">
           <div className="flex items-baseline gap-2">
             <span className="text-[36px] font-blackFont text-mainBlack leading-none">
-              {project.progress}%
+              {project.achieve_rate}%
             </span>
             <span className="text-sm font-boldFont text-black60">달성</span>
           </div>
@@ -150,13 +160,13 @@ export default function ProjectMain({ project }: ProjectMainProps) {
         </div>
         <div className="w-full h-4 bg-white60 rounded-full overflow-hidden mb-6">
           <div
-            key={project.id}
+            key={project.project_id}
             className="h-full rounded-full animate-progress-slide"
             style={{
               width: 'var(--progress-width)',
               background: 'linear-gradient(to right, #6366F1, #A855F7)',
               ['--progress-width' as string]: `${Math.min(
-                project.progress,
+                project.achieve_rate,
                 100
               )}%`,
             }}
@@ -171,7 +181,7 @@ export default function ProjectMain({ project }: ProjectMainProps) {
             </div>
             <span className="text-mainBlack font-boldFont pt-1">
               <span className="text-solidBlue font-blackFont">
-                {project.supporters}명의 메이커
+                {project.supporter_count}명의 메이커
               </span>
               가 함께해요
             </span>

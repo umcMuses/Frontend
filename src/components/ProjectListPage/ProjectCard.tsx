@@ -1,8 +1,10 @@
 import { MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ProjectCardFooter from './ProjectCardFooter';
-import type { Project } from '../../types/projects';
 import fallbackPoster from '../../assets/images/fallbackPoster.png';
+import type { Project } from '../../types/projects';
+import type { ProjectDetailData, ProjectTag } from '../../types/projectDetails';
+import { MOCK_PROJECT_DETAILS } from '../../mocks/projectDetail';
 
 interface ProjectCardProps {
   project: Project;
@@ -15,12 +17,15 @@ export default function ProjectCard({
   posterClassNameValue,
   contentClassNameValue,
 }: ProjectCardProps) {
-  const posterSrc = project.posterImage ?? fallbackPoster;
+  const posterSrc =
+    MOCK_PROJECT_DETAILS.find(
+      (item: ProjectDetailData) => item.projectId === project.project_id
+    )?.posters[0] ?? fallbackPoster;
   const posterClassName =
     posterClassNameValue ?? 'h-[380px] w-[285px] rounded-3xl';
   return (
     <Link
-      to={`/project/${project.id}`}
+      to={`/project/${project.project_id}`}
       className="flex flex-col group cursor-pointer font-mainFont h-fit"
     >
       {/* 위치 및 상태, 썸네일 */}
@@ -39,7 +44,7 @@ export default function ProjectCard({
           <div className="flex items-center gap-1 bg-white/90 rounded-lg px-2.5 py-1 shadow-sm mr-2">
             <MapPin className="w-4 h-4 text-solidBlue" />
             <span className="text-[10px] font-boldFont text-[#1F2937]">
-              {project.location}
+              {project.region}
             </span>
           </div>
           <span
@@ -80,12 +85,14 @@ export default function ProjectCard({
       <div className={`${contentClassNameValue ?? ''}`}>
         {/* 태그 */}
         <div className="flex gap-2 mb-2 flex-wrap">
-          {project.tags.map((tag) => (
+          {MOCK_PROJECT_DETAILS.find(
+            (item: ProjectDetailData) => item.projectId === project.project_id
+          )?.tags.map((tag: ProjectTag) => (
             <span
-              key={tag}
+              key={tag.tag_id}
               className="text-[10px] text-black60 bg-white80 px-2 py-0.5 rounded border border-white60"
             >
-              {tag}
+              {tag.tag_name}
             </span>
           ))}
         </div>

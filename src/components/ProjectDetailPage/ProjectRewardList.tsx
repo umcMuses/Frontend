@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
-import {
-  MOCK_PROJECT_DETAILS,
-  type ProjectReward,
-} from '../../types/projectDetails';
+import { type ProjectReward } from '../../types/projectDetails';
+import { MOCK_PROJECT_DETAILS } from '../../mocks/projectDetail';
 import { ProjectRewardCard } from './ProjectRewardCard';
 import tosspayLogo from '../../assets/images/TossPay_Logo_Primary.png';
 
@@ -22,17 +20,18 @@ export const ProjectRewardList = ({ projectId }: ProjectRewardListProps) => {
   );
   const selectedRewards =
     detail?.rewards?.filter(
-      (reward) => (selectedQuantities[reward.id] ?? 0) > 0
+      (reward) => (selectedQuantities[reward.reward_id] ?? 0) > 0
     ) ?? [];
   const totalAmount = selectedRewards.reduce(
-    (sum, reward) => sum + reward.price * (selectedQuantities[reward.id] ?? 0),
+    (sum, reward) =>
+      sum + reward.price * (selectedQuantities[reward.reward_id] ?? 0),
     0
   );
 
   const handleSelectReward = (reward: ProjectReward) => {
     setSelectedQuantities((prev) => {
-      if (prev[reward.id]) return prev;
-      return { ...prev, [reward.id]: 1 };
+      if (prev[reward.reward_id]) return prev;
+      return { ...prev, [reward.reward_id]: 1 };
     });
   };
 
@@ -44,8 +43,8 @@ export const ProjectRewardList = ({ projectId }: ProjectRewardListProps) => {
         return next;
       }
       const maxAvailable =
-        detail?.rewards?.find((reward) => reward.id === rewardId)
-          ?.numberOfAvailable ?? quantity;
+        detail?.rewards?.find((reward) => reward.reward_id === rewardId)
+          ?.total_quantity ?? quantity;
       return {
         ...prev,
         [rewardId]: Math.min(quantity, maxAvailable),
@@ -74,10 +73,10 @@ export const ProjectRewardList = ({ projectId }: ProjectRewardListProps) => {
       <p className="text-lg font-boldFont text-mainBlack px-2">리워드 선택</p>
       <div className="flex flex-col gap-4">
         {detail?.rewards?.map((reward) => {
-          const selectedQuantity = selectedQuantities[reward.id] ?? 0;
+          const selectedQuantity = selectedQuantities[reward.reward_id] ?? 0;
           return (
             <ProjectRewardCard
-              key={reward.id}
+              key={reward.reward_id}
               reward={reward}
               onClick={handleSelectReward}
               isSelected={selectedQuantity > 0}
@@ -85,7 +84,7 @@ export const ProjectRewardList = ({ projectId }: ProjectRewardListProps) => {
               onQuantityChange={
                 selectedQuantity > 0
                   ? (nextQuantity) =>
-                      handleQuantityChange(reward.id, nextQuantity)
+                      handleQuantityChange(reward.reward_id, nextQuantity)
                   : undefined
               }
             />
@@ -137,16 +136,16 @@ export const ProjectRewardList = ({ projectId }: ProjectRewardListProps) => {
               <div className="flex flex-col gap-5 border-b border-white40 pb-7.5 mb-7.5">
                 {selectedRewards.map((reward) => (
                   <div
-                    key={reward.id}
+                    key={reward.reward_id}
                     className="flex items-start justify-between gap-4"
                   >
                     <div>
                       <div className="flex gap-4 items-center mb-2.5">
                         <p className="text-2xl font-boldFont text-mainBlack">
-                          {reward.title}
+                          {reward.reward_name}
                         </p>
                         <p className="text-base text-black60 font-mediumFont">
-                          x {selectedQuantities[reward.id]}
+                          x {selectedQuantities[reward.reward_id]}
                         </p>
                       </div>
                       <p className="text-base text-black60 font-mediumFont">
@@ -155,7 +154,8 @@ export const ProjectRewardList = ({ projectId }: ProjectRewardListProps) => {
                     </div>
                     <p className="text-lg font-boldFont text-solidBlue">
                       {(
-                        reward.price * (selectedQuantities[reward.id] ?? 0)
+                        reward.price *
+                        (selectedQuantities[reward.reward_id] ?? 0)
                       ).toLocaleString()}
                       원
                     </p>

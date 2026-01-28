@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { MOCK_PROJECT_DETAILS } from '../../types/projectDetails';
+import { MOCK_PROJECT_DETAILS } from '../../mocks/projectDetail';
 import { ProjectCreatorCard } from './ProjectCreatorCard';
 import { ProjectRewardList } from './ProjectRewardList';
 import { Heart, Share2 } from 'lucide-react';
+import type { ProjectDetailData } from '../../types/projectDetails';
 
 interface ProjectInfoProps {
   projectId: number;
@@ -10,7 +11,7 @@ interface ProjectInfoProps {
 
 export default function ProjectInfo({ projectId }: ProjectInfoProps) {
   const detail = MOCK_PROJECT_DETAILS.find(
-    (item) => item.projectId === projectId
+    (item: ProjectDetailData) => item.projectId === projectId
   );
   const [isLiked, setIsLiked] = useState(false);
   const [likePulseKey, setLikePulseKey] = useState(0);
@@ -38,7 +39,7 @@ export default function ProjectInfo({ projectId }: ProjectInfoProps) {
           {detail ? (
             <div
               className="project-detail-content mt-6 text-base text-black80 leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: detail.contentHtml }}
+              dangerouslySetInnerHTML={{ __html: detail.contents.story_html }}
             />
           ) : (
             <p className="mt-6 text-base text-black80 leading-relaxed">

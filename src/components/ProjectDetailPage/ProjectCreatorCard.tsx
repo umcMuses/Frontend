@@ -1,5 +1,6 @@
 import { ChevronRight, Users } from 'lucide-react';
-import { MOCK_PROJECT_DETAILS } from '../../types/projectDetails';
+import { MOCK_PROJECT_DETAILS } from '../../mocks/projectDetail';
+import type { ProjectDetailData } from '../../types/projectDetails';
 
 interface ProjectInfoProps {
   projectId: number;
@@ -7,7 +8,7 @@ interface ProjectInfoProps {
 
 export const ProjectCreatorCard = ({ projectId }: ProjectInfoProps) => {
   const detail = MOCK_PROJECT_DETAILS.find(
-    (item) => item.projectId === projectId
+    (item: ProjectDetailData) => item.projectId === projectId
   );
 
   return (
@@ -19,7 +20,7 @@ export const ProjectCreatorCard = ({ projectId }: ProjectInfoProps) => {
         <div className="flex flex-col gap-1 justify-start w-[166px]">
           <p className="text-xs font-boldFont text-black40">Creator</p>
           <p className="text-lg font-boldFont text-mainBlack">
-            {detail?.creator}
+            {detail?.creatorName}
           </p>
         </div>
         <div className="w-8 h-8 bg-mainWhite rounded-full p-2 cursor-pointer hover:bg-white60 transition-all duration-300">
@@ -29,10 +30,10 @@ export const ProjectCreatorCard = ({ projectId }: ProjectInfoProps) => {
       <div className="flex justify-between items-center">
         <p className="text-xs font-boldFont text-black40">담당자</p>
         <p className="text-lg font-boldFont text-mainBlack">
-          {detail?.projectManager}
+          {detail?.manager.manager_name}
         </p>
         <p className="text-base font-mediumFont text-mainBlack">
-          {detail?.projectManagerPhoneNumber}
+          {detail?.manager.manager_phone}
         </p>
       </div>
     </div>
