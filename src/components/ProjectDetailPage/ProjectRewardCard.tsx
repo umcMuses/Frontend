@@ -35,10 +35,10 @@ export const ProjectRewardCard = ({
       }}
     >
       {canAdjustQuantity && (
-        <div className="absolute top-4 right-4 flex items-center gap-2">
+        <div className="absolute top-4 right-4 flex items-center">
           <button
             type="button"
-            className="w-8 h-8 rounded-full border border-white60 bg-white text-mainBlack hover:border-solidBlue disabled:opacity-40"
+            className="w-8 h-8 text-mainBlack border border-white60 hover:border-solidBlue transition-all duration-300 disabled:opacity-40 cursor-pointer"
             onClick={(event) => {
               event.stopPropagation();
               onQuantityChange(Math.max(0, (quantity ?? 1) - 1));
@@ -47,12 +47,12 @@ export const ProjectRewardCard = ({
           >
             -
           </button>
-          <span className="w-8 text-center text-sm font-boldFont text-mainBlack">
+          <span className="w-8 h-8 flex items-center justify-center border-y border-white60 text-xs font-mediumFont text-mainBlack">
             {quantity}
           </span>
           <button
             type="button"
-            className="w-8 h-8 rounded-full border border-white60 bg-white text-mainBlack hover:border-solidBlue disabled:opacity-40"
+            className="w-8 h-8 text-mainBlack border border-white60 hover:border-solidBlue transition-all duration-300 disabled:opacity-40 cursor-pointer"
             onClick={(event) => {
               event.stopPropagation();
               onQuantityChange(
