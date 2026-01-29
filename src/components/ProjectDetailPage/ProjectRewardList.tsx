@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
+import { loadTossPayments } from '@tosspayments/tosspayments-sdk';
 import { type ProjectReward } from '../../types/projectDetails';
 import { MOCK_PROJECT_DETAILS } from '../../mocks/projectDetail';
 import { ProjectRewardCard } from './ProjectRewardCard';
 import tosspayLogo from '../../assets/images/TossPay_Logo_Primary.png';
+import { ENDPOINTS } from '../../api/endpoints';
 
 interface ProjectRewardListProps {
   projectId: number;
@@ -27,6 +29,10 @@ export const ProjectRewardList = ({ projectId }: ProjectRewardListProps) => {
       sum + reward.price * (selectedQuantities[reward.reward_id] ?? 0),
     0
   );
+
+  // 결제 연동 관련 상태
+  const [paymentError, setPaymentError] = useState('');
+  const [isPaying, setIsPaying] = useState(false);
 
   const handleSelectReward = (reward: ProjectReward) => {
     setSelectedQuantities((prev) => {
@@ -55,6 +61,7 @@ export const ProjectRewardList = ({ projectId }: ProjectRewardListProps) => {
   useEffect(() => {
     if (!isPaymentOpen) return;
     setPaymentMethod('토스페이먼츠');
+    setPaymentError('');
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     return () => {
@@ -67,6 +74,59 @@ export const ProjectRewardList = ({ projectId }: ProjectRewardListProps) => {
       setShowSelectNotice(false);
     }
   }, [selectedRewards.length]);
+
+  // 결제 처리 api 연동
+  const handlePayment = async () => {
+    if (selectedRewards.length === 0) return;
+    setIsPaying(true);
+    setPaymentError('');
+    try {
+      const prepareResponse = await fetch(ENDPOINTS.ORDERS_PREPARE, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          projectId,
+          items: selectedRewards.map((reward) => ({
+            rewardId: reward.reward_id,
+            quantity: selectedQuantities[reward.reward_id] ?? 0,
+            unitPrice: reward.price,
+          })),
+        }),
+      }).then((response) => response.json());
+
+      if (!prepareResponse?.success) {
+        throw new Error(
+          prepareResponse?.error?.message ?? '주문 생성에 실패했습니다.'
+        );
+      }
+
+      const { customerKey, clientKey, successUrl, failUrl } =
+        prepareResponse?.data ?? {};
+      if (!customerKey || !clientKey || !successUrl || !failUrl) {
+        throw new Error('결제 정보를 가져오지 못했습니다.');
+      }
+
+      const tossPayments = await loadTossPayments(clientKey);
+      const billingAuthRequester = tossPayments as unknown as {
+        requestBillingAuth: (params: {
+          customerKey: string;
+          successUrl: string;
+          failUrl: string;
+        }) => Promise<void>;
+      };
+      await billingAuthRequester.requestBillingAuth({
+        customerKey,
+        successUrl,
+        failUrl,
+      });
+    } catch (error) {
+      setPaymentError(
+        error instanceof Error ? error.message : '결제에 실패했습니다.'
+      );
+    } finally {
+      setIsPaying(false);
+    }
+  };
 
   return (
     <div className="flex flex-col gap-4 mb-6">
@@ -115,6 +175,7 @@ export const ProjectRewardList = ({ projectId }: ProjectRewardListProps) => {
           ? '응원하기'
           : `총 ${totalAmount.toLocaleString()}원 응원하기`}
       </button>
+      {/* 결제 모달 창 */}
       {isPaymentOpen && selectedRewards.length > 0 && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div
@@ -190,11 +251,23 @@ export const ProjectRewardList = ({ projectId }: ProjectRewardListProps) => {
               ))}
             </div>
 
+            {paymentError && (
+              <p className="mb-8 text-sm font-mediumFont text-[#EF4444]">
+                {paymentError}
+              </p>
+            )}
+
             <button
               type="button"
-              className="w-full h-20 rounded-xl bg-mainBlack text-mainWhite font-boldFont text-2xl cursor-pointer"
+              className={`w-full h-20 rounded-xl font-boldFont text-2xl ${
+                isPaying
+                  ? 'bg-black40 text-mainWhite cursor-default'
+                  : 'bg-mainBlack text-mainWhite cursor-pointer'
+              }`}
+              onClick={handlePayment}
+              disabled={isPaying}
             >
-              결제하기
+              {isPaying ? '결제 처리 중...' : '결제하기'}
             </button>
           </div>
         </div>

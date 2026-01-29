@@ -52,7 +52,7 @@ export interface ProjectDetailData {
   contents: ProjectContents;
   manager: ProjectManager;
   tags: ProjectTag[];
-  posters: string[];
+  posters?: string[];
   rewards: ProjectReward[];
   likes: number;
 }

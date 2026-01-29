@@ -10,7 +10,7 @@ export default function ProjectCardFooter({ project }: ProjectCardFooterProps) {
   return (
     <>
       {/* 달성률, 마감일 */}
-      {project.status === '진행중' && (
+      {project.funding_status === 'FUNDING' && (
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between">
             <span className="text-[18px] font-blackFont text-[#4F46E5]">
@@ -35,7 +35,7 @@ export default function ProjectCardFooter({ project }: ProjectCardFooterProps) {
         </div>
       )}
 
-      {project.status === '오픈예정' && (
+      {project.funding_status === 'SCHEDULED' && (
         <div className="flex items-center justify-between">
           {project.opening && (
             <div className="flex items-center gap-1">
@@ -58,7 +58,8 @@ export default function ProjectCardFooter({ project }: ProjectCardFooterProps) {
         </div>
       )}
 
-      {project.status === '종료' && (
+      {(project.funding_status === 'SUCCESS' ||
+        project.funding_status === 'FAIL') && (
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1">
             <Award className="w-4 h-4 text-black60" />

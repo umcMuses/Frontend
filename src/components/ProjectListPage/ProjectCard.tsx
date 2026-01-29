@@ -20,7 +20,7 @@ export default function ProjectCard({
   const posterSrc =
     MOCK_PROJECT_DETAILS.find(
       (item: ProjectDetailData) => item.projectId === project.project_id
-    )?.posters[0] ?? fallbackPoster;
+    )?.posters?.[0] ?? fallbackPoster;
   const posterClassName =
     posterClassNameValue ?? 'h-[380px] w-[285px] rounded-3xl';
   return (
@@ -49,45 +49,50 @@ export default function ProjectCard({
           </div>
           <span
             className={`px-2 py-1 rounded text-[10px] font-boldFont ${
-              project.status === '진행중'
+              project.funding_status === 'FUNDING'
                 ? 'bg-solidBlue text-white'
-                : project.status === '오픈예정'
+                : project.funding_status === 'SCHEDULED'
                   ? 'bg-[#FACC15] text-black'
                   : 'bg-black60 text-white'
             }`}
           >
-            {project.status}
+            {project.funding_status === 'FUNDING'
+              ? '진행중'
+              : project.funding_status === 'SCHEDULED'
+                ? '오픈예정'
+                : '마감'}
           </span>
         </div>
 
         {/* 종료 상태 오버레이 */}
-        {project.status === '종료' && (
-          <>
-            {/* 배경 오버레이 */}
-            <div className="absolute bottom-0 left-0 right-0 h-full rounded-b-3xl bg-black/40" />
+        {project.funding_status === 'SUCCESS' ||
+          (project.funding_status === 'FAIL' && (
+            <>
+              {/* 배경 오버레이 */}
+              <div className="absolute bottom-0 left-0 right-0 h-full rounded-b-3xl bg-black/40" />
 
-            {/* CLOSED\ 텍스트 */}
-            <div className="absolute inset-0 flex items-center justify-center z-20">
-              <div
-                className="px-4 py-2 border-2 border-white"
-                style={{
-                  transform: 'rotate(-15deg)',
-                }}
-              >
-                <span className="text-xl font-blackFont text-white tracking-wider">
-                  CLOSED
-                </span>
+              {/* CLOSED\ 텍스트 */}
+              <div className="absolute inset-0 flex items-center justify-center z-20">
+                <div
+                  className="px-4 py-2 border-2 border-white"
+                  style={{
+                    transform: 'rotate(-15deg)',
+                  }}
+                >
+                  <span className="text-xl font-blackFont text-white tracking-wider">
+                    CLOSED
+                  </span>
+                </div>
               </div>
-            </div>
-          </>
-        )}
+            </>
+          ))}
       </div>
       <div className={`${contentClassNameValue ?? ''}`}>
         {/* 태그 */}
         <div className="flex gap-2 mb-2 flex-wrap">
           {MOCK_PROJECT_DETAILS.find(
             (item: ProjectDetailData) => item.projectId === project.project_id
-          )?.tags.map((tag: ProjectTag) => (
+          )?.tags?.map((tag: ProjectTag) => (
             <span
               key={tag.tag_id}
               className="text-[10px] text-black60 bg-white80 px-2 py-0.5 rounded border border-white60"
@@ -101,7 +106,7 @@ export default function ProjectCard({
         <h3 className="text-[20px] font-boldFont text-mainBlack mb-4 group-hover:text-solidBlue transition-all duration-500">
           <span
             className={`title-clamp ${
-              project.status === '진행중' ? 'title-clamp--fixed' : ''
+              project.funding_status === 'FUNDING' ? 'title-clamp--fixed' : ''
             }`}
           >
             {project.title}

@@ -9,6 +9,7 @@ import {
   formatOpenDateTime,
   isFutureOpen,
 } from '../../utils/date';
+import { MOCK_PROJECTS } from '../../mocks/project';
 
 interface ProjectMainProps {
   project: Project;
@@ -18,7 +19,7 @@ export default function ProjectMain({ project }: ProjectMainProps) {
   const posterFallback =
     MOCK_PROJECT_DETAILS.find(
       (item: ProjectDetailData) => item.projectId === project.project_id
-    )?.posters[0] ?? fallbackPoster;
+    )?.posters?.[0] ?? fallbackPoster;
   const detail = MOCK_PROJECT_DETAILS.find(
     (item) => item.projectId === project.project_id
   );
@@ -57,7 +58,7 @@ export default function ProjectMain({ project }: ProjectMainProps) {
           <button
             type="button"
             aria-label="이전 포스터"
-            className={`absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-[340px] z-20 w-14 h-14 rounded-full bg-white80/50 text-black80 flex items-center justify-center shadow ${hasPrev ? 'cursor-pointer' : 'opacity-40 cursor-default'}`}
+            className={`absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-[290px] z-20 w-14 h-14 rounded-full bg-white80/50 text-black80 flex items-center justify-center shadow ${hasPrev ? 'cursor-pointer' : 'opacity-40 cursor-default'}`}
             disabled={!hasPrev}
             onClick={() => {
               if (!hasPrev) return;
@@ -97,7 +98,7 @@ export default function ProjectMain({ project }: ProjectMainProps) {
           <button
             type="button"
             aria-label="다음 포스터"
-            className={`absolute left-1/2 top-1/2 -translate-y-1/2 translate-x-[50px] z-20 w-14 h-14 rounded-full bg-white80/50 text-black80 flex items-center justify-center shadow ${hasNext ? 'cursor-pointer' : 'opacity-40 cursor-default'}`}
+            className={`absolute left-1/2 top-1/2 -translate-y-1/2 translate-x-[230px] z-20 w-14 h-14 rounded-full bg-white80/50 text-black80 flex items-center justify-center shadow ${hasNext ? 'cursor-pointer' : 'opacity-40 cursor-default'}`}
             disabled={!hasNext}
             onClick={() => {
               if (!hasNext) return;
@@ -112,7 +113,7 @@ export default function ProjectMain({ project }: ProjectMainProps) {
       <div className="flex flex-wrap justify-center gap-2 mb-5 z-10">
         {MOCK_PROJECT_DETAILS.find(
           (item: ProjectDetailData) => item.projectId === project.project_id
-        )?.tags.map((tag: ProjectTag) => (
+        )?.tags?.map((tag: ProjectTag) => (
           <span
             key={tag.tag_id}
             className="text-xs text-black80 bg-white/40 px-4 py-1 rounded-full border border-white/30 font-boldFont shadow-xs"
@@ -126,14 +127,14 @@ export default function ProjectMain({ project }: ProjectMainProps) {
       <h1 className="text-[48px] font-blackFont text-mainBlack text-center mb-4">
         {project.title}
       </h1>
-      {MOCK_PROJECT_DETAILS.find(
-        (item: ProjectDetailData) => item.projectId === project.project_id
-      )?.contents.story_html && (
+      {MOCK_PROJECTS.find(
+        (item: Project) => item.project_id === project.project_id
+      )?.description && (
         <p className="text-lg text-black80 text-center font-mediumFont">
           {
-            MOCK_PROJECT_DETAILS.find(
-              (item: ProjectDetailData) => item.projectId === project.project_id
-            )?.contents.story_html
+            MOCK_PROJECTS.find(
+              (item: Project) => item.project_id === project.project_id
+            )?.description
           }
         </p>
       )}

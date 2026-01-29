@@ -10,6 +10,8 @@ import ProjectDetailPage from './pages/ProjectDetailPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import OnBoardingPage from './pages/OnBoardingPage';
+import BillingSuccessPage from './pages/BillingSuccessPage';
+import BillingFailPage from './pages/BillingFailPage';
 
 function App() {
   return (
@@ -53,6 +55,8 @@ function AppLayout() {
         <Route path="/events" element={<EventListPage />} />
         <Route path="/project/:id" element={<ProjectDetailPage />} />
         <Route path="/mypage" element={<MyPage />} />
+        <Route path="/billing/success" element={<BillingSuccessPage />} />
+        <Route path="/billing/fail" element={<BillingFailPage />} />
       </Routes>
       <Footer />
     </>
