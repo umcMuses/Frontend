@@ -1,0 +1,9 @@
+const DashboardContainer = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="w-[1232px] flex flex-col gap-6">
+      {children}
+    </div>
+  );
+};
+
+export default DashboardContainer

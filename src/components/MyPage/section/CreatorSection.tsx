@@ -48,7 +48,7 @@ const CreatorSection = ({ projects }: Props) => {
         </div>
       </div>
 
-      <MyProjectList projects={activeProjects} />
+      <MyProjectList projects={projects} />
     </section>
   );
 };

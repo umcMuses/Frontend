@@ -4,24 +4,15 @@ import MyActivitySection from '../components/MyPage/section/MyActivitySection';
 import CreatorSection from '../components/MyPage/section/CreatorSection';
 import CreatorEmptySection from '../components/MyPage/section/CreatorEmptySection';
 import ProfileCard from '../components/MyPage/profile/ProfileCard';
-import { type Project } from '../components/MyPage/projects/ProjectType';
+import { projectItems } from '../components/MyPage/projects/projectData';
 
-const MOCK_PROJECTS: Project[] = [
-  {
-    id: 1,
-    status: 'ONGOING',
-    title: '새벽 2집 앨범 발매 기념 굿즈',
-    progressPercent: 142,
-    amount: '2,840,000원',
-    dday: 'D-3',
-  },
-];
+
 
 export default function MyPage() {
   const { activeTab, setActiveTab, isActivityTab, isCreatorTab } =
     useMyPageTab();
 
-  const isCreator = false;
+  const isCreator = true;
 
   return (
     <div className="min-h-screen bg-[#F8F9FC] pt-[110px]">
@@ -39,7 +30,7 @@ export default function MyPage() {
 
           {isCreatorTab &&
             (isCreator ? (
-              <CreatorSection projects={MOCK_PROJECTS} />
+              <CreatorSection projects={projectItems} />
             ) : (
               <CreatorEmptySection />
             ))}
