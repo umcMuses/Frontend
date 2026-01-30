@@ -6,7 +6,7 @@ const CreateNavbar = ({ step, onNext }: PrevNextProps) => {
   const navigate = useNavigate();
 
   return (
-    <nav className="absolute left-0 top-0 w-full h-[64px] flex w-full px-6 border-b border-white60 items-center justify-between">
+    <nav className="absolute left-0 top-0 w-full h-[64px] flex px-6 border-b border-white60 items-center justify-between">
       {/* 왼쪽 영역 */}
       <div className="flex items-center gap-[16px]">
         <button

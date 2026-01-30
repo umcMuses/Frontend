@@ -64,7 +64,7 @@ export default function InfoStep({ data, onChange }: StepProps) {
         <div className="w-full">
           <InputFrame>
             <input
-              type="address"
+              type="text"
               value={info.host_address}
               onChange={(e) => updateInfo({ host_address: e.target.value })}
               placeholder="주소"

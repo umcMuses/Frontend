@@ -229,6 +229,7 @@ export default function RewardStep({ data, onChange }: StepProps) {
                     <input
                       type="number"
                       inputMode="numeric"
+                      min={0}
                       value={reward.price}
                       onChange={(e) => {
                         const value = e.target.value;
@@ -258,6 +259,7 @@ export default function RewardStep({ data, onChange }: StepProps) {
                     <input
                       type="number"
                       inputMode="numeric"
+                      min={0}
                       value={reward.total_quantity}
                       onChange={(e) => {
                         const value = e.target.value;

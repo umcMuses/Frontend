@@ -38,7 +38,15 @@ export default function OverviewStep({ data, onChange }: StepProps) {
           <span className="text-black40 text-sm font-mainFont leading-5">
             이미지를 드래그하거나 클릭하여 업로드
           </span>
-          <input type="file" className="hidden" />
+          <input
+            type="file"
+            accept="image/*"
+            className="hidden"
+            onChange={(e) => {
+              const file = e.target.files?.[0] ?? null;
+              onChange('thumbnail', file);
+            }}
+          />
         </label>
       </Field>
 

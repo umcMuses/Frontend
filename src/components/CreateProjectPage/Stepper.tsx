@@ -8,12 +8,12 @@ const STEPS = ['개요', '펀딩', '리워드', '스토리', '정보'];
 
 export default function Stepper({ currentStep }: StepperProps) {
   return (
-    <div className="relative inline-flex justify-center items-center gap-36 self-stretch pr-[0.02px]">
+    <div className="relative flex justify-between items-center self-stretch w-full">
       {/* 가로 줄 (항상 뒤) */}
-      <div className="absolute left-[0.5px] top-[16px] w-[720px] h-0.5 bg-white60 z-0" />
+      <div className="absolute left-0 right-0 top-[16px] h-0.5 bg-white60 z-0" />
 
       <div
-        className="absolute top-[16px] left-0 h-0.5 bg-mainBlack z-0 transition-all"
+        className="absolute top-[16px] left-0 h-0.5 bg-mainBlack z-0 transition-all origin-left"
         style={{
           width: `${((currentStep - 1) / (STEPS.length - 1)) * 100}%`,
         }}

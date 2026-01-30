@@ -40,12 +40,9 @@ export default function FundingStep({ data, onChange }: StepProps) {
 
         <Field label="진행 방식">
           <InputFrame>
-            <input
-              type="text"
-              aria-required="true"
-              placeholder="성공해야 리워드 (All or Nothing)"
-              className="w-full text-mainBlack placeholder:text-mainBlack font-mainFont focus:outline-none"
-            />
+            <span className="w-full text-mainBlack font-mainFont">
+              성공해야 리워드 (All or Nothing)
+            </span>
           </InputFrame>
         </Field>
       </div>
