@@ -1,4 +1,5 @@
-import { MoveLeft } from "lucide-react";
+import { MoveLeft } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export type ProjectTab = 'dashboard' | 'setting' | 'makers' | 'settlement';
 
@@ -15,18 +16,20 @@ interface ProjectTabsProps {
 }
 
 const ProjectTabs = ({ activeTab, onChange }: ProjectTabsProps) => {
+  const navigate = useNavigate();
+
   return (
     <div className="w-full mx-auto px-20 bg-white border-b border-white60">
       <div className="w-full mx-auto px-6 py-4 flex flex-col gap-4">
-
         {/* 헤더 */}
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <button
               type="button"
+              onClick={() => navigate('/mypage?tab=creator')}
               className="p-2 rounded-lg"
             >
-              <MoveLeft size={20}/>
+              <MoveLeft size={20} />
             </button>
 
             <div className="pl-4 text-mainBlack text-2xl font-boldFont leading-8">
@@ -34,8 +37,8 @@ const ProjectTabs = ({ activeTab, onChange }: ProjectTabsProps) => {
             </div>
           </div>
 
-          <div className="px-2 py-0.5 bg-color-grey-94 rounded">
-            <span className="text-color-blue-59 text-[10px] font-bold leading-4">
+          <div className="px-2 py-0.5 bg-[#E0E7FF] rounded flex items-center">
+            <span className="text-[#4F46E5] text-[10px] font-boldFont leading-4">
               진행중
             </span>
           </div>
@@ -65,7 +68,6 @@ const ProjectTabs = ({ activeTab, onChange }: ProjectTabsProps) => {
             );
           })}
         </div>
-
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import type { Project, ProjectStatus } from './ProjectType';
+import type { Project, ProjectStatus } from '../types/ProjectType';
 
 const STATUS_MAP: Record<
   ProjectStatus,

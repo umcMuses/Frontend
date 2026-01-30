@@ -1,4 +1,13 @@
-import { Lightbulb, Lock, PencilLine } from 'lucide-react';
+import {
+  Delete,
+  Layers,
+  Lightbulb,
+  Lock,
+  PencilLine,
+  QrCode,
+  Ticket,
+  Trash2,
+} from 'lucide-react';
 import { useState } from 'react';
 
 interface TabProps {
@@ -133,58 +142,34 @@ const SettingTab = ({ projectId }: TabProps) => {
               ></input>
             </div>
 
-            <div className="self-stretch flex flex-col justify-start items-start gap-2">
-              <div className="self-stretch flex flex-col justify-start items-start">
-                <div className="self-stretch justify-center text-color-azure-27 text-sm font-medium font-['Pretendard'] leading-5">
-                  태그
+            <div className="self-stretch inline-flex justify-start items-start gap-2 flex-wrap text-[#7E22CE]">
+              {['음악', '축제', '공연'].map((tag) => (
+                <div
+                  key={tag}
+                  className="px-3 h-7 bg-[#F3E8FF] rounded-full inline-flex items-center gap-1"
+                >
+                  <span className="text-sm font-mainFont leading-5">{tag}</span>
+                  <Delete size={12} className="cursor-pointer" />
                 </div>
-              </div>
-              <div className="self-stretch inline-flex justify-start items-start gap-2 flex-wrap content-start">
-                <div className="w-16 h-7 relative bg-color-grey-95 rounded-full">
-                  <div className="left-[12px] top-[4px] absolute justify-center text-color-violet-47 text-sm font-normal font-['Pretendard'] leading-5">
-                    음악
-                  </div>
-                  <div className="w-3 h-3 left-[40.50px] top-[8px] absolute overflow-hidden">
-                    <div className="w-2.5 h-1.5 left-[1px] top-[2.50px] absolute outline outline-[0.60px] outline-offset-[-0.30px] outline-purple-700" />
-                  </div>
-                </div>
-                <div className="w-16 h-7 relative bg-color-grey-95 rounded-full">
-                  <div className="left-[12px] top-[4px] absolute justify-center text-color-violet-47 text-sm font-normal font-['Pretendard'] leading-5">
-                    축제
-                  </div>
-                  <div className="w-3 h-3 left-[40.50px] top-[8px] absolute overflow-hidden">
-                    <div className="w-2.5 h-1.5 left-[1px] top-[2.50px] absolute outline outline-[0.60px] outline-offset-[-0.30px] outline-purple-700" />
-                  </div>
-                </div>
-                <div className="w-16 h-7 relative bg-color-grey-95 rounded-full">
-                  <div className="left-[12px] top-[4px] absolute justify-center text-color-violet-47 text-sm font-normal font-['Pretendard'] leading-5">
-                    공연
-                  </div>
-                  <div className="w-3 h-3 left-[40.50px] top-[8px] absolute overflow-hidden">
-                    <div className="w-2.5 h-1.5 left-[1px] top-[2.50px] absolute outline outline-[0.60px] outline-offset-[-0.30px] outline-purple-700" />
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
-            <div className="self-stretch px-4 py-5 bg-color-white-solid rounded-xl outline outline-1 outline-offset-[-1px] outline-color-grey-91 inline-flex justify-center items-start overflow-hidden">
+
+            <div className="self-stretch px-4 py-5 bg-white rounded-xl border border-[#E5E7EB] inline-flex justify-center items-start overflow-hidden">
               <div className="flex-1 inline-flex flex-col justify-start items-start overflow-hidden">
-                <div className="self-stretch justify-center text-color-azure-65 text-base font-normal font-['Pretendard']">
+                <div className="self-stretch justify-center text-black40 text-base font-mainFont">
                   #태그 입력 (Enter)
                 </div>
               </div>
             </div>
-            <div className="self-stretch pt-6 border-t border-color-grey-91 flex flex-col justify-start items-start gap-4">
-              <div className="self-stretch p-4 bg-color-grey-95 rounded-xl inline-flex justify-start items-start">
-                <div className="w-5 h-5 pt-0.5 inline-flex flex-col justify-start items-start">
-                  <div data-variant="3" className="w-5 h-5 relative">
-                    <div className="w-3.5 h-2.5 left-[2.50px] top-[9.17px] absolute outline outline-[1.67px] outline-offset-[-0.83px] outline-color-orange-40" />
-                    <div className="w-2 h-2 left-[5.83px] top-[1.67px] absolute outline outline-[1.67px] outline-offset-[-0.83px] outline-color-orange-40" />
-                  </div>
+            <div className="self-stretch pt-6 border-t border-white60 flex flex-col justify-start items-start gap-4">
+              <div className="self-stretch p-4 bg-[#F3E8FF] rounded-xl inline-flex justify-start items-start text-[#854D0E]">
+                <div className="w-5 h-5 pt-0.5 inline-flex flex-col justify-start items-start text-[#CA8A04]">
+                  <Lock size={20} />
                 </div>
                 <div className="pl-3 inline-flex flex-col justify-start items-start">
                   <div className="flex flex-col justify-start items-start gap-1">
                     <div className="self-stretch flex flex-col justify-start items-start">
-                      <div className="justify-center text-color-orange-29 text-base font-semibold font-['Pretendard'] leading-6">
+                      <div className="justify-center text-base font-semiBoldFont leading-6">
                         수정 불가 항목
                       </div>
                     </div>
@@ -194,17 +179,16 @@ const SettingTab = ({ projectId }: TabProps) => {
               <div className="self-stretch inline-flex justify-center items-start gap-4">
                 <div className="flex-1 self-stretch inline-flex flex-col justify-start items-start gap-2">
                   <div className="self-stretch flex flex-col justify-start items-start">
-                    <div className="self-stretch justify-center text-color-grey-46 text-sm font-medium font-['Pretendard'] leading-5">
+                    <div className="self-stretch justify-center text-black60 text-sm font-mediumFont leading-5">
                       목표 금액
                     </div>
                   </div>
-                  <div className="self-stretch px-4 py-3 bg-color-grey-96 rounded-xl inline-flex justify-start items-center">
+                  <div className="self-stretch px-4 py-3 bg-white80 rounded-xl text-[#6B7280] inline-flex justify-start items-center">
                     <div data-variant="4" className="w-4 h-4 relative">
-                      <div className="w-3 h-2 left-[2px] top-[7.33px] absolute outline outline-[1.33px] outline-offset-[-0.67px] outline-color-grey-46" />
-                      <div className="w-1.5 h-1.5 left-[4.67px] top-[1.33px] absolute outline outline-[1.33px] outline-offset-[-0.67px] outline-color-grey-46" />
+                      <Lock size={16} />
                     </div>
                     <div className="pl-2 inline-flex flex-col justify-start items-start">
-                      <div className="justify-center text-color-grey-46 text-base font-normal font-['Pretendard'] leading-6">
+                      <div className="justify-center text-base font-mainFont leading-6">
                         15,000,000원
                       </div>
                     </div>
@@ -212,27 +196,26 @@ const SettingTab = ({ projectId }: TabProps) => {
                 </div>
                 <div className="flex-1 self-stretch inline-flex flex-col justify-start items-start gap-2">
                   <div className="self-stretch flex flex-col justify-start items-start">
-                    <div className="self-stretch justify-center text-color-grey-46 text-sm font-medium font-['Pretendard'] leading-5">
+                    <div className="self-stretch justify-center text-black60 text-sm font-mediumFont leading-5">
                       마감일
                     </div>
                   </div>
-                  <div className="self-stretch px-4 py-3 bg-color-grey-96 rounded-xl inline-flex justify-start items-center">
-                    <div data-variant="5" className="w-4 h-4 relative">
-                      <div className="w-3 h-2 left-[2px] top-[7.33px] absolute outline outline-[1.33px] outline-offset-[-0.67px] outline-color-grey-46" />
-                      <div className="w-1.5 h-1.5 left-[4.67px] top-[1.33px] absolute outline outline-[1.33px] outline-offset-[-0.67px] outline-color-grey-46" />
+                  <div className="self-stretch px-4 py-3 bg-white80 rounded-xl text-[#6B7280] inline-flex justify-start items-center">
+                    <div data-variant="4" className="w-4 h-4 relative">
+                      <Lock size={16} />
                     </div>
                     <div className="pl-2 inline-flex flex-col justify-start items-start">
-                      <div className="justify-center text-color-grey-46 text-base font-normal font-['Pretendard'] leading-6">
+                      <div className="justify-center text-base font-mainFont leading-6">
                         2025-01-10
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="self-stretch px-6 pt-12 pb-6 relative bg-color-white-solid rounded-2xl shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] outline outline-1 outline-offset-[-1px] outline-color-grey-94 flex flex-col justify-start items-start gap-4">
+              <div className="self-stretch px-6 pt-12 pb-6 relative bg-white rounded-2xl shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] border  border-white60 flex flex-col justify-start items-start gap-4">
                 <div className="left-[586.46px] top-[17px] absolute inline-flex justify-start items-start gap-2">
-                  <div className="self-stretch px-2 py-1 bg-zinc-100 rounded inline-flex flex-col justify-start items-start">
-                    <div className="justify-center text-black text-xs font-bold font-['Pretendard_Variable'] leading-4">
+                  <div className="self-stretch px-2 py-1 bg-[#EFEFEF] rounded inline-flex flex-col justify-start items-start">
+                    <div className="justify-center text-black text-xs font-boldFont leading-4">
                       Reward #1
                     </div>
                   </div>
@@ -241,85 +224,80 @@ const SettingTab = ({ projectId }: TabProps) => {
                     data-variant="1"
                     className="py-1 inline-flex flex-col justify-start items-start"
                   >
-                    <div data-variant="3" className="w-4 h-4 relative">
-                      <div className="w-2.5 h-3 left-[2.67px] top-[2px] absolute outline outline-[1.33px] outline-offset-[-0.67px] outline-color-azure-65" />
+                    <div
+                      data-variant="3"
+                      className="w-4 h-4 relative  text-black60"
+                    >
+                      <Trash2 size={16} />
                     </div>
                   </div>
                 </div>
-                <div className="w-[670px] pb-4 border-b border-color-grey-96 inline-flex justify-end items-center gap-96">
-                  <div className="flex justify-start items-center gap-1">
-                    <div data-variant="4" className="w-4 h-4 relative">
-                      <div className="w-3 h-2.5 left-[2px] top-[3.33px] absolute outline outline-[1.33px] outline-offset-[-0.67px] outline-black" />
-                    </div>
-                    <div className="justify-center text-black text-sm font-bold font-['Pretendard_Variable'] leading-5">
+                <div className="w-[670px] pb-4 border-b border-white80 flex justify-between items-center">
+                  <div className="flex items-center gap-1">
+                    <Ticket size={16} />
+                    <div className="text-black text-sm font-boldFont leading-5">
                       티켓형
                     </div>
                   </div>
-                  <div className="w-60 p-4 bg-zinc-100 rounded-xl outline outline-1 outline-offset-[-1px] outline-color-grey-96 inline-flex flex-col justify-center items-end">
-                    <div className="inline-flex justify-start items-center gap-20">
-                      <div className="flex justify-start items-center gap-1">
-                        <div className="w-6 h-6 relative overflow-hidden">
-                          <div className="w-5 h-4 left-[3px] top-[3px] absolute bg-black" />
-                        </div>
-                        <div className="justify-center text-black text-xs font-bold font-['Pretendard_Variable'] leading-4">
+
+                  <div className="p-4 bg-[#EFEFEF] rounded-xl border border-white80 flex items-center">
+                    <div className="flex items-center gap-6">
+                      <div className="flex items-center gap-1">
+                        <QrCode size={24} />
+                        <div className="text-black text-xs font-boldFont leading-4">
                           QR 발급
                         </div>
                       </div>
-                      <div className="flex justify-start items-center gap-2">
-                        <div className="w-4 h-4 bg-color-white-solid rounded-sm border border-color-grey-46" />
-                        <div className="inline-flex flex-col justify-start items-start">
-                          <div className="justify-center text-color-azure-11 text-xs font-normal font-['Pretendard'] leading-4">
-                            사용함
-                          </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 bg-white rounded-sm border border-black60" />
+                        <div className="text-xs font-mainFont leading-4">
+                          사용함
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="w-[670px] inline-flex justify-center items-start gap-4">
-                  <div className="flex-1 self-stretch pt-1.5 inline-flex flex-col justify-start items-start gap-1.5">
-                    <div className="justify-center text-color-grey-46 text-xs font-bold font-['Pretendard_Variable'] leading-4">
+
+                <div className="w-[670px] flex gap-4">
+                  {/* 리워드 이름 */}
+                  <div className="flex-1 flex flex-col gap-1.5">
+                    <div className="text-black60 text-xs font-boldFont leading-4">
                       리워드 이름
                     </div>
-                    <div className="self-stretch px-3 py-3.5 bg-color-white-solid rounded-lg outline outline-1 outline-offset-[-1px] outline-color-grey-91 inline-flex justify-center items-start overflow-hidden">
-                      <div className="flex-1 inline-flex flex-col justify-start items-start overflow-hidden">
-                        <div className="self-stretch justify-center text-color-azure-65 text-sm font-normal font-['Pretendard']">
-                          예) VIP 관람권
-                        </div>
+                    <div className="h-11 px-3 bg-white rounded-lg border border-white60 flex items-center">
+                      <div className="text-black40 text-sm font-mainFont">
+                        예) VIP 관람권
                       </div>
                     </div>
                   </div>
-                  <div className="flex-1 self-stretch pt-1.5 inline-flex flex-col justify-start items-start gap-1.5">
-                    <div className="justify-center text-color-grey-46 text-xs font-bold font-['Pretendard_Variable'] leading-4">
+
+                  {/* 후원 금액 */}
+                  <div className="flex-1 flex flex-col gap-1.5">
+                    <div className="text-black60 text-xs font-boldFont leading-4">
                       후원 금액
                     </div>
-                    <div className="self-stretch h-11 relative bg-color-white-solid rounded-lg outline outline-1 outline-offset-[-1px] outline-color-grey-91 overflow-hidden">
-                      <div className="w-72 left-[13px] top-[14.50px] absolute inline-flex flex-col justify-start items-start overflow-hidden">
-                        <div className="justify-center text-color-azure-65 text-sm font-normal font-['Pretendard']">
-                          0
-                        </div>
-                      </div>
-                      <div className="w-72 left-[13px] top-[13px] absolute inline-flex justify-start items-center">
-                        <div className="flex-1 h-5 relative" />
-                        <div className="w-3.5 self-stretch min-w-3.5 opacity-0" />
+                    <div className="h-11 px-3 bg-white rounded-lg border border-white60 flex items-center">
+                      <div className="text-black40 text-sm font-mainFont">
+                        0
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="w-[670px] p-4 bg-zinc-100 rounded-xl outline outline-1 outline-offset-[-1px] outline-color-grey-96 flex flex-col justify-center items-start">
+
+                <div className="w-[670px] p-4 bg-[#EFEFEF] rounded-xl border border-white80 flex flex-col justify-center items-start">
                   <div className="inline-flex justify-start items-center gap-[520px]">
                     <div className="flex justify-start items-center gap-1">
                       <div className="w-3 h-3 relative overflow-hidden">
-                        <div className="w-2 h-2 left-[1.50px] top-[1.50px] absolute bg-black" />
+                        <Layers size={12} />
                       </div>
-                      <div className="justify-center text-black text-xs font-bold font-['Pretendard_Variable'] leading-4">
+                      <div className="justify-center text-black text-xs font-boldFont leading-4">
                         수량 설정
                       </div>
                     </div>
                     <div className="flex justify-start items-center gap-2">
-                      <div className="w-4 h-4 bg-color-white-solid rounded-sm border border-color-grey-46" />
+                      <div className="w-4 h-4 bg-white rounded-sm border border-black60" />
                       <div className="inline-flex flex-col justify-start items-start">
-                        <div className="justify-center text-color-azure-11 text-xs font-normal font-['Pretendard'] leading-4">
+                        <div className="justify-center textmainBlack text-xs font-mainFont leading-4">
                           사용함
                         </div>
                       </div>
@@ -327,12 +305,12 @@ const SettingTab = ({ projectId }: TabProps) => {
                   </div>
                 </div>
                 <div className="w-[670px] py-1.5 flex flex-col justify-start items-start gap-1.5">
-                  <div className="justify-center text-color-grey-46 text-xs font-bold font-['Pretendard_Variable'] leading-4">
+                  <div className="justify-center text-black60 text-xs font-boldFont leading-4">
                     리워드 설명
                   </div>
-                  <div className="self-stretch px-3 pt-3 pb-8 bg-color-white-solid rounded-lg outline outline-1 outline-offset-[-1px] outline-color-grey-91 inline-flex justify-center items-start overflow-hidden">
+                  <div className="self-stretch px-3 pt-3 pb-8 bg-white rounded-lg border border-white60 inline-flex justify-center items-start overflow-hidden">
                     <div className="flex-1 inline-flex flex-col justify-start items-start">
-                      <div className="self-stretch justify-center text-color-azure-65 text-sm font-normal font-['Pretendard'] leading-5">
+                      <div className="self-stretch justify-center text-black40 text-sm font-mainFont leading-5">
                         리워드 구성품 상세 설명
                       </div>
                     </div>

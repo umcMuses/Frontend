@@ -7,7 +7,11 @@ import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import EventListPage from './pages/EventListPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
-import MyPage from './pages/MyPage';
+import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SignupPage';
+import OnBoardingPage from './pages/OnBoardingPage';
+import EditProfilePage from './components/MyPage/profile/EditProfilePage';
+import ProjectResultPage from './components/MyPage/project-result/ProjectResultPage';
 
 function App() {
   return (
@@ -50,7 +54,11 @@ function AppLayout() {
         <Route path="/onboarding" element={<OnBoardingPage />} />
         <Route path="/events" element={<EventListPage />} />
         <Route path="/project/:id" element={<ProjectDetailPage />} />
-        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/mypage">
+          <Route index element={<MyPage />} />
+          <Route path="editprofile" element={<EditProfilePage />} />
+          <Route path="projectresult/:id" element={<ProjectResultPage />} />
+        </Route>
       </Routes>
       <Footer />
     </>
