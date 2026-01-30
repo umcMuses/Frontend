@@ -1,7 +1,8 @@
 import { ChevronLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import type { PrevNextProps } from './NavigationButtons';
 
-const CreateNavbar = () => {
+const CreateNavbar = ({ step, onNext }: PrevNextProps) => {
   const navigate = useNavigate();
 
   return (
@@ -24,8 +25,11 @@ const CreateNavbar = () => {
           임시저장
         </button>
         <div className="px-5 py-2 bg-mainBlack rounded-full inline-flex flex-col justify-center items-center hover:bg-solidBlue">
-          <button className="text-center justify-center text-white text-sm font-boldFont leading-5 cursor-pointer">
-            다음 단계
+          <button
+            onClick={onNext}
+            className="text-center justify-center text-white text-sm font-boldFont leading-5 cursor-pointer"
+          >
+            {step === 5 ? '제출하기' : '다음 단계'}
           </button>
         </div>
       </div>

@@ -99,9 +99,13 @@ export default function CreateProjectPage() {
     setProjectData((prev) => ({ ...prev, [key]: value }));
   };
 
+  const handleNextStep = () => {
+    setStep((s) => Math.min(5, s + 1));
+  };
+
   return (
     <>
-      <CreateNavbar />
+      <CreateNavbar step={step} onNext={handleNextStep} />
       <div className="flex flex-col min-h-screen px-6 pt-28 pb-20 max-w-[768px] mx-auto gap-12">
         <Stepper currentStep={step} />
 
@@ -124,7 +128,7 @@ export default function CreateProjectPage() {
         <NavigationButtons
           step={step}
           onPrev={() => setStep((s) => Math.max(1, s - 1))}
-          onNext={() => setStep((s) => Math.min(5, s + 1))}
+          onNext={handleNextStep}
         />
       </div>
     </>

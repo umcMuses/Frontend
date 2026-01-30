@@ -1,10 +1,14 @@
-interface Props {
+export interface PrevNextProps {
   step: number;
-  onPrev: () => void;
+  onPrev?: () => void;
   onNext: () => void;
 }
 
-export default function NavigationButtons({ step, onPrev, onNext }: Props) {
+export default function NavigationButtons({
+  step,
+  onPrev,
+  onNext,
+}: PrevNextProps) {
   return (
     <div className="flex justify-between pt-8">
       {step > 1 ? (
