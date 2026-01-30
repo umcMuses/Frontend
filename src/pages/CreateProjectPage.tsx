@@ -15,7 +15,7 @@ export interface ProjectData {
   age_limit: 'ALL' | 'ADULT';
   summary: string;
   funding: FundingData;
-  rewards: unknown[];
+  rewards: RewardData[];
   story: StoryData;
   info: InfoData;
 }
@@ -25,6 +25,16 @@ export type FundingData = {
   startDate: string;
   deadline: string; // YYYY-MM-DD
   opening: string; // HH:mm
+};
+
+export type RewardData = {
+  reward_id: number;
+  reward_name: string;
+  price: number | '';
+  description: string;
+  type: 'TICKET';
+  useQr: boolean;
+  total_quantity: number | '';
 };
 
 export type StoryData = {
@@ -58,7 +68,17 @@ export default function CreateProjectPage() {
       deadline: '',
       opening: '',
     },
-    rewards: [],
+    rewards: [
+      {
+        reward_id: 1,
+        reward_name: '',
+        price: '',
+        description: '',
+        type: 'TICKET',
+        useQr: false,
+        total_quantity: '',
+      },
+    ],
     story: {
       story_html: '',
       refund_policy: '',
