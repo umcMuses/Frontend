@@ -4,7 +4,6 @@ import type { Project } from '../types/projectType';
 
 interface Props {
   projects: Project[];
-  activeProjectCount: number;
 }
 
 const CreatorSection = ({ projects }: Props) => {

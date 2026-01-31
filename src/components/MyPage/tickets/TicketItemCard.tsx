@@ -1,11 +1,10 @@
 import { QrCode } from 'lucide-react';
-import type { TicketItem, SelectedTicket } from '../types/ticket';
+import type { TicketItem } from '../types/ticket';
 
 interface Props {
   item: TicketItem;
   onSelect: (item: TicketItem) => void;
 }
-
 
 const TicketItemCard = ({ item, onSelect }: Props) => {
   return (
@@ -17,7 +16,7 @@ const TicketItemCard = ({ item, onSelect }: Props) => {
       </div>
 
       <div className="w-80 h-40 relative">
-        {/* code */}    
+        {/* code */}
         <div className="w-64 absolute top-0 left-0 text-white/60 text-xs font-mainFont leading-4">
           {item.code}
         </div>
@@ -38,8 +37,13 @@ const TicketItemCard = ({ item, onSelect }: Props) => {
             {item.seatLabel}
           </div>
 
-<button className='px-4 py-2 bg-white rounded-full transition-transform hover:scale-105 text-black text-xs font-boldFont leading-4 cursor-pointer'onClick={() => onSelect(item)}>QR 보기</button>
-
+          <button
+            type="button"
+            className="px-4 py-2 bg-white rounded-full transition-transform hover:scale-105 text-black text-xs font-boldFont leading-4 cursor-pointer"
+            onClick={() => onSelect(item)}
+          >
+            QR 보기
+          </button>
         </div>
       </div>
     </div>

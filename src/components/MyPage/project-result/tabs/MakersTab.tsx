@@ -1,8 +1,8 @@
 import { FilePlus2, MoveLeft, MoveRight } from 'lucide-react';
 
-interface TabProps {
+{/*interface TabProps {
   projectId?: string;
-}
+}*/}
 const headers = [
   { label: '닉네임', w: 'w-16' },
   { label: '이름', w: 'w-16' },
@@ -15,7 +15,7 @@ const headers = [
 
 const rows = Array.from({ length: 10 });
 
-const MakersTab = ({ projectId }: TabProps) => {
+const MakersTab = ({/* { projectId }: TabProps */}) => {
   return (
     <div className="w-[768px] p-8 bg-white rounded-2xl shadow-sm border border-white80 flex flex-col items-center gap-6">
       {/* header */}

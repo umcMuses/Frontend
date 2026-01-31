@@ -28,6 +28,7 @@ const ProjectTabs = ({ activeTab, onChange }: ProjectTabsProps) => {
               type="button"
               onClick={() => navigate('/mypage?tab=creator')}
               className="p-2 rounded-lg"
+              aria-label="마이페이지로 돌아가기"
             >
               <MoveLeft size={20} />
             </button>

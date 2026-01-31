@@ -10,11 +10,11 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 
-interface TabProps {
+{/*interface TabProps {
   projectId?: string;
-}
+}*/}
 
-const SettingTab = ({ projectId }: TabProps) => {
+const SettingTab = ({/*{ projectId }: TabProps*/}) => {
   const [isEditing, setIsEditing] = useState(false);
 
   return (

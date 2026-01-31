@@ -17,13 +17,13 @@ const ProjectResultPage = () => {
   const renderTab = () => {
     switch (activeTab) {
       case 'dashboard':
-        return <DashboardTab projectId={id} />;
+        return <DashboardTab  />;
       case 'setting':
-        return <SettingTab projectId={id} />;
+        return <SettingTab />;
       case 'makers':
-        return <MakersTab projectId={id} />;
+        return <MakersTab />;
       case 'settlement':
-        return <SettlementTab projectId={id} />;
+        return <SettlementTab />;
       default:
         return null;
     }

@@ -1,11 +1,11 @@
 import { Lock } from 'lucide-react';
 import { PaymentStatusCard } from './PaymentStatusCard';
 
-interface SettlementTabProps {
+{/*interface SettlementTabProps {
   projectId?: string;
-}
+}*/}
 
-const SettlementTab = ({ projectId }: SettlementTabProps) => {
+const SettlementTab = ({/*{ projectId }: SettlementTabProps*/}) => {
   const paymentStatus: 'PENDING' | 'PROCESSING' | 'DONE' = 'DONE';
 
   return (
