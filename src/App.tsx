@@ -7,6 +7,7 @@ import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import EventListPage from './pages/EventListPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
+import CreateProjectPage from './pages/CreateProjectPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import OnBoardingPage from './pages/OnBoardingPage';
@@ -18,7 +19,6 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <AppLayout />
-      <Footer />
     </BrowserRouter>
   );
 }
@@ -38,7 +38,7 @@ function ScrollToTop() {
 function AppLayout() {
   const { pathname } = useLocation();
   //const hideHeaderPrefixes = ['/create-project', '/admin']; // 헤더를 숨길 경로 설정 예시, 하단에 추가하시면 됩니다.
-  const hideHeaderPrefixes = ['/admin'];
+  const hideHeaderPrefixes = ['/admin', '/create'];
   const shouldHideHeader = hideHeaderPrefixes.some((prefix) =>
     pathname.startsWith(prefix)
   );
