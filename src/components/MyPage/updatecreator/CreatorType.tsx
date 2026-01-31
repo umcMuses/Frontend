@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ModalLayout from './ModalLayout';
 import { TypeSelector } from './TypeSelector';
 import CreatorDocumentForm from './CreatorDocumentForm';
-import { type CreatorType as CreatorKind } from '../types//creatorDocumentConfig';
+import { type CreatorType as CreatorKind } from '../types/creatorDocumentConfig';
 import { X } from 'lucide-react';
 
 interface CreatorTypeProps {

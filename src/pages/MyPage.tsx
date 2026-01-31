@@ -16,7 +16,7 @@ export default function MyPage() {
   const { activeTab, setActiveTab, isActivityTab, isCreatorTab } =
     useMyPageTab(initialTab);
 
-  const isCreator = false;
+  const isCreator = true;
 
   const activeProjects = projectItems.filter(
     (project) => project.status === 'ONGOING'

@@ -53,7 +53,7 @@ export const corporateConfig: DocumentConfig = {
       condition: '최근 3개월 이내',
     },
     {
-      content: '통장사본',
+      content: '통장 사본',
       condition: '법인 명의',
     },
   ],

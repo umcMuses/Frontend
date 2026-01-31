@@ -20,7 +20,7 @@ const MakersTab = ({ projectId }: TabProps) => {
     <div className="w-[768px] p-8 bg-white rounded-2xl shadow-sm border border-white80 flex flex-col items-center gap-6">
       {/* header */}
       <div className="w-[702px] flex justify-between items-center">
-        <div className="text- text-xl font-boldFont leading-7">메이커 명단</div>
+        <div className="text-xl font-boldFont leading-7">메이커 명단</div>
         <div className="px-2.5 py-[4.8px] bg-black text-white font-mainFont text-[9.6px] rounded-[4.8px] flex items-center gap-1">
           <FilePlus2 size={12} />
           다운받기
@@ -85,7 +85,7 @@ const MakersTab = ({ projectId }: TabProps) => {
             className={`w-6 h-6 rounded-full border flex items-center justify-center text-[10px] font-boldFont
         ${
           n === 1
-            ? 'bg-[#111827] text-white border-[#11827]'
+            ? 'bg-[#111827] text-white border-[#111827]'
             : 'border-white60 text-black'
         }
       `}

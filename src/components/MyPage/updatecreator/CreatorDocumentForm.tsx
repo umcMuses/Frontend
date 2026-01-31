@@ -4,6 +4,7 @@ import {
   type CreatorType,
   creatorDocumentConfig,
 } from '../types/creatorDocumentConfig';
+import type { FormEvent } from 'react';
 interface Props {
   type: CreatorType;
   onBack: () => void;
@@ -13,7 +14,7 @@ const CreatorDocumentForm = ({ type, onBack }: Props) => {
   const { title, files } = creatorDocumentConfig[type];
   const rowCount = Math.ceil(files.length / 2);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log('서류 제출:', type);
   };
@@ -44,12 +45,14 @@ const CreatorDocumentForm = ({ type, onBack }: Props) => {
           const row = Math.floor(idx / 2);
 
           return (
-            <SubmitFile
+            <div
               key={idx}
-              content={file.content}
-              condition={file.condition}
-              className={`left-[${col * 312}px] top-[${row * 158}px]`}
-            />
+              className="absolute"
+              style={{ left: col * 312, top: row * 158 }}
+            >
+              <SubmitFile content={file.content} condition={file.condition} />
+              
+            </div>
           );
         })}
       </div>

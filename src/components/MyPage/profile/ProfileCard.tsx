@@ -22,8 +22,8 @@ export default function ProfileCard({
       <ProfileAvatar />
 
       <div className="flex flex-col gap-2 flex-1">
-        <ProfileBadges isCreator={isCreator} />
-        <ProfileHeader />
+        <ProfileBadges isCreator={isCreator} certifiedCreator='인증된 크리에이터'  supporterClass='Lv3 열정적인 서포터' />
+        <ProfileHeader name='푸른 오렌지' />
         <ProfileIntro />
         <ProfileStats
           isCreator={isCreator}

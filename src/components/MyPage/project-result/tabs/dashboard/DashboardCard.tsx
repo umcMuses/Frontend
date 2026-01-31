@@ -44,7 +44,7 @@ export const RewardStatusCard = () => {
                 </div>
               </div>
               <div className="inline-flex flex-col justify-start items-start">
-                <div className="justify-centertext-black80 text-sm font-mainFont leading-5">
+                <div className="justify-center text-black80 text-sm font-mainFont leading-5">
                   123/200
                 </div>
               </div>

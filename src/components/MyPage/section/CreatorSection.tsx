@@ -1,6 +1,6 @@
 import { ChartLine, Wallet } from 'lucide-react';
 import MyProjectList from '../projects/MyProjectList';
-import type { Project } from '../types/ProjectType';
+import type { Project } from '../types/projectType';
 
 interface Props {
   projects: Project[];

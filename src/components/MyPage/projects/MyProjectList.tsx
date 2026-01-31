@@ -1,6 +1,6 @@
 import { Plus } from 'lucide-react';
 import MyProjectItem from './MyProjectItem';
-import type { Project } from '../types/ProjectType';
+import type { Project } from '../types/projectType';
 
 interface MyProjectListProps {
   projects: Project[];
