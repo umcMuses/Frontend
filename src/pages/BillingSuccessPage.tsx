@@ -1,48 +1,8 @@
-import { useEffect, useState } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
-import { ENDPOINTS } from '../api/endpoints';
+import { useNavigate } from 'react-router-dom';
 import { CheckIcon } from 'lucide-react';
 
-type BillingStatus = 'idle' | 'loading' | 'success' | 'error';
-
 export default function BillingSuccessPage() {
-  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const [status, setStatus] = useState<BillingStatus>('success');
-  const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    const authKey = searchParams.get('authKey');
-    const customerKey = searchParams.get('customerKey');
-    if (!authKey || !customerKey) {
-      setStatus('error');
-      setMessage('결제 인증 정보를 확인할 수 없습니다.');
-      return;
-    }
-
-    setStatus('loading');
-    fetch(ENDPOINTS.BILLING_ISSUE, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        customerKey,
-        authKey,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (!data?.success) {
-          throw new Error(data?.error?.message ?? '결제 인증에 실패했습니다.');
-        }
-        setStatus('success');
-      })
-      .catch((error) => {
-        setStatus('error');
-        setMessage(
-          error instanceof Error ? error.message : '결제 인증에 실패했습니다.'
-        );
-      });
-  }, [searchParams]);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center px-6 font-mainFont">
@@ -68,11 +28,6 @@ export default function BillingSuccessPage() {
               마이페이지에서 티켓을 확인하세요
             </p>
           </>
-        )}
-        {status === 'error' && (
-          <p className="text-base text-[#EF4444]">
-            {message || '결제 인증에 실패했습니다.'}
-          </p>
         )}
       </div>
     </div>

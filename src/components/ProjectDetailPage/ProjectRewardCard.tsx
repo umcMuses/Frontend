@@ -55,16 +55,15 @@ export const ProjectRewardCard = ({
             className="w-8 h-8 text-mainBlack border border-white60 hover:border-solidBlue transition-all duration-300 disabled:opacity-40 cursor-pointer"
             onClick={(event) => {
               event.stopPropagation();
-              onQuantityChange(
-                Math.min(
-                  reward.total_quantity ?? (quantity ?? 1) + 1,
-                  (quantity ?? 1) + 1
-                )
-              );
+              const nextQuantity = (quantity ?? 1) + 1;
+              const cappedQuantity =
+                remainingQuantity !== null
+                  ? Math.min(remainingQuantity, nextQuantity)
+                  : nextQuantity;
+              onQuantityChange(cappedQuantity);
             }}
             disabled={
-              reward.total_quantity !== null &&
-              (quantity ?? 1) >= reward.total_quantity
+              remainingQuantity !== null && (quantity ?? 1) >= remainingQuantity
             }
           >
             +
