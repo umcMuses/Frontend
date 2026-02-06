@@ -13,6 +13,8 @@ import SignupPage from './pages/SignupPage';
 import OnBoardingPage from './pages/OnBoardingPage';
 import EditProfilePage from './components/MyPage/profile/EditProfilePage';
 import ProjectResultPage from './components/MyPage/project-result/ProjectResultPage';
+import BillingSuccessPage from './pages/BillingSuccessPage';
+import BillingFailPage from './pages/BillingFailPage';
 
 function App() {
   return (
@@ -59,6 +61,10 @@ function AppLayout() {
           <Route path="editprofile" element={<EditProfilePage />} />
           <Route path="projectresult/:id" element={<ProjectResultPage />} />
         </Route>
+        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/billing/success" element={<BillingSuccessPage />} />
+        <Route path="/billing/fail" element={<BillingFailPage />} />
+        <Route path="/create" element={<CreateProjectPage />} />
       </Routes>
       <Footer />
     </>
