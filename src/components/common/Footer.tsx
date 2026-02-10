@@ -7,12 +7,12 @@ const Footer = () => {
   return (
     <footer className="w-full border-t border-white80 bg-white py-16 px-[72.5px]">
       <div className="mx-auto flex h-full w-full max-w-[1280px] flex-col justify-center px-6 items-center">
-        <div className="flex flex-col justify-center items-start text-center text-sm font-mediumFont text-black mb-6 pt-9">
+        <div className="flex flex-col justify-center items-start text-sm font-mediumFont text-black mb-6 pt-9">
           <span>{musesInfo}</span>
           <span>{musesAddress}</span>
         </div>
         <div className="text-center text-sm font-boldFont text-black60 mb-8">
-          뮤즈(주)는 통신판매중개자로서 통신판매의 당사자가 아니며. 입점
+          뮤즈(주)는 통신판매중개자로서 통신판매의 당사자가 아니며, 입점
           판매자가 등록한 상품, 거래정보 및 거래에 대하여 책임을 지지 않습니다.
         </div>
         <div className="flex justify-center items-start gap-10 mb-10">
