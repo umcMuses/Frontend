@@ -1,6 +1,6 @@
 // 엔드포인트가 추가/변경될 경우 이 파일에서 수정하면 됩니다.
 
-const BASE_URL = 'https://example.com/api'; // 실제 서버 주소로 추후 변경 예정
+const BASE_URL = 'https://mymuses.site/api';
 
 export const ENDPOINTS = {
   // 회원
@@ -8,6 +8,8 @@ export const ENDPOINTS = {
   SIGNUP: `${BASE_URL}/auth/signup`,
 
   //프로젝트
+  PROJECT_LIST: `${BASE_URL}/projects`,
+  PROJECT_DETAIL: `${BASE_URL}/projects/{projectId}`,
 
   //주문
   ORDERS_PREPARE: `${BASE_URL}/orders/prepare`,
