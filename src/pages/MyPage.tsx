@@ -16,7 +16,7 @@ export default function MyPage() {
   const { activeTab, setActiveTab, isActivityTab, isCreatorTab } =
     useMyPageTab(initialTab);
 
-  const isCreator = true;
+  const isCreator = false;
 
   const activeProjects = projectItems.filter(
     (project) => project.status === 'ONGOING'
@@ -45,7 +45,6 @@ export default function MyPage() {
             (isCreator ? (
               <CreatorSection
                 projects={projectItems}
-                activeProjectCount={activeProjectCount}
               />
             ) : (
               <CreatorEmptySection />
