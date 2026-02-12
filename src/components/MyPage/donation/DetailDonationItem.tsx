@@ -1,14 +1,13 @@
 import { X } from 'lucide-react';
-import { type DonationItemType } from '../types/types';
+import {type OrderDetail } from '../types/order';
 
 interface Props {
-  item: DonationItemType;
+  item: OrderDetail;
   onClose: () => void;
 }
 
 const DetailDonationItem = ({ item, onClose }: Props) => {
-  const { date, title, amount } = item;
-
+  
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-[6px]">
       {/* 카드 */}
@@ -33,12 +32,12 @@ const DetailDonationItem = ({ item, onClose }: Props) => {
             <div className="w-44 flex flex-col justify-start items-start">
               <div className="flex flex-col justify-start items-start">
                 <div className="justify-center text-[#9198A7] text-sm font-boldFont leading-7">
-                  공연명
+                  {item.projectTitle}
                 </div>
               </div>
               <div className="self-stretch flex flex-col justify-start items-start">
                 <div className="justify-center text-mainBlack text-base font-boldFont leading-7">
-                  {title}
+                  {item.locationDetail}
                 </div>
               </div>
             </div>
@@ -51,7 +50,7 @@ const DetailDonationItem = ({ item, onClose }: Props) => {
                 </div>
                 <div className="self-stretch flex flex-col justify-start items-start">
                   <div className="justify-center text-mainBlack text-base font-boldFont leading-7">
-                    {date}{' '}
+                    {item.opening}
                   </div>
                 </div>
               </div>
@@ -63,7 +62,7 @@ const DetailDonationItem = ({ item, onClose }: Props) => {
                 </div>
                 <div className="self-stretch flex flex-col justify-start items-start">
                   <div className="justify-center text-mainBlack text-base font-boldFont leading-7">
-                    홍대 웨스트브릿지 라이브홀
+                    {item.locationDetail}
                   </div>
                 </div>
               </div>
@@ -76,10 +75,10 @@ const DetailDonationItem = ({ item, onClose }: Props) => {
               </div>
               <div className="w-[523px] inline-flex justify-start items-center gap-3">
                 <div className="justify-center text-mainBlack text-base font-boldFont leading-6">
-                  일반석 (Regular)
+                  {item.optionTitle}
                 </div>
                 <div className="justify-center text-black60 text-sm font-mainFont leading-5">
-                  일반 입장 + 스티커팩
+                  {item.optionDescription}
                 </div>
               </div>
             </div>
@@ -94,7 +93,7 @@ const DetailDonationItem = ({ item, onClose }: Props) => {
             </div>
             <div className="inline-flex flex-col justify-start items-start">
               <div className="justify-center text-[#222] text-base font-mediumFont leading-7">
-                2025.09.15
+                {item.paidAt}
               </div>
             </div>
           </div>
@@ -106,7 +105,7 @@ const DetailDonationItem = ({ item, onClose }: Props) => {
             </div>
             <div className="inline-flex flex-col justify-start items-start">
               <div className="justify-center text-[#222] text-base font-mediumFont leading-7">
-                토스페이먼츠
+                {item.paymentProvider}
               </div>
             </div>
           </div>
@@ -120,7 +119,7 @@ const DetailDonationItem = ({ item, onClose }: Props) => {
             </div>
             <div className="inline-flex flex-col justify-start items-start">
               <div className="justify-center text-[#645DE8] text-base font-boldFont leading-7">
-                {amount}{' '}
+                {item.amount}
               </div>
             </div>
           </div>

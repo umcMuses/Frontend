@@ -1,7 +1,6 @@
 import axios from 'axios';
 import ENDPOINTS from './endpoints';
 
-const token = localStorage.getItem('accessToken');
 
 export const getMyInfo = async () => {
   const res = await axios.get(ENDPOINTS.MY_INFO, {
