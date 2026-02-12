@@ -6,10 +6,11 @@ const token = localStorage.getItem('accessToken');
 export const getMyInfo = async () => {
   const res = await axios.get(ENDPOINTS.MY_INFO, {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
     },
   });
-  return res.data;
+
+  return res.data.data; // 🔥 이게 핵심
 };
 
 export const getCreatorSummary = async () => {

@@ -27,16 +27,16 @@ export const ENDPOINTS = {
   BILLING_ISSUE: `${BASE_URL}/billing-auth/issue`,
 
   //티켓
-  TICKET_INFO: `${BASE_URL}/users/me/tickets`,
-  TICKET_TOKEN: `${BASE_URL}/checkin/tickets`,
+  TICKET_INFO: `${BASE_URL}/api/users/me/tickets`,
+  TICKET_TOKEN: `${BASE_URL}/api/checkin/tickets`,
 
   //랜딩페이지
 
   //이벤트
 
   //마이페이지
-  MY_INFO: `${BASE_URL}/users/me`,
-  CREATOR_SUMMARY: `${BASE_URL}/creators/me/summary`,
+  MY_INFO: `${BASE_URL}/api/users/me`,
+  CREATOR_SUMMARY: `${BASE_URL}/api/creators/me/summary`,
 
   //어드민
 } as const;

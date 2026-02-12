@@ -11,7 +11,7 @@ const ProfileAvatar = ({ profileImgUrl }: Props) => {
         <img
           src={profileImgUrl || defaultProfileImg}
           alt="profile"
-          className="w-full h-full object-cover"
+          className="object-cover"
         />
       </div>
     </div>

@@ -24,7 +24,7 @@ export default function ProfileCard({
         <ProfileBadges
           isCreator={isCreator}
           certifiedCreator="인증된 크리에이터"
-          supporterClass={`Lv${member.supportLevel} 서포터`}
+          supporterClass={`Lv${member.supportLevel}열정적인 서포터`}
         />
 
         <ProfileHeader name={member.nickName} />

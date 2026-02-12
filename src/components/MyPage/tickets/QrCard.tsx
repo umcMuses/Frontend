@@ -1,3 +1,4 @@
+// QrCard.tsx
 import { QrCode } from 'lucide-react';
 
 interface QrCardProps {
@@ -7,11 +8,11 @@ interface QrCardProps {
   onClose: () => void;
 }
 
-
 const QrCard = ({ title, seat, ticketToken, onClose }: QrCardProps) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-[6px]">
       <div className="w-96 bg-white rounded-2xl overflow-hidden">
+        {/* 상단 */}
         <div className="flex items-center w-96 h-32 bg-[#ff9a00] justify-center">
           <div className="self-stretch inline-flex flex-col justify-start items-start gap-2 p-6">
             <div className="self-stretch opacity-80 flex flex-col justify-start items-center">
@@ -27,6 +28,7 @@ const QrCard = ({ title, seat, ticketToken, onClose }: QrCardProps) => {
           </div>
         </div>
 
+        {/* QR */}
         <div className="w-96 p-8 bg-[linear-gradient(135deg,var(--color-grey-95,#F3E8FF)_0%,var(--color-grey-96,#F3E8FF)_50%,var(--color-yellow-88,#FEF9C3)_100%)] inline-flex flex-col justify-center items-center">
           <div className="pb-6 flex flex-col justify-start items-start">
             <div className="p-6 bg-white/80 rounded-[32px]  border border-white/60 flex flex-col justify-start items-start">
@@ -36,17 +38,18 @@ const QrCard = ({ title, seat, ticketToken, onClose }: QrCardProps) => {
           <div className="self-stretch flex flex-col justify-start items-start gap-1">
             <div className="self-stretch flex flex-col justify-start items-center">
               <div className="text-center justify-center text-black40 text-[10px] font-boldFont leading-4 tracking-wide">
-                TICKET ID
+                TICKET TOKEN
               </div>
             </div>
             <div className="self-stretch flex flex-col justify-start items-center">
               <div className="text-center justify-center text-[#1F2937] text-base font-logoFont leading-7 tracking-widest">
                 {ticketToken}
-
               </div>
             </div>
           </div>
         </div>
+
+        {/* 닫기 */}
         <div className="w-96 p-6 bg-white border-t border-dashed border-[#D1D5DB] inline-flex flex-col justify-start items-start">
           <button
             onClick={onClose}
