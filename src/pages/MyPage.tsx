@@ -67,7 +67,6 @@ export default function MyPage() {
             (isCreator ? (
               <CreatorSection
                 projects={projectItems}
-                activeProjectCount={creatorSummary?.ongoingProjectCount ?? 0}
               />
             ) : (
               <CreatorEmptySection />
