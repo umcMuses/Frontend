@@ -7,10 +7,14 @@ import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import EventListPage from './pages/EventListPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
-import CreateProjectPage from './pages/CreateProjectPage';
-import LoginPage from './pages/LoginPage';
+
+import { LoginPage } from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import OnBoardingPage from './pages/OnBoardingPage';
+import EventDetailPage from './pages/EventDetailPage';
+
+import CreateProjectPage from './pages/CreateProjectPage';
+
 import EditProfilePage from './components/MyPage/profile/EditProfilePage';
 import ProjectResultPage from './components/MyPage/project-result/ProjectResultPage';
 import BillingSuccessPage from './pages/BillingSuccessPage';

@@ -1,17 +1,17 @@
-import React from 'react';
-import LoginFormCard from '../components/LoginPage/LoginFormCard';
+import { LoginFormCard } from '../components/LoginPage/LoginFormCard';
+import loginBackground from '../assets/images/backgrounds/login_bg.png';
 
-const LoginPage: React.FC = () => {
+export function LoginPage() {
   return (
     <div
-      className=" w-full min-h-screen pt-24 flex justify-center bg-white bg-cover bg-center bg-no-repeat"
+      className="w-full min-h-screen flex justify-center bg-white bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: 'url("src/assets/images/backgrounds/login_bg.png")',
+        backgroundImage: `url(${loginBackground})`,
       }}
     >
-      <LoginFormCard />
+      <div className=" w-full flex justify-center">
+        <LoginFormCard />
+      </div>
     </div>
   );
-};
-
-export default LoginPage;
+}
