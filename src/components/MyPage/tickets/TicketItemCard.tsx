@@ -3,7 +3,7 @@ import type { TicketItem } from '../types/ticket';
 
 interface Props {
   item: TicketItem;
-  onSelect: (item: TicketItem) => void;
+  onSelect: (ticketId: string) => void;
 }
 
 const TicketItemCard = ({ item, onSelect }: Props) => {
@@ -18,7 +18,7 @@ const TicketItemCard = ({ item, onSelect }: Props) => {
       <div className="w-80 h-40 relative">
         {/* code */}
         <div className="w-64 absolute top-0 left-0 text-white/60 text-xs font-mainFont leading-4">
-          {item.code}
+          {item.ticketId}
         </div>
 
         {/* title */}
@@ -40,7 +40,7 @@ const TicketItemCard = ({ item, onSelect }: Props) => {
           <button
             type="button"
             className="px-4 py-2 bg-white rounded-full transition-transform hover:scale-105 text-black text-xs font-boldFont leading-4 cursor-pointer"
-            onClick={() => onSelect(item)}
+            onClick={() => onSelect(item.ticketId)}
           >
             QR 보기
           </button>
