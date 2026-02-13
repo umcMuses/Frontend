@@ -1,5 +1,6 @@
 import axios from 'axios';
 import ENDPOINTS from './endpoints';
+import type { Member } from '../components/MyPage/types/apitypes/members';
 
 
 export const getMyInfo = async () => {
@@ -15,4 +16,23 @@ export const getMyInfo = async () => {
 export const getCreatorSummary = async () => {
   const res = await axios.get(ENDPOINTS.CREATOR_SUMMARY);
   return res.data.data;
+};
+
+export const updateMyProfile = async (payload: {
+  nickName: string;
+  introduction: string;
+  birthday: string;
+  gender: number;
+}) => {
+  const res = await axios.post(
+    ENDPOINTS.MY_PROFILE_UPDATE, // "/api/users/me/profile"
+    payload,
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      },
+    }
+  );
+
+  return res.data.data as Member;
 };

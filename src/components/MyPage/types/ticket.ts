@@ -10,6 +10,7 @@ export interface TicketItem {
   seatLabel: string;
   selectedSeat: string;
   bgClassName: string;
+  ticketToken: string;
 }
 
 export interface CheckinTokenResponse {
@@ -28,6 +29,7 @@ export const mapTicketToItem = (ticket: TicketResponse): TicketItem => ({
   date: new Date(ticket.opening).toLocaleString(),
   seatLabel: ticket.optionLabel,
   selectedSeat: ticket.optionLabel,
+  ticketToken: ticket.ticketToken
 });
 
 export const getMyTickets = async (): Promise<TicketResponse[]> => {

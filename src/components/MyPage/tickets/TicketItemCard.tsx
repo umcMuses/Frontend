@@ -20,7 +20,7 @@ const TicketItemCard = ({ item, onSelect }: Props) => {
       <div className="w-80 h-40 relative">
         {/* 티켓 ID */}
         <div className="w-64 absolute top-0 left-0 text-white/60 text-xs font-mainFont leading-4">
-          {item.ticketId}
+          #{item.ticketId}
         </div>
 
         {/* 타이틀 */}

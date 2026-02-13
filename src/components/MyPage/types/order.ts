@@ -2,11 +2,11 @@
 
 export interface OrderItem {
   orderId: number;
-  projectTitle: string;
-  orderStatus: string;
+  title: string;
+  status: string;
   paymentStatus: string;
   amount: number;
-  displayDate: string;
+  date: string;
 }
 
 export interface OrderDetail {

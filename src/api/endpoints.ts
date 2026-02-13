@@ -36,6 +36,7 @@ export const ENDPOINTS = {
 
   //마이페이지
   MY_INFO: `${BASE_URL}/api/users/me`,
+  MY_PROFILE_UPDATE: `${BASE_URL}/api/users/me/profile`,
   MY_ORDER: `${BASE_URL}/api/users/me/orders`,
   MY_DETAIL_ORDER:`${BASE_URL}/api/users/me/orders/detail`,
   CREATOR_SUMMARY: `${BASE_URL}/api/creators/me/summary`,

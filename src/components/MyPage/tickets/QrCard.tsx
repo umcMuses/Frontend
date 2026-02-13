@@ -9,6 +9,7 @@ interface QrCardProps {
 }
 
 const QrCard = ({ title, seat, ticketToken, onClose }: QrCardProps) => {
+  
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-[6px]">
       <div className="w-96 bg-white rounded-2xl overflow-hidden">

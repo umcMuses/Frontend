@@ -8,7 +8,7 @@ import { mapTicketToItem, type TicketItem } from '../types/ticket';
 const TicketCard = () => {
   const [tickets, setTickets] = useState<TicketItem[]>([]);
   const [selectedTicket, setSelectedTicket] = useState<TicketItem | null>(null);
-  const [selectedToken, setSelectedToken] = useState<string | null>(null);
+  const [selectedToken, setSelectedToken] = useState<TicketItem | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -57,7 +57,7 @@ const TicketCard = () => {
         <QrCard
           title={selectedTicket.title}
           seat={selectedTicket.selectedSeat}
-          ticketToken={selectedToken}
+          ticketToken={selectedToken.ticketToken}
           onClose={() => {
             setSelectedTicket(null);
             setSelectedToken(null);
