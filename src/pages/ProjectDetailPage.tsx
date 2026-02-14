@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import type { ComponentType } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import ProjectMain from '../components/ProjectDetailPage/ProjectMain';
@@ -16,12 +15,6 @@ export default function ProjectDetailPage() {
   const [detail, setDetail] = useState<ProjectDetailData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
-  const ProjectMainView = ProjectMain as ComponentType<{
-    detail: ProjectDetailData;
-  }>;
-  const ProjectInfoView = ProjectInfo as ComponentType<{
-    detail: ProjectDetailData;
-  }>;
 
   useEffect(() => {
     if (!Number.isFinite(projectId)) {
@@ -42,7 +35,6 @@ export default function ProjectDetailPage() {
           );
         }
         setDetail(response.data.data);
-        console.log('detail', response.data.data);
       })
       .catch((error) => {
         setDetail(null);
@@ -77,8 +69,8 @@ export default function ProjectDetailPage() {
 
   return (
     <div className="min-h-screen pt-24 pb-[230px] w-full bg-mainWhite flex flex-col items-center overflow-x-hidden">
-      <ProjectMainView detail={detail} />
-      <ProjectInfoView detail={detail} />
+      <ProjectMain detail={detail} />
+      <ProjectInfo detail={detail} />
     </div>
   );
 }
