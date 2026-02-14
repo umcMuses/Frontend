@@ -5,14 +5,14 @@ import type { OrderItem, OrderDetail } from '../components/MyPage/types/order';
 export const fetchMyOrders = async (): Promise<OrderItem[]> => {
   const res = await axiosInstance.get(ENDPOINTS.MY_ORDER);
   const items = res.data.data.items;
-    console.log(res.data);
-  return items.map((item: any) => ({
+    return items.map((item: any) => ({
     orderId: item.orderId,
     initial: item.projectTitle[0],
     status: item.orderStatus,
     date: item.displayDate.split('T')[0],
     title: item.projectTitle,
-    amount: `${item.amount.toLocaleString()}원`,
+    paymentStatus: item.paymentStatus,
+    amount: item.amount,
   }));
 };
 
@@ -36,7 +36,7 @@ return {
   quantity: d.quantity,
   paidAt: d.paidAt,
   paymentProvider: d.paymentProvider,
-  amount: `${d.amount.toLocaleString()}원`,
+  amount: d.amount,
   orderStatus: d.orderStatus,
   paymentStatus: d.paymentStatus,
 };

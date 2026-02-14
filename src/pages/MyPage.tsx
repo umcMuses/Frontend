@@ -7,8 +7,9 @@ import CreatorEmptySection from '../components/MyPage/section/CreatorEmptySectio
 import ProfileCard from '../components/MyPage/profile/ProfileCard';
 import { projectItems } from '../components/MyPage/projects/projectData';
 import { useEffect, useState } from 'react';
-import { getMyInfo, getCreatorSummary } from '../api/user';
+import { getMyInfo } from '../api/user';
 import type { Member } from '../components/MyPage/types/apitypes/members';
+import { getCreatorSummary } from '../api/creator';
 
 export default function MyPage() {
   const [member, setMember] = useState<Member | null>(null);

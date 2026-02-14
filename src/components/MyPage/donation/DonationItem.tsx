@@ -34,7 +34,7 @@ const DonationItem = ({ item, onSelect }: Props) => {
         </div>
 
         <div className="text-black60 text-sm font-boldFont">
-          {item.amount.toLocaleString()}
+          {item.amount.toLocaleString()}원
         </div>
       </div>
 

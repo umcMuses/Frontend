@@ -65,6 +65,7 @@ function AppLayout() {
           <Route path="editprofile" element={<EditProfilePage />} />
           <Route path="projectresult/:id" element={<ProjectResultPage />} />
         </Route>
+         <Route path="/events/:id" element={<EventDetailPage />} />
         <Route path="/billing/success" element={<BillingSuccessPage />} />
         <Route path="/billing/fail" element={<BillingFailPage />} />
         <Route path="/create" element={<CreateProjectPage />} />

@@ -1,7 +1,6 @@
 import axios from 'axios';
-import ENDPOINTS from './endpoints';
+import { ENDPOINTS } from './endpoints';
 import type { Member } from '../components/MyPage/types/apitypes/members';
-
 
 export const getMyInfo = async () => {
   const res = await axios.get(ENDPOINTS.MY_INFO, {
@@ -11,11 +10,6 @@ export const getMyInfo = async () => {
   });
 
   return res.data.data; // 🔥 이게 핵심
-};
-
-export const getCreatorSummary = async () => {
-  const res = await axios.get(ENDPOINTS.CREATOR_SUMMARY);
-  return res.data.data;
 };
 
 export const updateMyProfile = async (payload: {

@@ -5,7 +5,7 @@ export interface OrderItem {
   title: string;
   status: string;
   paymentStatus: string;
-  amount: number;
+  amount: string;
   date: string;
 }
 
@@ -19,7 +19,7 @@ export interface OrderDetail {
   quantity: number;
   paidAt: string;
   paymentProvider: string;
-  amount: string;
+  amount: number;
   orderStatus: number;
   paymentStatus: string;
 }
