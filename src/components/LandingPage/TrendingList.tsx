@@ -2,7 +2,7 @@ import ProjectCard from '../ProjectListPage/ProjectCard';
 import axios from 'axios';
 import ENDPOINTS from '../../api/endpoints';
 import { useEffect, useState } from 'react';
-import type { TrendingItem, TrendingListResponse } from '../../types/Trending';
+import type { TrendingItem, TrendingListResponse } from '../../types/trending';
 
 interface TrendingListProps {
   index: number;
