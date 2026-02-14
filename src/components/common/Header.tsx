@@ -1,4 +1,4 @@
-import { data, Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import alarm from '../../assets/images/icons/alarm.png';
 import profilePlaceholder from '../../assets/images/icons/profile_placeholder.png';
 import museslogo from '../../assets/images/icons/logo.png';
