@@ -35,6 +35,13 @@ export const ENDPOINTS = {
   //마이페이지
 
   //어드민
+
+  //알람
+  ALARM: {
+    LIST: `${BASE_URL}/api/alarms`,
+    DELETE: (memberAlarm: number) => `${BASE_URL}/api/alarms/${memberAlarm}`,
+    COUNT: `${BASE_URL}/api/alarms/count`,
+  },
 } as const;
 
 export default ENDPOINTS;
