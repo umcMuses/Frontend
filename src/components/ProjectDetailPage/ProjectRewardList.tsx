@@ -6,12 +6,14 @@ import {
 import { ProjectRewardCard } from './ProjectRewardCard';
 import axios from 'axios';
 import { ENDPOINTS } from '../../api/endpoints';
+import { useNavigate } from 'react-router-dom';
 
 interface ProjectRewardListProps {
   detail: ProjectDetailData;
 }
 
 export const ProjectRewardList = ({ detail }: ProjectRewardListProps) => {
+  const navigate = useNavigate();
   const [selectedQuantities, setSelectedQuantities] = useState<
     Record<number, number>
   >({});
@@ -79,7 +81,7 @@ export const ProjectRewardList = ({ detail }: ProjectRewardListProps) => {
     if (selectedRewards.length === 0) return;
     setPaymentError('');
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('accessToken');
       if (!token) {
         alert('로그인 후 이용해주세요.');
         window.location.href = '/login';
@@ -108,7 +110,8 @@ export const ProjectRewardList = ({ detail }: ProjectRewardListProps) => {
         );
       }
 
-      setPaymentError('주문이 생성되었습니다.');
+      setPaymentError('');
+      navigate('/billing/success');
     } catch (error) {
       setPaymentError(
         error instanceof Error ? error.message : '주문 생성에 실패했습니다.'
