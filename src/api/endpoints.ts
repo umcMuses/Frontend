@@ -15,18 +15,18 @@ export const ENDPOINTS = {
   },
 
   //프로젝트
-  PROJECT_LIST: `${BASE_URL}/projects`,
-  PROJECT_DETAIL: `${BASE_URL}/projects/{projectId}`,
+  PROJECT_LIST: `${BASE_URL}/api/projects`,
+  PROJECT_DETAIL: `${BASE_URL}/api/projects/{projectId}`,
 
   EVENTS: {
     LIST: `${BASE_URL}/api/events`,
   },
 
   //주문
-  ORDERS_PREPARE: `${BASE_URL}/orders/prepare`,
+  ORDERS_PREPARE: `${BASE_URL}/api/orders/prepare`,
 
   //결제
-  BILLING_ISSUE: `${BASE_URL}/billing-auth/issue`,
+  BILLING_ISSUE: `${BASE_URL}/api/billing-auth/issue`,
 
   //티켓
 

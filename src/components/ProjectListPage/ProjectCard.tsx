@@ -15,6 +15,23 @@ export default function ProjectCard({
   posterClassNameValue,
   contentClassNameValue,
 }: ProjectCardProps) {
+  const regionLabels: Record<string, string> = {
+    SEOUL: '서울',
+    GYEONGGI: '경기',
+    INCHEON: '인천',
+    BUSAN: '부산',
+    GWANGJU: '광주',
+    DAEGU: '대구',
+    DAEJEON: '대전',
+    ULSAN: '울산',
+    JEJU: '제주',
+    GANGWON: '강원',
+    GYEONGNAM: '경남',
+    GYEONGBUK: '경북',
+    JEONNAM: '전남',
+    JEONBUK: '전북',
+  };
+  const regionLabel = regionLabels[project.region] ?? project.region;
   const posterSrc = project.thumbnailUrl || fallbackPoster;
   const posterClassName =
     posterClassNameValue ?? 'h-[380px] w-[285px] rounded-3xl';
@@ -42,7 +59,7 @@ export default function ProjectCard({
           <div className="flex items-center gap-1 bg-white/90 rounded-lg px-2.5 py-1 shadow-sm mr-2">
             <MapPin className="w-4 h-4 text-solidBlue" />
             <span className="text-[10px] font-boldFont text-[#1F2937]">
-              서울
+              {regionLabel}
             </span>
           </div>
           <span
@@ -82,12 +99,12 @@ export default function ProjectCard({
       <div className={`${contentClassNameValue ?? ''}`}>
         {/* 태그 */}
         <div className="flex gap-2 mb-2 flex-wrap">
-          {['#공연', '#인디', '#라이브'].map((tag) => (
+          {project.tags.map((tag) => (
             <span
               key={tag}
               className="text-[10px] text-black60 bg-white80 px-2 py-0.5 rounded border border-white60"
             >
-              {tag}
+              #{tag}
             </span>
           ))}
         </div>

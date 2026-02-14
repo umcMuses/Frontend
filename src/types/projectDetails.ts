@@ -52,9 +52,13 @@ export type ProjectDetailData = {
   storyHtml: string;
   refundPolicy: string;
   attachments: ProjectFile[];
+  creatorName: string;
+  creatorNickname: string;
   hostProfileImg: string | null;
   hostPhone: string;
   hostBio: string;
+  managerName: string;
+  managerPhone: string;
   documents: ProjectFile[];
   makerDocuments: ProjectFile[];
   achieveRate: number;

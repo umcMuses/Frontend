@@ -17,6 +17,7 @@ export default function ProjectList() {
         return;
       }
       setProjects(response.data.data as Project[]);
+      console.log(response.data.data);
     };
 
     fetchProjects();

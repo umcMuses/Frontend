@@ -1,5 +1,7 @@
 export interface Project {
   projectId: number;
+  region: string;
+  tags: string[];
   thumbnailUrl: string;
   title: string;
   achieveRate: number;

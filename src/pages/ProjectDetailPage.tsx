@@ -42,6 +42,7 @@ export default function ProjectDetailPage() {
           );
         }
         setDetail(response.data.data);
+        console.log('detail', response.data.data);
       })
       .catch((error) => {
         setDetail(null);

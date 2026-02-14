@@ -4,14 +4,14 @@ import {
   type ProjectReward,
 } from '../../types/projectDetails';
 import { ProjectRewardCard } from './ProjectRewardCard';
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { ENDPOINTS } from '../../api/endpoints';
 
 interface ProjectRewardListProps {
   detail: ProjectDetailData;
 }
 
 export const ProjectRewardList = ({ detail }: ProjectRewardListProps) => {
-  const navigate = useNavigate();
   const [selectedQuantities, setSelectedQuantities] = useState<
     Record<number, number>
   >({});
@@ -77,8 +77,43 @@ export const ProjectRewardList = ({ detail }: ProjectRewardListProps) => {
   // 결제 처리 api 연동
   const handlePayment = async () => {
     if (selectedRewards.length === 0) return;
-    //setPaymentError('결제 기능은 준비 중입니다.');
-    navigate('/billing/success?status=success');
+    setPaymentError('');
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('로그인 후 이용해주세요.');
+        window.location.href = '/login';
+        return;
+      }
+      const response = await axios.post(
+        ENDPOINTS.ORDERS_PREPARE,
+        {
+          projectId: detail.projectId,
+          items: selectedRewards.map((reward) => ({
+            rewardId: reward.rewardId,
+            quantity: selectedQuantities[reward.rewardId] ?? 0,
+            unitPrice: reward.price,
+          })),
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (!response.data?.success) {
+        throw new Error(
+          response.data?.error?.message ?? '주문 생성에 실패했습니다.'
+        );
+      }
+
+      setPaymentError('주문이 생성되었습니다.');
+    } catch (error) {
+      setPaymentError(
+        error instanceof Error ? error.message : '주문 생성에 실패했습니다.'
+      );
+    }
   };
 
   return (
