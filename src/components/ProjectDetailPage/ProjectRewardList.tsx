@@ -4,12 +4,14 @@ import {
   type ProjectReward,
 } from '../../types/projectDetails';
 import { ProjectRewardCard } from './ProjectRewardCard';
+import { useNavigate } from 'react-router-dom';
 
 interface ProjectRewardListProps {
   detail: ProjectDetailData;
 }
 
 export const ProjectRewardList = ({ detail }: ProjectRewardListProps) => {
+  const navigate = useNavigate();
   const [selectedQuantities, setSelectedQuantities] = useState<
     Record<number, number>
   >({});
@@ -75,7 +77,8 @@ export const ProjectRewardList = ({ detail }: ProjectRewardListProps) => {
   // 결제 처리 api 연동
   const handlePayment = async () => {
     if (selectedRewards.length === 0) return;
-    setPaymentError('결제 기능은 준비 중입니다.');
+    //setPaymentError('결제 기능은 준비 중입니다.');
+    navigate('/billing/success?status=success');
   };
 
   return (
