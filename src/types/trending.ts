@@ -1,3 +1,5 @@
+import type { ApiResponse } from '../api/auth';
+
 export type TrendingItem = {
   projectId: number;
   title: string;
@@ -10,9 +12,4 @@ export type TrendingItem = {
   tags: string[];
 };
 
-export type TrendingListResponse = {
-  success: boolean;
-  data: TrendingItem[];
-  page?: { offset: number; limit: number; total: number };
-  error?: { code: string; message: string; detail: string };
-};
+export type TrendingListResponse = ApiResponse<TrendingItem[]>;
