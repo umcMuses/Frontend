@@ -3,12 +3,7 @@ import type { Member } from '../components/MyPage/types/apitypes/members';
 import api from './axiosInstance';
 
 export const getMyInfo = async () => {
-  const res = await api.get(ENDPOINTS.MY_INFO, {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-    },
-  });
-
+  const res = await api.get(ENDPOINTS.MY_INFO);
   return res.data.data;
 };
 

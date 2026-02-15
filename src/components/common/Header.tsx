@@ -63,9 +63,14 @@ const Header = () => {
 
   // 사용자 정보 API(프로필 이미지 연동)
   useEffect(() => {
+    if (!isLogin) return;
     const fetchMember = async () => {
-      const response = await getMyInfo();
-      setMember(response);
+      try {
+        const response = await getMyInfo();
+        setMember(response);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
     fetchMember();
