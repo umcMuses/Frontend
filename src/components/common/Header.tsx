@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
-import alarm from '../../assets/images/icons/alarm.png';
-import profilePlaceholder from '../../assets/images/icons/profile_placeholder.png';
+import alarm_on from '../../assets/images/icons/alarm_on.png';
+import alarm_off from '../../assets/images/icons/alarm_off.png';
+import profileimg from '../../assets/images/profileimg.svg';
 import museslogo from '../../assets/images/icons/logo.png';
 import deletebutton from '../../assets/images/icons/deletebutton.png';
 import { useEffect, useState, useRef } from 'react';
@@ -8,6 +9,8 @@ import { logoutAPI, type ApiResponse } from '../../api/auth';
 import ENDPOINTS from '../../api/endpoints';
 import api from '../../api/axiosInstance';
 import type { Alarm } from '../../types/alarm';
+import type { Member } from '../MyPage/types/apitypes/members';
+import { getMyInfo } from '../../api/user';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -16,6 +19,7 @@ const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [openAlarm, setOpenAlarm] = useState(false);
   const [alarms, setAlarms] = useState<Alarm[]>([]);
+  const [member, setMember] = useState<Member | null>(null);
 
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -55,6 +59,16 @@ const Header = () => {
     };
 
     fetchAlarmList();
+  }, [isLogin]);
+
+  // 사용자 정보 API(프로필 이미지 연동)
+  useEffect(() => {
+    const fetchMember = async () => {
+      const response = await getMyInfo();
+      setMember(response);
+    };
+
+    fetchMember();
   }, [isLogin]);
 
   const handleLogout = async () => {
@@ -118,7 +132,10 @@ const Header = () => {
             }}
             className="relative cursor-pointer"
           >
-            <img src={alarm} alt="Alarm" />
+            <img
+              src={(alarms.length > 0 && alarm_on) || alarm_off}
+              alt="Alarm"
+            />
 
             {alarms.length > 0 && (
               <span
@@ -136,7 +153,7 @@ const Header = () => {
                 알림 메시지
               </h3>
 
-              <div className="max-h-[400px] overflow-y-auto space-y-3">
+              <div className="max-h-[400px] overflow-y-auto space-y-3 ">
                 {alarms.length === 0 ? (
                   <p className="text-sm text-gray-400 text-center py-6">
                     알림이 없습니다.
@@ -145,7 +162,7 @@ const Header = () => {
                   alarms.map((alarm) => (
                     <div
                       key={alarm.memberAlarmId}
-                      className="border-b border-white40 pb-4 pl-5 flex justify-between items-start"
+                      className="border-b border-white40 pb-4 pl-5 pr-4 flex justify-between items-start"
                     >
                       <div className="w-80">
                         <p className="text-sm font-mainFont">{alarm.content}</p>
@@ -156,7 +173,7 @@ const Header = () => {
 
                       <button
                         onClick={() => handleDeleteAlarm(alarm.memberAlarmId)}
-                        className="absolute right-5 cursor-pointer"
+                        className="ml-3 shrink-0 cursor-pointer"
                       >
                         <img
                           src={deletebutton}
@@ -173,15 +190,17 @@ const Header = () => {
 
           {/* 프로필 */}
           <div className="relative">
-            <img
-              src={profilePlaceholder}
-              alt="profile"
-              className="w-10 h-10 border rounded-full object-cover cursor-pointer"
-              onClick={() => {
-                setOpenMenu((prev) => !prev);
-                setOpenAlarm(false);
-              }}
-            />
+            <div className="flex justify-center items-center w-10 h-10 border border-[#D9D9D9] rounded-full">
+              <img
+                src={member?.profileImgUrl || profileimg}
+                alt="profile"
+                className="w-7 h-7 cursor-pointer"
+                onClick={() => {
+                  setOpenMenu((prev) => !prev);
+                  setOpenAlarm(false);
+                }}
+              />
+            </div>
 
             {openMenu && (
               <div className="absolute right-0 mt-3 w-36 bg-white rounded-xl shadow-lg border border-white80 py-2">
