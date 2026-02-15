@@ -28,7 +28,7 @@ export default function MyPage() {
   const { activeTab, setActiveTab, isActivityTab, isCreatorTab } =
     useMyPageTab(initialTab);
 
-  const isCreator = true;
+  const isCreator = false;
 
   useEffect(() => {
     const fetchData = async () => {

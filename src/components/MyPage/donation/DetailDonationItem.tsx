@@ -85,35 +85,34 @@ const DetailDonationItem = ({ item, onClose }: Props) => {
             </div>
 
             {/* 옵션 / 수량 */}
-<div className="self-stretch inline-flex justify-start items-start gap-20">
-  {/* 옵션 */}
-  <div className="w-52 flex flex-col justify-start items-start">
-    <div className="text-[#9198A7] text-sm font-boldFont leading-7">
-      옵션
-    </div>
+            <div className="self-stretch inline-flex justify-start items-start gap-20">
+              {/* 옵션 */}
+              <div className="w-52 flex flex-col justify-start items-start">
+                <div className="text-[#9198A7] text-sm font-boldFont leading-7">
+                  옵션
+                </div>
 
-    <div className="w-full inline-flex items-center gap-3">
-      <div className="text-mainBlack text-base font-boldFont leading-6">
-        {item.optionTitle}
-      </div>
+                <div className="w-full inline-flex items-center gap-3">
+                  <div className="text-mainBlack text-base font-boldFont leading-6">
+                    {item.optionTitle}
+                  </div>
 
-      <div className="flex-1 min-w-0 text-black60 text-sm font-mainFont leading-5 truncate">
-        {item.optionDescription}
-      </div>
-    </div>
-  </div>
+                  <div className="flex-1 min-w-0 text-black60 text-sm font-mainFont leading-5 truncate">
+                    {item.optionDescription}
+                  </div>
+                </div>
+              </div>
 
-  {/* 수량 */}
-  <div className="w-56 flex flex-col justify-start items-start">
-    <div className="text-[#9198A7] text-sm font-boldFont leading-7">
-      수량
-    </div>
-    <div className="text-mainBlack text-base font-mediumFont leading-6">
-      {item.quantity}
-    </div>
-  </div>
-</div>
-
+              {/* 수량 */}
+              <div className="w-56 flex flex-col justify-start items-start">
+                <div className="text-[#9198A7] text-sm font-boldFont leading-7">
+                  수량
+                </div>
+                <div className="text-mainBlack text-base font-mediumFont leading-6">
+                  {item.quantity}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 

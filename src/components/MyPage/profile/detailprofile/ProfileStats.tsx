@@ -21,7 +21,7 @@ const ProfileStats = ({
 
       {isCreator && (
         <>
-          <div className="w-px h-8 bg-white60" />
+          <div className="w-px h-8 bg-white60 font-mainFont" />
           <ProfileStat
             value={ongoingProjectCount}
             label="내 프로젝트"
