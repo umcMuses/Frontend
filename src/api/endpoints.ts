@@ -17,6 +17,7 @@ export const ENDPOINTS = {
   //프로젝트
   PROJECT_LIST: `${BASE_URL}/api/projects`,
   PROJECT_DETAIL: `${BASE_URL}/api/projects/{projectId}`,
+  
 
   EVENTS: {
     LIST: `${BASE_URL}/api/events`,
@@ -41,7 +42,9 @@ export const ENDPOINTS = {
   MY_PROFILE_UPDATE: `${BASE_URL}/api/users/me/profile`,
   MY_ORDER: `${BASE_URL}/api/users/me/orders`,
   MY_DETAIL_ORDER:`${BASE_URL}/api/users/me/orders/detail`,
+  MY_LIKES_PROJECTS:`${BASE_URL}/api/users/me/likes/projects`,
   CREATOR_SUMMARY: `${BASE_URL}/api/creators/me/summary`,
+  CREATOR_PROJECT_LIST: `${BASE_URL}/api/creators/me/projects`
 
   //어드민
 } as const;
