@@ -9,8 +9,10 @@ import {
   Trash2,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import api from '../../../../api/axiosInstance';
-import ENDPOINTS from '../../../../api/endpoints';
+import {
+  getProjectSetting,
+  updateProjectSetting,
+} from '../../../../types/setting';
 
 interface TabProps {
   projectId?: number;
@@ -31,17 +33,16 @@ const SettingTab = ({ projectId }: TabProps) => {
     if (!projectId) return;
 
     const fetchSetting = async () => {
+      if (!projectId) return;
+
       try {
-        const response = await api.get(
-          ENDPOINTS.CREATOR_PROJECT_SETTING(projectId)
-        );
+        const { data } = await getProjectSetting(projectId);
+        const setting = data?.data;
 
-        const data = response.data?.data;
-
-        setDescription(data?.description ?? '');
-        setTags(Array.isArray(data?.tags) ? data.tags : []);
-        setTargetAmount(data?.targetAmount ?? 0);
-        setDeadline(data?.deadline ?? '');
+        setDescription(setting?.description ?? '');
+        setTags(Array.isArray(setting?.tags) ? setting.tags : []);
+        setTargetAmount(setting?.targetAmount ?? 0);
+        setDeadline(setting?.deadline ?? '');
       } catch (error) {
         console.error(error);
       }
@@ -72,10 +73,7 @@ const SettingTab = ({ projectId }: TabProps) => {
     if (!projectId) return;
 
     try {
-      await api.patch(ENDPOINTS.CREATOR_PROJECT_SETTING_DETAILS(projectId), {
-        description,
-        tags,
-      });
+      await updateProjectSetting(projectId, { description, tags });
 
       setIsEditing(false);
     } catch (error) {
