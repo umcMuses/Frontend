@@ -52,6 +52,12 @@ export const ENDPOINTS = {
   CREATOR_PROJECT_LIST: `${BASE_URL}/api/creators/me/projects`,
   CREATOR_PROJECT_MAKERS: (projectId: number) =>
     `${BASE_URL}/api/creators/creator-center/projects/${projectId}/makers`,
+  CREATOR_PROJECT_MAKER_QR_STATUS: (
+    projectId: number,
+    orderId: number,
+    qrStatus: 'ACTIVE' | 'INACTIVE'
+  ) =>
+    `/api/creators/creator-center/projects/${projectId}/makers/orderId/${orderId}/status/${qrStatus}`,
 
   //어드민
 

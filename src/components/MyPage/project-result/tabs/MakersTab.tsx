@@ -18,44 +18,100 @@ interface MakersTabProps {
   projectId: number;
 }
 
+const getQrUI = (status: Makers['qrStatus']) => {
+  switch (status) {
+    case 'ACTIVE':
+      return {
+        displayText: '활성화',
+        pillClass: 'bg-mainBlack text-mainWhite',
+        circleClass: 'bg-mainWhite text-mainBlack',
+        isNone: false,
+        showCheck: true,
+      };
+
+    case 'INACTIVE':
+      return {
+        displayText: '비활성화',
+        pillClass: 'bg-white80 text-mainBlack',
+        circleClass: 'bg-mainBlack text-mainWhite',
+        isNone: false,
+        showCheck: true,
+      };
+
+    case 'NONE':
+    default:
+      return {
+        displayText: '해당 없음',
+        pillClass: 'bg-white60 text-black40',
+        circleClass: '',
+        isNone: true,
+        showCheck: false,
+      };
+  }
+};
+
 const MakersTab = ({ projectId }: MakersTabProps) => {
   const [makers, setMakers] = useState<Makers[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
+
   const pageSize = 20;
   const totalPages = Math.ceil(makers.length / pageSize);
+
   const pagedMakers = makers.slice(
     (currentPage - 1) * pageSize,
     currentPage * pageSize
   );
 
   const fetchMakers = async () => {
-    const response = await api.get<MakersResponse>(
-      ENDPOINTS.CREATOR_PROJECT_MAKERS(projectId)
-    );
+    try {
+      const response = await api.get<MakersResponse>(
+        ENDPOINTS.CREATOR_PROJECT_MAKERS(projectId)
+      );
 
-    const items = response.data?.data?.items ?? [];
-    setMakers(items);
+      const items = response.data?.data?.items ?? [];
+      setMakers(Array.isArray(items) ? items : []);
+      setCurrentPage(1); // 프로젝트 변경 시 페이지 초기화
+    } catch (error) {
+      console.error(error);
+      setMakers([]);
+    }
   };
 
-  /* =========================
-     QR 상태 토글
-  ========================= */
-  const toggleQrStatus = (memberId: number) => {
-    setMakers((prev) =>
-      prev.map((maker) =>
-        maker.memberId === memberId
-          ? {
-              ...maker,
-              qrStatus: maker.qrStatus === 'ACTIVE' ? 'INACTIVE' : 'ACTIVE',
-            }
-          : maker
-      )
-    );
+  const toggleQrStatus = async (
+    memberId: number,
+    orderId: number,
+    currentStatus: Makers['qrStatus']
+  ) => {
+    if (currentStatus === 'NONE') return;
+
+    const nextStatus = currentStatus === 'ACTIVE' ? 'INACTIVE' : 'ACTIVE';
+
+    try {
+      const response = await api.post(
+        ENDPOINTS.CREATOR_PROJECT_MAKER_QR_STATUS(
+          projectId,
+          orderId,
+          currentStatus // ← 여기 중요
+        )
+      );
+
+      if (!response.data.success) {
+        throw new Error(response.data.error?.message ?? 'QR 상태 변경 실패');
+      }
+
+      setMakers((prev) =>
+        prev.map((maker) =>
+          maker.memberId === memberId
+            ? { ...maker, qrStatus: nextStatus }
+            : maker
+        )
+      );
+    } catch (error: any) {
+      console.error(error);
+      alert(error.message ?? 'QR 상태 변경 실패');
+    }
   };
 
-  /* =========================
-     API 연동 준비 영역
-  ========================= */
   useEffect(() => {
     if (!projectId) return;
     fetchMakers();
@@ -88,19 +144,8 @@ const MakersTab = ({ projectId }: MakersTabProps) => {
 
         {/* body rows */}
         {pagedMakers.map((maker) => {
-          const status = maker.qrStatus;
-          const isActive = status === 'ACTIVE';
-          const isInactive = status === 'INACTIVE';
-
-          const pillClass = isActive
-            ? 'bg-mainBlack text-mainWhite'
-            : isInactive
-              ? 'bg-white80 text-mainBlack'
-              : 'bg-white60 text-black40';
-
-          const circleClass = isActive
-            ? 'bg-mainWhite text-mainBlack'
-            : 'bg-mainBlack text-mainWhite';
+          const { displayText, pillClass, circleClass, isNone, showCheck } =
+            getQrUI(maker.qrStatus);
 
           return (
             <div key={maker.orderId} className="flex gap-11 items-center">
@@ -125,17 +170,24 @@ const MakersTab = ({ projectId }: MakersTabProps) => {
               <div className="w-24 flex items-center justify-center">
                 <button
                   type="button"
+                  disabled={isNone}
                   className={`cursor-pointer h-6 w-[80px] flex items-center rounded-full gap-2 text-[9px] ${pillClass}`}
-                  onClick={() => toggleQrStatus(maker.memberId)}
+                  onClick={() =>
+                    toggleQrStatus(
+                      maker.memberId,
+                      maker.orderId,
+                      maker.qrStatus
+                    )
+                  }
                 >
-                  {(isActive || isInactive) && (
+                  {showCheck && (
                     <span
                       className={`w-3.5 h-3.5 ml-3 rounded-full flex items-center justify-center ${circleClass}`}
                     >
                       <Check className="w-3 h-3" />
                     </span>
                   )}
-                  <span>{status}</span>
+                  <span>{displayText}</span>
                 </button>
               </div>
             </div>
@@ -158,19 +210,19 @@ const MakersTab = ({ projectId }: MakersTabProps) => {
             key={n}
             onClick={() => setCurrentPage(n)}
             className={`w-6 h-6 rounded-full border flex items-center justify-center text-[10px] font-boldFont cursor-pointer
-      ${
-        n === currentPage
-          ? 'bg-mainBlack text-white border-mainBlack'
-          : 'border-white60 text-black'
-      }
-    `}
+              ${
+                n === currentPage
+                  ? 'bg-mainBlack text-white border-mainBlack'
+                  : 'border-white60 text-black'
+              }
+            `}
           >
             {n}
           </div>
         ))}
 
         <button
-          disabled={currentPage === totalPages}
+          disabled={currentPage === totalPages || totalPages === 0}
           onClick={() =>
             setCurrentPage((prev) => Math.min(prev + 1, totalPages))
           }
