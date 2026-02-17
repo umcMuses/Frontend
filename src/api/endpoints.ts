@@ -50,6 +50,8 @@ export const ENDPOINTS = {
   MY_LIKES_PROJECTS: `${BASE_URL}/api/users/me/likes/projects`,
   CREATOR_SUMMARY: `${BASE_URL}/api/creators/me/summary`,
   CREATOR_PROJECT_LIST: `${BASE_URL}/api/creators/me/projects`,
+  CREATOR_PROJECT_MAKERS: (projectId: number) =>
+    `${BASE_URL}/api/creators/creator-center/projects/${projectId}/makers`,
 
   //어드민
 
