@@ -83,6 +83,7 @@ const MakersTab = ({ projectId }: MakersTabProps) => {
     currentStatus: Makers['qrStatus']
   ) => {
     if (currentStatus === 'NONE') return;
+    if (!projectId) return;
 
     const nextStatus = currentStatus === 'ACTIVE' ? 'INACTIVE' : 'ACTIVE';
 
@@ -101,7 +102,7 @@ const MakersTab = ({ projectId }: MakersTabProps) => {
 
       setMakers((prev) =>
         prev.map((maker) =>
-          maker.memberId === memberId
+          maker.memberId === memberId && maker.orderId === orderId
             ? { ...maker, qrStatus: nextStatus }
             : maker
         )
