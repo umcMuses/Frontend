@@ -26,7 +26,7 @@ const ProjectResultPage = () => {
       case 'dashboard':
         return <DashboardTab />;
       case 'setting':
-        return <SettingTab />;
+        return <SettingTab projectId={numericProjectId} />;
       case 'makers':
         return <MakersTab projectId={numericProjectId} />;
       case 'settlement':

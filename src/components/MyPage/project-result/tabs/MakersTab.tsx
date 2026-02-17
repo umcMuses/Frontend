@@ -15,7 +15,7 @@ const headers = [
 ];
 
 interface MakersTabProps {
-  projectId: number;
+  projectId?: number;
 }
 
 const getQrUI = (status: Makers['qrStatus']) => {
