@@ -13,13 +13,13 @@ import { fetchMyCreatorProjects } from '../../../api/user';
 type ProjectTab = 'dashboard' | 'setting' | 'makers' | 'settlement';
 
 const ProjectResultPage = () => {
-  const { id } = useParams<{ id: string }>();
+  const { projectId } = useParams<{ projectId: string }>();
 
   const [project, setProject] = useState<Project | null>(null);
   const [activeTab, setActiveTab] = useState<ProjectTab>('dashboard');
 
   useEffect(() => {
-    if (!id) return;
+    if (!projectId) return;
 
      const load = async () => {
      try {
@@ -32,16 +32,20 @@ const ProjectResultPage = () => {
     };
 
     load();
-  }, [id]);
+  }, [projectId]);
 
   const renderTab = () => {
     switch (activeTab) {
       case 'dashboard':
         return <DashboardTab />;
       case 'setting':
-        return <SettingTab />;
+        return (
+          <SettingTab projectId={projectId ? Number(projectId) : undefined} />
+        );
       case 'makers':
-        return <MakersTab />;
+        return (
+          <MakersTab projectId={projectId ? Number(projectId) : undefined} />
+        );
       case 'settlement':
         return <SettlementTab />;
       default:

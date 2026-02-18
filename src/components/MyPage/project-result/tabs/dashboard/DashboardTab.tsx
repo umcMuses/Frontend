@@ -7,7 +7,7 @@ import type { ProjectDashboard } from '../../../types/project';
 import { fetchProjectDashboard } from '../../../../../api/project';
 
 const DashboardTab = () => {
-  const { id } = useParams<{ id: string }>();
+  const { projectId } = useParams<{ projectId: string }>();
   const [dashboard, setDashboard] = useState<ProjectDashboard | null>(null);
   const [error, setError] = useState<string | null>(null);
 
