@@ -35,11 +35,11 @@ const ProjectResultPage = () => {
       case 'dashboard':
         return <DashboardTab />;
       case 'setting':
-        return <SettingTab />;
+        return <SettingTab projectId={numericProjectId} />;
       case 'makers':
-        return <MakersTab />;
+        return <MakersTab projectId={numericProjectId} />;
       case 'settlement':
-        return <SettlementTab />;
+        return <SettlementTab projectId={numericProjectId} />;
       default:
         return null;
     }
