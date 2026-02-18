@@ -57,6 +57,19 @@ export const ENDPOINTS = {
     MY_DOCS: `${BASE_URL}/api/creators/applications/me/docs`,             // 서류 조회/업로드
     SUBMIT_APPLICATION: `${BASE_URL}/api/creators/applications/me/submit` // 신청 제출
   },
+  CREATOR_PROJECT_SETTING: (projectId: number) =>
+    `${BASE_URL}/api/creators/creator-center/projects/${projectId}/setting`,
+  CREATOR_PROJECT_SETTING_DETAILS: (projectId: number) =>
+    `${BASE_URL}/api/creators/creator-center/projects/${projectId}/details`,
+  CREATOR_PROJECT_MAKERS: (projectId: number) =>
+    `${BASE_URL}/api/creators/creator-center/projects/${projectId}/makers`,
+  CREATOR_PROJECT_MAKER_QR_STATUS: (
+    projectId: number,
+    orderId: number,
+    qrStatus: 'ACTIVE' | 'INACTIVE'
+  ) =>
+    `${BASE_URL}/api/creators/creator-center/projects/${projectId}/makers/orderId/${orderId}/status/${qrStatus}`,
+
   //어드민
 
   //알람

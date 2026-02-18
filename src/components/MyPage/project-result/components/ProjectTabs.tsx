@@ -71,9 +71,7 @@ const ProjectTabs = ({
                 key={tab.key}
                 type="button"
                 onClick={() => onChange(tab.key)}
-                className={`px-1 pb-3 ${
-                  index !== 0 ? 'ml-6' : ''
-                } border-b-2 transition-colors
+                className={`cursor-pointer px-1 pb-3 ${index !== 0 ? 'ml-6' : ''} border-b-2 transition-colors
                 ${
                   isActive
                     ? 'border-[#9333EA] text-[#9333EA] font-semiBoldFont'
