@@ -18,11 +18,12 @@ export const ENDPOINTS = {
     // 소셜 로그인 콜백 주소
     KAKAO_OAUTH_CODE: `${BASE_URL}/api/login/oauth2/code/kakao`,
     GOOGLE_OAUTH_CODE: `${BASE_URL}/api/login/oauth2/code/google`,
-  },
+  },  
 
   //프로젝트
   PROJECT_LIST: `${BASE_URL}/api/projects`,
   PROJECT_DETAIL: `${BASE_URL}/api/projects/{projectId}`,
+  PROJECT_DASHBOARD: `${BASE_URL}/api/creators/creator-center/projects`,
 
   //주문
   ORDERS_PREPARE: `${BASE_URL}/api/orders/prepare`,
@@ -50,7 +51,12 @@ export const ENDPOINTS = {
   MY_LIKES_PROJECTS: `${BASE_URL}/api/users/me/likes/projects`,
   CREATOR_SUMMARY: `${BASE_URL}/api/creators/me/summary`,
   CREATOR_PROJECT_LIST: `${BASE_URL}/api/creators/me/projects`,
-
+  CREATE_CREATOR_APPLICATION: `${BASE_URL}/api/creators/applications`,           
+ UPDATE_CREATOR: {
+    CREATE_APPLICATION: `${BASE_URL}/api/creators/applications`,          // 크리에이터 신청 생성
+    MY_DOCS: `${BASE_URL}/api/creators/applications/me/docs`,             // 서류 조회/업로드
+    SUBMIT_APPLICATION: `${BASE_URL}/api/creators/applications/me/submit` // 신청 제출
+  },
   //어드민
 
   //알람

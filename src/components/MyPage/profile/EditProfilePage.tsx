@@ -190,7 +190,7 @@ export default function EditProfilePage() {
                   <div className="w-32 text-[#374151] text-sm font-mediumFont leading-5">
                     성별
                   </div>
-                  <div className="w-32 h-12 flex flex-col justify-center items-end">
+                  <div className="w-20 h-12 flex flex-col justify-center items-end">
                     <div className="self-stretch h-12 px-4 py-3.5 bg-color-white-solid rounded-xl border border-[#D1D5DB] inline-flex justify-center items-center gap-7 overflow-hidden">
                       <select
                         name="gender"
@@ -201,7 +201,7 @@ export default function EditProfilePage() {
                         <option value={0}>남자</option>
                         <option value={1}>여자</option>
                       </select>
-                      <ChevronDown size={16} />
+                      
                     </div>
                   </div>
                 </div>
