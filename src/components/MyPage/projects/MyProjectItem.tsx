@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { PROJECT_STATUS_STYLE, type Project } from '../types/project';
 
-
 interface MyProjectItemProps {
   project: Project;
 }
@@ -11,10 +10,7 @@ const MyProjectItem = ({ project }: MyProjectItemProps) => {
   const navigate = useNavigate();
 
   return (
-    <div
-      className="inline-flex items-start gap-5"
-      
-    >
+    <div className="inline-flex items-start gap-5">
       <div className="w-[661px] p-4 rounded-2xl border border-white80 flex items-center ">
         <div className="w-16 h-16 bg-[#C7D2FE] rounded-xl flex items-center justify-center text-white text-lg font-boldFont shrink-0">
           {project.title[0]}
@@ -57,11 +53,13 @@ const MyProjectItem = ({ project }: MyProjectItemProps) => {
         </div>
       </div>
 
-      <div 
-      onClick={() => navigate(`projectresult/${project.projectId}`)}
-      className="w-24 h-24 p-6 bg-[#EEF2FF] rounded-2xl border border-[#EEF2FF] flex items-center justify-center text-[12px] font-boldFont text-black">
+      <button
+        type="button"
+        onClick={() => navigate(`/mypage/projectresult/${project.projectId}`)}
+        className="w-24 h-24 p-6 bg-[#EEF2FF] rounded-2xl border border-[#EEF2FF] flex items-center justify-center text-[12px] font-boldFont text-black cursor-pointer transition duration-200 hover:scale-105 "
+      >
         상세보기
-      </div>
+      </button>
     </div>
   );
 };

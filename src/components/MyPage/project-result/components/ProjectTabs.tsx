@@ -37,7 +37,7 @@ const ProjectTabs = ({
             <button
               type="button"
               onClick={() => navigate('/mypage?tab=creator')}
-              className="p-2 rounded-lg"
+              className="p-2 rounded-lg cursor-pointer transition durastion-200 hover:-translate-x-0.5"
               aria-label="마이페이지로 돌아가기"
             >
               <MoveLeft size={20} />
@@ -71,7 +71,7 @@ const ProjectTabs = ({
                 key={tab.key}
                 type="button"
                 onClick={() => onChange(tab.key)}
-                className={`px-1 pb-3 ${
+                className={`px-1 pb-3 cursor-pointer hover:scale-103 ${
                   index !== 0 ? 'ml-6' : ''
                 } border-b-2 transition-colors
                 ${

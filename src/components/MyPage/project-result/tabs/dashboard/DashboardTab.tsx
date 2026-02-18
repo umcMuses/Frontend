@@ -6,21 +6,28 @@ import { useParams } from 'react-router-dom';
 import type { ProjectDashboard } from '../../../types/project';
 import { fetchProjectDashboard } from '../../../../../api/project';
 
-
-
 const DashboardTab = () => {
   const { id } = useParams<{ id: string }>();
   const [dashboard, setDashboard] = useState<ProjectDashboard | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!id) return;
+    let cancelled = false;
 
     const load = async () => {
-      const data = await fetchProjectDashboard(id);
-      setDashboard(data);
+      try {
+        const data = await fetchProjectDashboard(id);
+        if (!cancelled) setDashboard(data);
+      } catch (err) {
+        if (!cancelled) setError('대시보드 데이터를 불러오지 못했습니다.');
+      }
     };
 
     load();
+    return () => {
+      cancelled = true;
+    };
   }, [id]);
 
   return (
