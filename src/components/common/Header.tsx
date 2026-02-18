@@ -83,6 +83,7 @@ const Header = () => {
       console.error(error);
     } finally {
       localStorage.removeItem('accessToken');
+      localStorage.removeItem('role');
       setIsLogin(false);
       navigate('/', { replace: true });
     }
