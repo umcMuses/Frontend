@@ -6,22 +6,20 @@ import { useParams } from 'react-router-dom';
 import type { ProjectDashboard } from '../../../types/project';
 import { fetchProjectDashboard } from '../../../../../api/project';
 
-
-
 const DashboardTab = () => {
-  const { id } = useParams<{ id: string }>();
+  const { projectId } = useParams<{ projectId: string }>();
   const [dashboard, setDashboard] = useState<ProjectDashboard | null>(null);
 
   useEffect(() => {
-    if (!id) return;
+    if (!projectId) return;
 
     const load = async () => {
-      const data = await fetchProjectDashboard(id);
+      const data = await fetchProjectDashboard(projectId);
       setDashboard(data);
     };
 
     load();
-  }, [id]);
+  }, [projectId]);
 
   return (
     <div className="w-[1425px] min-h-[713px] pb-8 flex flex-col items-center gap-8">

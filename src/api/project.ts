@@ -8,4 +8,3 @@ export const fetchProjectDashboard = async (projectId: string) => {
 
   return res.data.data;
 };
-
