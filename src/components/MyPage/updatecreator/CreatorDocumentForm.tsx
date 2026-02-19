@@ -4,12 +4,10 @@ import {
   type CreatorDocType,
   type CreatorType,
   creatorDocumentConfig,
-  creatorTypeToApi,
 } from '../types/creatorDocumentConfig';
 import type { FormEvent } from 'react';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import {
-  createCreatorApplication,
   submitCreatorApplication,
   uploadCreatorDoc,
 } from '../../../api/updateCreator';
@@ -22,7 +20,6 @@ interface Props {
 const CreatorDocumentForm = ({ type, onBack }: Props) => {
   const { title, files } = creatorDocumentConfig[type];
   const rowCount = Math.ceil(files.length / 2);
-  const [appCreated, setAppCreated] = useState(false);
 
   const [uploadedFiles, setUploadedFiles] = useState<CreatorDocType[]>([]);
   const [loading, setLoading] = useState(false);
@@ -37,6 +34,8 @@ const CreatorDocumentForm = ({ type, onBack }: Props) => {
           setLoading(true);
           const res = await uploadCreatorDoc(fileConfig.docType, file);
           setUploadedFiles((prev) => [...prev, res.docType]);
+        } catch {
+          alert('파일 업로드에 실패했습니다. 다시 시도해주세요.');
         } finally {
           setLoading(false);
         }
@@ -61,16 +60,7 @@ const CreatorDocumentForm = ({ type, onBack }: Props) => {
       setLoading(false);
     }
   };
-  useEffect(() => {
-    if (appCreated) return;
 
-    const initApplication = async () => {
-      await createCreatorApplication(creatorTypeToApi[type]);
-      setAppCreated(true);
-    };
-
-    initApplication();
-  }, [type, appCreated]);
   return (
     <form
       onSubmit={handleSubmit}
