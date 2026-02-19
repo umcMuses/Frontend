@@ -1,6 +1,7 @@
 import { ChevronLeft } from 'lucide-react';
 import SubmitFile from './SubmitFile';
 import {
+  type CreatorDocType,
   type CreatorType,
   creatorDocumentConfig,
   creatorTypeToApi,
@@ -21,8 +22,9 @@ interface Props {
 const CreatorDocumentForm = ({ type, onBack }: Props) => {
   const { title, files } = creatorDocumentConfig[type];
   const rowCount = Math.ceil(files.length / 2);
+  const [appCreated, setAppCreated] = useState(false);
 
-  const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
+  const [uploadedFiles, setUploadedFiles] = useState<CreatorDocType[]>([]);
   const [loading, setLoading] = useState(false);
 
   const handleFileChange = async (fileConfig: (typeof files)[number]) => {
@@ -60,11 +62,15 @@ const CreatorDocumentForm = ({ type, onBack }: Props) => {
     }
   };
   useEffect(() => {
+    if (appCreated) return;
+
     const initApplication = async () => {
       await createCreatorApplication(creatorTypeToApi[type]);
+      setAppCreated(true);
     };
+
     initApplication();
-  }, [type]);
+  }, [type, appCreated]);
   return (
     <form
       onSubmit={handleSubmit}
@@ -104,7 +110,11 @@ const CreatorDocumentForm = ({ type, onBack }: Props) => {
                     ? 'opacity-50 cursor-not-allowed'
                     : ''
                 }
-                onClick={() => handleFileChange(file)}
+                onClick={
+                  uploadedFiles.includes(file.docType)
+                    ? undefined
+                    : () => handleFileChange(file)
+                }
               />
             </div>
           );
